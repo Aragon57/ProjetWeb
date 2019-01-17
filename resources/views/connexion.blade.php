@@ -10,7 +10,7 @@
 <div class ="text align-center">
     <form action="/connexion" method="post">
     	        {{ csrf_field() }}
-    	                <input type="email" name="email" placeholder="email">
+    	                <input type="emails" name="emails" placeholder="email">
 
         <input type="password" name="password" placeholder="Mot de passe">
         <input type="submit" value="Se Connecter">
