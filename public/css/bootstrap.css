@@ -1,3 +1,4 @@
+
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -40,9 +41,7 @@
 *::after {
   box-sizing: border-box;
 }
-.cesii{
-  color: #6699ff;
-}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -73,6 +72,7 @@ hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible;
+  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -360,6 +360,7 @@ h1, h2, h3, h4, h5, h6,
 
 h1, .h1 {
   font-size: 2.5rem;
+ 
 }
 
 h2, .h2 {
@@ -2757,14 +2758,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-success {
-  color: #6699ff;
-  border-color: #6699ff;
+  color: #28a745;
+  border-color: #28a745;
 }
 
 .btn-outline-success:hover {
   color: #fff;
-  background-color: #6699ff;
-  border-color: #6699ff;
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
 .btn-outline-success:focus, .btn-outline-success.focus {
@@ -3061,10 +3062,10 @@ input[type="button"].btn-block {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: #c0c0c0;
+  color: #212529;
   text-align: left;
   list-style: none;
-  background-color: #343a40;
+  background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
@@ -3231,7 +3232,7 @@ input[type="button"].btn-block {
   height: 0;
   margin: 0.5rem 0;
   overflow: hidden;
-  border-top: 1px solid #6699ff;
+  border-top: 1px solid #e9ecef;
 }
 
 .dropdown-item {
@@ -3240,7 +3241,7 @@ input[type="button"].btn-block {
   padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;
-  color: #c0c0c0;
+  color: #212529;
   text-align: inherit;
   white-space: nowrap;
   background-color: transparent;
@@ -3258,8 +3259,9 @@ input[type="button"].btn-block {
 }
 
 .dropdown-item:hover, .dropdown-item:focus {
-  color: #6699ff;
+  color: #16181b;
   text-decoration: none;
+  background-color: #f8f9fa;
 }
 
 .dropdown-item.active, .dropdown-item:active {
@@ -4078,20 +4080,16 @@ input[type="button"].btn-block {
   list-style: none;
 }
 
-.nav-lin {
+.nav-link {
   display: block;
-    white-space: nowrap;
-
-  color: #c0c0c0;
   padding: 0.5rem 1rem;
 }
 
-.nav-lin:hover, .nav-lin:focus {
-  color: #6699ff;
-  text-decoration:none;
+.nav-link:hover, .nav-link:focus {
+  text-decoration: none;
 }
 
-.nav-lin.disabled {
+.nav-link.disabled {
   color: #6c757d;
   pointer-events: none;
   cursor: default;
@@ -4191,7 +4189,15 @@ input[type="button"].btn-block {
   justify-content: space-between;
 }
 
-
+.navbar-brand {
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
 
 .navbar-brand:hover, .navbar-brand:focus {
   text-decoration: none;
