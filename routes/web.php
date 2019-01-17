@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/inscription', function () {
-    return view('inscription');
+
+Route::get('/boutique', function () {
+    return view('boutique');
 });
-Route::post('/inscription', 'UsersController@store');
