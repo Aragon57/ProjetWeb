@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<link href="{{ asset('fontawesome/style.css') }}" rel="stylesheet">
 
         <title>Laravel</title>
         <!-- Fonts -->
@@ -12,8 +13,8 @@
         <!-- Styles -->
         
     <body style ="background-color:#1d2124">
-        
-                <?php include('C:\Users\nicol\laraaaaa\resources\views\nav.php'); ?>
+
+                <?php include('C:\Users\nicol\webLaravel\resources\views\nav.blade.php'); ?>
 
 <div class ="text align-center">
     <form action="/inscription" method="post">
@@ -29,6 +30,8 @@
     </form>
 
    </body>
+                   <?php include('C:\Users\nicol\webLaravel\resources\views\footer.blade.php'); ?>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
