@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-<link href="{{ asset('fontawesome/style.css') }}" rel="stylesheet">
+<link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
 
         <title>Laravel</title>
         <!-- Fonts -->

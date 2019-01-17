@@ -12,11 +12,11 @@
           <div class="col-lg-4 col-md-5 col-sm-6">
             <div class="Contact text-left">
 
-                <h4 class="white"> En savoir plus </h4>
-                <p class = "white"> Home</p>
-                <p class = "white"> Aventador</p>
-                <p class = "white"> Huracan </p>
-                <p class = "white"> Urus </p>
+                <h4 class="blanc"> En savoir plus </h4>
+                <p class = "blanc"> Home</p>
+                <p class = "blanc"> Aventador</p>
+                <p class = "blanc"> Huracan </p>
+                <p class = "blanc"> Urus </p>
               </div>
           </div>
           

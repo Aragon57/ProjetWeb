@@ -28,3 +28,8 @@ class UsersController extends Controller
 
         $users->save();
     }}
+
+     public function connect(Request $request)
+    {
+$users = Users::where('auteur', 'brouette')->get();
+    }

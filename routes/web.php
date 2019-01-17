@@ -17,4 +17,10 @@ Route::get('/', function () {
 Route::get('/inscription', function () {
     return view('inscription');
 });
+
+Route::get('/connexion', function () {
+    return view('connexion');
+});
+
 Route::post('/inscription', 'UsersController@store');
+Route::post('/connexion', 'UsersController@connect');
