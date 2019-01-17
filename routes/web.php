@@ -18,3 +18,10 @@ Route::get('/', function () {
 Route::get('/boutique', function () {
     return view('boutique');
 });
+
+Route::get('/connexion', function () {
+    return view('connexion');
+});
+
+Route::post('/inscription', 'UsersController@store');
+Route::post('/connexion', 'UsersController@connect');
