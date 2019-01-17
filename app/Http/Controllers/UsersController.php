@@ -27,4 +27,13 @@ class UsersController extends Controller
         $users->password = $request->password;
 
         $users->save();
-    }}
+    }
+
+     public function connect(Request &request)
+    {
+
+$user = DB::table('users')->where('email', $request->email, 'password', $request->password )->first();
+
+    
+    }
+}

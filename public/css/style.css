@@ -20,3 +20,23 @@
                 margin-right: 3px;
                 margin-bottom: 5px;
 }
+
+.blanc{
+  color : white;
+}
+
+  .insta:hover{
+    color :#999 ;
+  }
+
+  .facebook:hover{
+    color : #3b5998;
+  }
+
+   .twitter:hover{
+    color : #33ccff;
+  }
+
+  .youtube:hover{
+    color : #cc181e;
+  }
