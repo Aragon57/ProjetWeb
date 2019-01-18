@@ -86,7 +86,7 @@
         <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1 blanc">
 
           <!-- Contact details -->
-          <h5 class="font-weight-bold text-center mb-4 blanc ">Où NOUS TROUVER</h5>
+          <h5 class="font-weight-bold text-center mb-4 blanc ">OU NOUS TROUVER</h5>
 
           <ul class="list-unstyled">
             <li>

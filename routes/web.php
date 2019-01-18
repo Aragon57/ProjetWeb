@@ -25,3 +25,6 @@ Route::get('/footer', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+Route::get('/evenementdumois', function () {
+    return view('evenementdumois');
+});
