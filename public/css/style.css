@@ -6,6 +6,18 @@
     
 }
 
+.dropgris{
+  background-color:;
+}
+
+.marge{
+  margin-top: 10px;
+}
+
+.descr{
+  height : 100px;
+}
+
 .logo{
   background-color: #FFFFFF;
         border: 2px solid #6699ff;
@@ -19,6 +31,19 @@
                 margin-left: 3px;
                 margin-right: 3px;
                 margin-bottom: 5px;
+}
+
+
+.nav-lin {
+  color : #C0C0C0;
+  padding: 0.5rem 1rem;
+  text-decoration:none;
+
+}
+
+.nav-lin:hover{
+  color: #318CE7;
+  background-color: #343a40;
 }
 
 .blanc{
@@ -124,6 +149,20 @@ color: black;
 background-color: white;
 }
 
+.btnsearch{
+  color: #318CE7;
+  border-color: #318CE7;
+}
+
+.search{
+  color: #318CE7;
+  border-color: #318CE7;
+}
+
+.btnsearch:hover{
+  color: #fff;
+  background-color: #318CE7 
+}
 .links{
 color: white;
 }
