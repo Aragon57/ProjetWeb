@@ -11,14 +11,18 @@
 	
     <!-- Bootstrap core CSS -->
  <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
  <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
-
  
-  </head>
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+ 
   
-  
-  <body>
 
     <header>
 	
@@ -26,11 +30,30 @@
 	 
 	 
 	 
+<div class="container">
+	<div class="box">
+		<div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+		<div class='details'><h3> 67380 Lingolsheim FRANCE</h3></div>
+	</div>
+	
+	<div class="box">
+		<div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+		<div class='details'><h3>06 78 56 52 00</h3></div>
+	</div>
+	
+	<div class="box">
+		<div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+		<div class='details'><h3>bde.strasbourg@viacesi.fr</h3></div>
+	</div>
+</div>
+
+
 	 
 	 
+
 	 <!-- FOOTER -->
       <!-- Footer -->
-<footer class="page-footer font-small mdb-color lighten-3 pt-4">
+<footer class="page-footer font-small mdb-color lighten-3 pt-4 ">
 
     <!-- Footer Links -->
     <div class="container text-center text-md-left blanc">

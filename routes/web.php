@@ -22,3 +22,6 @@ Route::post('/inscription', 'UsersController@store');
 Route::get('/footer', function () {
     return view('footer');
 });
+Route::get('/contact', function () {
+    return view('contact');
+});
