@@ -2336,7 +2336,8 @@ textarea.form-control {
   }
   .form-inline .form-control {
     display: inline-block;
-    width: auto;
+    width: 110px;
+    border-radius: 0px;
     vertical-align: middle;
   }
   .form-inline .form-control-plaintext {

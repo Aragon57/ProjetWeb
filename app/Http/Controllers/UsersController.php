@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
+session_start();
 
 use App\Users;
 use Illuminate\Http\Request;
@@ -25,15 +25,26 @@ class UsersController extends Controller
         $users->email = $request->email;
         $users->localisation = $request->localisation;
         $users->password = $request->password;
-
         $users->save();
+        
+
+        $_SESSION['email']=$_POST["email"];
+
+        return redirect('/');
+
     }
 
-     public function connect(Request &request)
+     public function connect(Request $requestt)
     {
 
-$user = DB::table('users')->where('email', $request->email, 'password', $request->password )->first();
+$user = Users::table('users')->where('email', $request->email, 'password', $request->password )->first();
 
     
+    }
+
+
+    public function logout(){
+        session_unset();
+        return redirect('/');
     }
 }
