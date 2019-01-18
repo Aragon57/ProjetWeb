@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -11,10 +12,18 @@
         <!-- Fonts -->
       
         <!-- Styles -->
-        
     <body style ="background-color:#1d2124">
         <?php include('C:\Users\nicol\webLaravel\resources\views\nav.blade.php'); ?>
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+     
+
+    <div class="container-fluid text-center "> 
+        <div class="container-fluid text-center"> 
+            <div class="row">
+                <div class="col-lg-1 col-md-2 col-sm-3 ">
+                    
+                </div>
+                <div class="col-lg-10 col-md-20 col-sm-30 ">
+                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -40,125 +49,14 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
-
-
-<div class="container-fluid text-center"> 
-        <div class="container-fluid text-center"> 
-            <br>
-            <h1> Nos véhicules </h1>
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-5">
-
-                    <h2><br> Lamborghini URUS</h2>
-                    <hr>
-                    
-                    <img id="Urus" class="img-responsive" src="./image/UrusDay.jpg" width="100%"  alt="Third slide">
-                    <div clas="container-fluid text-left">
-                        <br>
-                            <p>105 000 $</p>
-                    <a class ="btn btn-secondary" href="Urus.html"> Ajouter au panier >> </a>
-                    </div>
-                    <hr>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-5">
-                    <h2><br> Lamborghini AVENTADOR</h2>
-                                        <hr>
-
-                    
-                    <img id="Aventador" class="img-responsive" src="./image/giphy.gif" width="100%"   alt="Third slide">
-                        <div clas="container-fluid text-left">
-                        <br>
-                        <p>205 000 $</p>
-                    <a class ="btn btn-secondary" href="Aventador.html"> Ajouter au panier >> </a>
-                    </div>
-                    <hr>
+                <div class="col-lg-1 col-md-2 col-sm-3">
+                   
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-5">
-                    <h2><br> Lamborghini HURACAN</h2>
-                                        <hr>
-
-                    
-                    <img id="Huracan" class="img-responsive" src="./image/huracanDay.jpg" width="100%" alt="Third slide">
-                    <div clas="container-fluid text-left">
-                        <br>
-                            <p>320 000 $</p>
-                    <a class ="btn btn-secondary" href="Huracan.html"> Ajouter au panier >> </a>
-                    </div>
-
-
-
-                    <hr>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-5">
-                    <h2><br> Lamborghini Centenario </h2>
-                    <hr>
-                    
-                    <img id="Urus" class="img-responsive" src="./image/Lamborghini-Centenario.jpg" width="100%"  alt="Third slide">
-                    <div clas="container-fluid text-left">
-                        <br>
-                            <p>105 000 $</p>
-                    <a class ="btn btn-secondary" href="Urus.html"> Ajouter au panier >> </a>
-                    </div>
-                    <hr>
-                </div>
-            <div class="col-lg-3 col-md-4 col-sm-5">
-                    <h2><br> Lamborghini Veneno </h2>
-                    <hr>
-                    
-                    <img id="Urus" class="img-responsive" src="./image/56959.jpg" width="100%"  alt="Third slide">
-                    <div clas="container-fluid text-left">
-                        <br>
-                            <p>105 000 $</p>
-                    <a class ="btn btn-secondary" href="Urus.html"> Ajouter au panier >> </a>
-                    </div>
-                    <hr>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-5">
-                    <h2><br> Lamborghini Asterion</h2>
-                                        <hr>
-
-                    
-                    <img id="Aventador" class="img-responsive" src="./image/53385.jpg" width="100%"   alt="Third slide">
-                        <div clas="container-fluid text-left">
-                        <br>
-                        <p>205 000 $</p>
-                    <a class ="btn btn-secondary" href="Aventador.html"> Ajouter au panier >> </a>
-                    </div>
-                    <hr>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-5">
-                    <h2><br> Lamborghini Estoque</h2>
-                                        <hr>
-
-                    
-                    <img id="Huracan" class="img-responsive" src="./image/estoque.jpg" width="100%" alt="Third slide">
-                    <div clas="container-fluid text-left">
-                        <br>
-                            <p>320 000 $</p>
-                    <a class ="btn btn-secondary" href="Huracan.html"> Ajouter au panier >> </a>
-                    </div>
-
-
-
-                    <hr>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-5">
-                    <h2><br> Lamborghini Huracan Spyder</h2>
-                    <hr>
-                    
-                    <img id="Urus" class="img-responsive" src="./image/HuracanSpyder.jpg" width="100%"  alt="Third slide">
-                    <div clas="container-fluid text-left">
-                        <br>
-                            <p>105 000 $</p>
-                    <a class ="btn btn-secondary" href="Urus.html"> Ajouter au panier >> </a>
-                    </div>
-                    <hr>
-                </div>
-
             </div>
-
         </div>
+
+
     </body>
     <?php include('C:\Users\nicol\webLaravel\resources\views\footer.blade.php'); ?>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

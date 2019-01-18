@@ -24,3 +24,4 @@ Route::get('/connexion', function () {
 
 Route::post('/inscription', 'UsersController@store');
 Route::post('/connexion', 'UsersController@connect');
+Route::get('/logout', 'UsersController@logout');
