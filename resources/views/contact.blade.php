@@ -50,6 +50,8 @@
 
 	 
 	 
+	 
+	 
 
 	 <!-- FOOTER -->
       <!-- Footer -->
@@ -79,19 +81,21 @@
         <hr class="clearfix w-100 d-md-none blanc">
 
         <!-- Grid column -->
+		
+		
         <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1 blanc">
 
           <!-- Contact details -->
-          <h5 class="font-weight-bold text-uppercase mb-4 blanc ">Où NOUS TROUVER</h5>
+          <h5 class="font-weight-bold text-center mb-4 blanc ">Où NOUS TROUVER</h5>
 
           <ul class="list-unstyled">
             <li>
               <p>
-                <i class="fa fa-home mr-3 blanc"></i> Lingolsheim, 67380, FR </p>
+                <i class="fa fa-home mr-3 blanc"></i> 67380 Lingolsheim </p>
             </li>
             <li>
               <p>
-                <i class="fa fa-envelope mr-3 blanc "></i> bde.strasbourg@viacesi.fr</p>
+                <i class="fa fa-envelope mr-3 blanc "></i> bde.stras@viacesi.fr</p>
             </li>
             <li>
               <p>
@@ -100,7 +104,9 @@
             <li>
               <p>
                 <i class="fa fa-print mr-3 blanc "></i> 06 78 56 52 00</p>
-            </li>
+            
+			
+			</li>
           </ul>
 
         </div>
@@ -112,22 +118,24 @@
         <div class="col-md-2 col-lg-2 text-center mx-auto my-4 blanc ">
 
           <!-- Social buttons -->
-          <h5 class="font-weight-bold text-uppercase mb-4 blanc ">Rejoins nous</h5>
+          <h5 class="font-weight-bold text-center mb-4 blanc ">REJOINS NOUS  </h5>
 
           <!-- Facebook -->
      
-         <a href=https://www.facebook.com/BdeExiaStrasbourg/><i class="fab fa-facebook-square blanc"></i>
+         <a href=https://www.facebook.com/BdeExiaStrasbourg/><i class="fab fa-facebook-square fa-2x blanc"></i>
           </a>
           <!-- Twitter -->
-          
-           <a href=https://twitter.com/BdeExiaStrg><i class="fab fa-twitter-square blanc "></i>
+         
+           <a href=https://twitter.com/BdeExiaStrg><i class="fab fa-twitter-square fa-2x blanc "></i>
           </a>
           <!-- youtbe-->
+		  <br>
          
-        <a href=https://www.youtube.com/user/BdeExiaStrasbourg><i class="fab fa-youtube blanc"></i>
+        <a href=https://www.youtube.com/user/BdeExiaStrasbourg><i class="fab fa-youtube-square fa-2x blanc"></i>
           </a>
+		  
           <!-- Linkedin -->
-        <a href=https://www.linkedin.com/school/cesiecoledingenieurs/><i class="fab fa-linkedin blanc"></i>
+        <a href=https://www.linkedin.com/school/cesiecoledingenieurs/><i class="fab fa-linkedin fa-2x blanc"></i>
           
           </a>
 
