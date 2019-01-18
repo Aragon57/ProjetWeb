@@ -69,14 +69,5 @@
 </a>
 </div>
 
-<div class="row">
-  <div class="col-lg-11 col-md-12 col-sm-13">
-  </div>
-  <div class="col-lg-1 col-md-2 col-sm-3">
-    <button type="buttonNight" onclick="Nuit()" class ="btn btn-secondary">Mode nuit </button>
-    <button type="buttonDay" onclick="Jour()" class ="btn btn-secondary">Mode jour </button>
-
-  </div>
-  
 
 </footer>

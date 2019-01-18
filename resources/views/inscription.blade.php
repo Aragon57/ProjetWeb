@@ -1,4 +1,6 @@
+<?php session_start(); ?>
 <!doctype html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -9,28 +11,120 @@
 
         <title>Laravel</title>
         <!-- Fonts -->
-      
         <!-- Styles -->
         
-    <body style ="background-color:#1d2124">
+    <body style ="background-color:#1d2124" class="co">
 
                 <?php include('C:\Users\nicol\webLaravel\resources\views\nav.blade.php'); ?>
 
-<div class ="text align-center">
-    <form action="/inscription" method="post">
-    	        {{ csrf_field() }}
-    	                <input type="name" name="name" placeholder="Nom">
-        <input type="firstname" name="firstname" placeholder="Prénom">
-        <input type="localisation" name="localisation" placeholder="Localisation">
 
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Mot de passe">
-        <input type="password" name="password_confirmation" placeholder="Mot de passe (confirmation)">
-        <input type="submit" value="M'inscrire">
-    </form>
+
+<div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="cardsignin">
+            <div class="card-header">
+                <h3>S'INSCRIRE</h3>
+             
+            </div>
+            <div class="card-body">
+                <form action="/inscription" method="post">
+                                    {{ csrf_field() }}
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="name" name="name" placeholder="Nom" class="form-control" >
+                        
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="firstname" name="firstname" placeholder="Prénom" class="form-control" >
+                        
+                    </div>
+                                        <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="email" name="email" placeholder="Email" class="form-control" >
+                        
+                    </div>
+                            <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+
+
+                            <SELECT class="form-control" name="localisation" size="1">
+                                <OPTION>Strasbourg 
+                                    <OPTION>Nancy
+                                        <OPTION>Reims
+                                            <OPTION>Dijon
+                                                <OPTION>Lyon
+                                                <OPTION>Arras 
+                                                <OPTION>Brest
+                                                <OPTION>Saint-Nazaire 
+                                                <OPTION>Strasbourg 
+                                                <OPTION>Bordeaux 
+                                                <OPTION>Nice 
+                                                <OPTION>Pau 
+                                                <OPTION>Toulouse 
+                                                <OPTION>Angoulême 
+                                                <OPTION>Grenoble 
+                                                <OPTION>La Rochelle
+                                                <OPTION>Châteauroux 
+                                                <OPTION>Paris Nanterre 
+                                                <OPTION>Le Mans
+                                                <OPTION>Caen 
+                                                <OPTION>Rouen 
+                                                <OPTION>Lille
+                                                <OPTION>Orléans
+                                                <OPTION>Montpellier
+                                                <OPTION>Nantes
+                                                <OPTION>Orléans       
+                                                </SELECT>
+                        
+                    </div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+        <input type="password" name="password" placeholder="Mot de passe" class="form-control" >
+                    </div>
+                      <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+        <input type="password" name="password_confirmation" placeholder="Mot de passe (confirmation)" class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn float-right login_btn">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-center links">
+                    Vous n'avez pas encore de compte?<a href="#">Inscrivez-vous</a>
+                </div>
+                <div class="d-flex justify-content-center">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
    </body>
+
+
+
+
+
                    <?php include('C:\Users\nicol\webLaravel\resources\views\footer.blade.php'); ?>
+
+
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
