@@ -18,3 +18,7 @@ Route::get('/inscription', function () {
     return view('inscription');
 });
 Route::post('/inscription', 'UsersController@store');
+
+Route::get('/footer', function () {
+    return view('footer');
+});
