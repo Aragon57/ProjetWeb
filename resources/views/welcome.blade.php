@@ -50,8 +50,27 @@
         </a>
     </div>
                 </div>
+<<<<<<< HEAD
                 <div class="col-lg-1 col-md-2 col-sm-3">
                    
+=======
+                <div class="col-lg-3 col-md-4 col-sm-5">
+                    <h2><br> Lamborghini HURACAN</h2>
+                                        <hr>
+
+                    
+                    <img id="Huracan" class="img-responsive" src="./image/huracanDay.jpg" width="100%" alt="Third slide">
+                    <div clas="container-fluid text-left">
+                        <br>
+                            <p>320 000 $</p>
+                    <a class ="btn btn-secondary" href="Huracan.html"> Ajouter au panier >> </a>
+                    </div>
+
+
+
+
+                    <hr>
+>>>>>>> 4b7cccd8291fef1dbe8f5e720849610a408de41a
                 </div>
             </div>
         </div>
