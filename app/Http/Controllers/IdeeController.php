@@ -16,4 +16,16 @@ class IdeeController extends Controller
 
         $idee->save();
     return redirect('/');    }
+
+
+    public function display(){
+
+
+
+
+
+
+    
 }
+}
+

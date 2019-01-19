@@ -56,13 +56,37 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="localisation" name="localisation" placeholder="Localisation" require="required" class="form-control" >
-
+<SELECT class="form-control" name="localisation" size="1">
+                                <OPTION>Strasbourg 
+                                    <OPTION>Nancy
+                                        <OPTION>Reims
+                                            <OPTION>Dijon
+                                                <OPTION>Lyon
+                                                <OPTION>Arras 
+                                                <OPTION>Brest
+                                                <OPTION>Saint-Nazaire 
+                                                <OPTION>Strasbourg 
+                                                <OPTION>Bordeaux 
+                                                <OPTION>Nice 
+                                                <OPTION>Pau 
+                                                <OPTION>Toulouse 
+                                                <OPTION>Angoulême 
+                                                <OPTION>Grenoble 
+                                                <OPTION>La Rochelle
+                                                <OPTION>Châteauroux 
+                                                <OPTION>Paris Nanterre 
+                                                <OPTION>Le Mans
+                                                <OPTION>Caen 
+                                                <OPTION>Rouen 
+                                                <OPTION>Lille
+                                                <OPTION>Montpellier
+                                                <OPTION>Nantes
+                                                <OPTION>Orléans
+                                                </SELECT>
                             </div>
 
 
 
-                        </div>
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
@@ -98,7 +122,6 @@
 
 
 
-<?php include('C:\Users\nicol\webLaravel\resources\views\footer.blade.php'); ?>
 
 
 

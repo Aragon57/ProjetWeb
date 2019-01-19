@@ -30,31 +30,58 @@
 
 <?php
 
-$ideas = App\Idee::all();
+$events = App\Event::all();
 
-foreach ($ideas as $idea) {
+foreach ($events as $event) {
     echo '<div>
-            <h1>'. $idea->name_idea .'</h1>
-            <p>'.$idea->desc_idea.'</p>
+            <h1>'. $event->titre_manif .'</h1>
+
+                        <h6>'. $event->date .'</h6>
+
+            <p>'.$event->description.'</p>
             <hr>';
 
+$images = App\Image::all();
+foreach($images as $image){
 
-
-    
+    }
 }
 ?>
-<?php if(isset($_SESSION['status'])){
-    echo    '<form action="/idee" method="post">'.
+<?php 
+{{ asset('img/event1.1.jpg') }};
+
+if(isset($_SESSION['email'])){
+
+if($_SESSION['status'] == 2){
+    echo    '<form action="/event" method="post">'.
                             csrf_field() .
 
                            '<div class="input-group form-group">
                                
-                                <input type="text" name="title" placeholder="Titre" require="required" class="form-control marge" >
+                                <input type="text" name="title_manif" placeholder="Titre" require="required" class="form-control marge" >
 
                             </div>
                             <div class="input-group form-group">
                                
-                                <input type="text" name="desc" placeholder="Description" require="required" class="form-control descr" >
+                                <input type="date" name="date_manif" placeholder="Date" require="required" class="form-control marge" >
+
+                            </div>
+                            <div class="input-group form-group">
+                               
+                                <input type="float" name="price_manif" placeholder="Prix" require="required" class="form-control marge" >
+
+                            </div>
+                            <div class="input-group form-group">
+                               
+<SELECT class="form-control" name="punctuality" size="1">
+                                <OPTION>Récurent 
+                                    <OPTION>Ponctuelle
+                               
+                                                </SELECT>
+                            </div>
+                            <div class="input-group form-group">
+                               
+                                <input type="text" name="desc_manif" placeholder="Description" require="required" class="form-control descr" >
 
                     
                         <div class="input-group form-group">
@@ -63,6 +90,7 @@ foreach ($ideas as $idea) {
                 </div>'; 
 }else{
 
+}
 }
 ?>
                 <div class="col-lg-1 col-md-2 col-sm-3">

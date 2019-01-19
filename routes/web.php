@@ -32,7 +32,12 @@ Route::get('/inscription', function () {
     return view('inscription');
 });
 
+Route::get('/event', function () {
+    return view('event');
+});
+
 Route::post('/inscription', 'UsersController@store');
 Route::post('/connexion', 'UsersController@connect');
 Route::get('/logout', 'UsersController@logout');
 Route::post('/idee', 'IdeeController@store');
+Route::post('/event', 'EventController@store');

@@ -8,10 +8,10 @@
        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-lin" href="afafa">NOS EVENEMENTS</a>
+                <a class="nav-lin" href="/event">NOS EVENEMENTS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-lin" href="#">BOITE A IDEE</a>
+                <a class="nav-lin" href="/idee">BOITE A IDEE</a>
             </li>
             <li class="nav-item dropdown bg-dark">
                <a class="nav-lin dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,7 +51,7 @@
                <a class="dropdown-item nav-lin" href="Aventador.html">';  
                Print_r ($_SESSION['email']); 
                echo '</a>
-               <div class="dropdown-divider"></div>
+               <div class="dropdown-diviseur"></div>
                <a class="dropdown-item nav-lin" href="Aventador.html">MES INFOS</a>
                <a class="dropdown-item nav-lin" href="Huracan.html">MON COMPTE</a>
                <a class="dropdown-item nav-lin" href="/logout">SE DECONNECTER</a>

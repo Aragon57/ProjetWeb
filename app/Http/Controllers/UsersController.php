@@ -65,9 +65,26 @@ class UsersController extends Controller
      public function connect(Request $requestt)
     {
 
-$user = Users::table('users')->where('email', $request->email, 'password', $request->password )->first();
-
+$connect = Users::where("email",$requestt->emailc)
+                ->where("password",$requestt->passwordc)
+                ->first();
     
+    if($connect){
+        $_SESSION['id']=$connect["id_user"];
+        $_SESSION['status']=$connect["id"];
+        $_SESSION['email']=$requestt->emailc;
+      
+
+      print_r(  $_SESSION['status']);
+          //  return redirect('/');
+
+    }
+    else{
+                Print_r($connect);
+
+    }
+
+
     }
 
 
