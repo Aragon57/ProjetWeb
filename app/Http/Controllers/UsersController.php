@@ -16,13 +16,24 @@ class UsersController extends Controller
      */
      public function store(Request $request)
     {
+        $result = file_get_contents('https://h3cate.herokuapp.com/request/users/email/'.$request->email);
+        if($result)
+        {
+            if($result !== '[]')
+            {
+                return 'false 2';
+            }
+        }
+        else
+        {
+            return 'false';
+        }
+
         // Validate the request...
         if($request->password == $request->password_confirmation)
         {
             if($request->password = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$")
             {
-
-            
                 $hash = password_hash($request->password, PASSWORD_DEFAULT);
                 $rawdata = array(
                     "name" => $request->name,
@@ -42,6 +53,8 @@ class UsersController extends Controller
                 $context = stream_context_create($opts);
                 $result = file_get_contents('https://h3cate.herokuapp.com/request/users', false, $context);
 
+                echo var_dump($result);
+
                 if($result)
                 {
                     return 'true';
@@ -54,12 +67,13 @@ class UsersController extends Controller
             }
             else
             {
-                return false;
+                return 'false 4';
             }
         }
-        return redirect('/');
-
-        return 'false';
+        else
+        {
+            return 'false 1';
+        }
     }
 
      public function connect(Request $requestt)
