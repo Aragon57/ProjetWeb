@@ -40,35 +40,44 @@
                 <div class="row">
 
                   <div class="col-lg-12 col-md-24 col-sm-36" > 
-                  <h4> Recherchez un article </h4>
+                  <h4 align="left">Recherchez un article </h4>
 
                   <div class="recherche_p">
-                   <form action="/search" id="searchthis" method="get">
-                    <input id="search" name="q" type="text" placeholder="" />
-                    <input id="search-btn" type="submit" value="Rechercher" />
-                   </form>
-                   </div>
-                   </div>
-
-                  
+                    <form class="searchbox" action="/search" method="get">
+                      <input type="text" placeholder="" name="q">
+                      <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                  </div>
+                  </div>
                  </div>
                </div>
+
                <br> 
+               <hr>
+
+              <div class="col-lg-12 col-md-24 col-sm-36">        
+               <h4> Nos meilleures ventes</h4>
+              </div>
+              <hr>
+              <br>
+                   
+
 
  <!-- Premiere meilleur vente -->
 
                 <div class="row">
 
+
                <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
 
-                <a href=""> <img class="card-img-top" src="{{ asset('/img/boutique/tshirt2.png') }}" alt=""> </a>
+                 <img class="card-img-top" src="{{ asset('/img/boutique/tshirt2.png') }}" alt=""> 
 
                 <div class="card-body">
-                  <h4 class="card-title"> <a href=""> Item One</a> </h4> 
+                  <h4 class="card-title"> Item One </h4> 
                   <h5>Prix: 24.99</h5>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                  <button class="addtocart-btn" type="button"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+                  <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
 
                 </div>
                 
@@ -77,16 +86,18 @@
 
  <!-- Deuxieme meilleur vente -->
 
+               
                <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
 
-                <a href=""> <img class="card-img-top" src="{{ asset('/img/boutique/tshirt1.png') }}" alt=""> </a>
+                 <img class="card-img-top" src="{{ asset('/img/boutique/tshirt1.png') }}" alt=""> 
 
                 <div class="card-body">
-                  <h4 class="card-title"> <a href=""> Item One</a> </h4>
+                  <h4 class="card-title"> Item One </h4> 
                   <h5>Prix: 24.99</h5>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                  <button class="addtocart-btn" type="button"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+                  <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+
                 </div>
                 
               </div>
@@ -94,16 +105,17 @@
 
         <!-- Troisieme meilleur vente -->
 
-            <div class="col-lg-4 col-md-6 mb-4">
+             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
 
-                <a href=""> <img class="card-img-top" src="{{ asset('/img/boutique/tshirt3.png') }}" alt=""> </a>
+                 <img class="card-img-top" src="{{ asset('/img/boutique/tshirt3.png') }}" alt=""> 
 
                 <div class="card-body">
-                  <h4 class="card-title"> <a href=""> Item One</a> </h4>
+                  <h4 class="card-title"> Item One </h4> 
                   <h5>Prix: 24.99</h5>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                  <button class="addtocart-btn" type="button"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+                  <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+
                 </div>
                 
               </div>
@@ -142,13 +154,46 @@
                 <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
 
-                <a href=""> <img class="card-img-top" src="{{ asset('/img/boutique/tshirt1.png') }}" alt=""> </a>
+                 <img class="card-img-top" src="{{ asset('/img/boutique/tshirt1.png') }}" alt=""> 
 
                 <div class="card-body">
-                  <h4 class="card-title"> <a href=""> Item One</a> </h4>
+                  <h4 class="card-title"> Item One </h4> 
                   <h5>Prix: 24.99</h5>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                  <button class="addtocart-btn" type="button"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+                  <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+
+                </div>
+                
+              </div>
+            </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card h-100">
+
+                 <img class="card-img-top" src="{{ asset('/img/boutique/tshirt2.png') }}" alt=""> 
+
+                <div class="card-body">
+                  <h4 class="card-title"> Item One </h4> 
+                  <h5>Prix: 24.99</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+
+                </div>
+                
+              </div>
+            </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card h-100">
+
+                 <img class="card-img-top" src="{{ asset('/img/boutique/tshirt3.png') }}" alt=""> 
+
+                <div class="card-body">
+                  <h4 class="card-title"> Item One </h4> 
+                  <h5>Prix: 24.99</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+
                 </div>
                 
               </div>
@@ -157,13 +202,14 @@
                <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
 
-                <a href=""> <img class="card-img-top" src="{{ asset('/img/boutique/tshirt2.png') }}" alt=""> </a>
+                 <img class="card-img-top" src="{{ asset('/img/boutique/sac.png') }}" alt=""> 
 
                 <div class="card-body">
-                  <h4 class="card-title"> <a href=""> Item One</a> </h4>
+                  <h4 class="card-title"> Item One </h4> 
                   <h5>Prix: 24.99</h5>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                  <button class="addtocart-btn" type="button"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+                  <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+
                 </div>
                 
               </div>
@@ -172,58 +218,30 @@
                <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
 
-                <a href=""> <img class="card-img-top" src="{{ asset('/img/boutique/tshirt3.png') }}" alt=""> </a>
+                 <img class="card-img-top" src="{{ asset('/img/boutique/mug.png') }}" alt=""> 
 
                 <div class="card-body">
-                  <h4 class="card-title"> <a href=""> Item One</a> </h4>
+                  <h4 class="card-title"> Item One </h4> 
                   <h5>Prix: 24.99</h5>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                  <button class="addtocart-btn" type="button"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+                  <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+
                 </div>
                 
               </div>
             </div>
 
-              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
 
-                <a href=""> <img class="card-img-top" src="{{ asset('/img/boutique/sac.png') }}" alt=""> </a>
+                 <img class="card-img-top" src="{{ asset('/img/boutique/peluche.png') }}" alt=""> 
 
                 <div class="card-body">
-                  <h4 class="card-title"> <a href=""> Item One</a> </h4>
+                  <h4 class="card-title"> Item One </h4> 
                   <h5>Prix: 24.99</h5>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                  <button class="addtocart-btn" type="button"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
-                </div>
-                
-              </div>
-            </div>
+                  <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
 
-               <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-
-                <a href=""> <img class="card-img-top" src="{{ asset('/img/boutique/mug.png') }}" alt=""> </a>
-
-                <div class="card-body">
-                  <h4 class="card-title"> <a href=""> Item One</a> </h4>
-                  <h5>Prix: 24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                  <button class="addtocart-btn" type="button"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
-                </div>
-                
-              </div>
-            </div>
-
-               <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-
-                <a href=""> <img class="card-img-top" src="{{ asset('/img/boutique/peluche.png') }}" alt=""> </a>
-
-                <div class="card-body">
-                  <h4 class="card-title"> <a href=""> Item One</a> </h4>
-                  <h5>Prix: 24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                  <button class="addtocart-btn" type="button"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
                 </div>
                 
               </div>
