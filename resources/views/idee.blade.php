@@ -38,7 +38,7 @@ foreach ($ideas as $idea) {
             <p>'.$idea->desc_idea.'</p>
             <hr>';
 
-
+            
 
     
 }
