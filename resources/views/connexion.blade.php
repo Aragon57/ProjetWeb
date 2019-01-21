@@ -31,19 +31,20 @@
              
             </div>
             <div class="card-body">
-                <form>
+                        <form action="/connexion" method="post">
+                                @csrf
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="emails" name="emails" placeholder="Email" class="form-control" >
+                        <input type="emails" name="emailc" placeholder="Email" class="form-control" >
                         
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-        <input type="password" name="password" placeholder="Mot de passe" class="form-control" >
+        <input type="password" name="passwordc" placeholder="Mot de passe" class="form-control" >
                     </div>
                   
                     <div class="form-group">
