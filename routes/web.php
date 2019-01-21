@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/boutique', function () {
+Route::get('/boutique', 'ProductController@display' ,function () {
     return view('boutique');
 });
 
