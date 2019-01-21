@@ -1,16 +1,65 @@
-/*!
- * Start Bootstrap - Shop Homepage (https://startbootstrap.com/template-overviews/shop-homepage)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/LICENSE)
- */
-
-body {
-  padding-top: 54px;
-  
+hr
+{
+padding:2px;
+background-color:#318CE7;
+border:0;
+border-radius: 0px;
 }
 
-@media (min-width: 992px) {
-  body {
-    padding-top: 56px;
-  }
+/* Fond du gadget de la barre de recherche */
+.recherche_p {
+  margin: auto 0 auto auto;
+  background-color: rgba(0, 0, 0, 0);   /* Couleur de fond */
+  border-style: solid;   /* Style de la bordure  */
+  border-width: 0px;   /* Epaisseur de la bordure  */
+  border-color: #dddddd;   /* Couleur de la bordure  */
+  padding: 10px 40px 10px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+}
+
+.addtocart-btn {
+	padding:8px 0 8px 0;
+	font:bold 13px;
+	background:#f5f5f5;
+	color:#000000;
+	border-radius:0px;
+	width:200px;
+	border:1px solid #ccc;
+	box-shadow:1px 1px 3px #999;
+}
+
+/* Style the search field */
+form.searchbox input[type=text] {
+  padding: 5px;
+  font-size: 13px;
+  border-style: solid;   /* Style de la bordure  */
+  border-width: 1px;   /* Epaisseur de la bordure  */
+  border-color: #dddddd;
+  float: left;
+  width: 40%;
+  background: #FFFFFF;
+}
+
+/* Style the submit button */
+form.searchbox button {
+  float: left;
+  width: 10%;
+  padding: 5px;
+  background: #318CE7;
+  color: white;
+  font-size: 13px;
+  border: 1px solid;
+  border-color: #dddddd;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.searchbox button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.searchbox::after {
+  content: "";
+  clear: both;
+  display: table;
 }
