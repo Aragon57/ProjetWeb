@@ -12,7 +12,7 @@
     <title>Laravel</title>
     <!-- Fonts -->
     <!-- Styles -->
-
+</head>
     <body style ="background-color:#1d2124" class="co">
 
         <?php include('C:\Users\nicol\webLaravel\resources\views\nav.blade.php'); ?>

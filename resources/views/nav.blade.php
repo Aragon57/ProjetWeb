@@ -1,5 +1,4 @@
-<html>
-<body>
+
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
        <img src="https://s3-eu-west-1.amazonaws.com/assets.atout-on-line.com/images/ingenieur/Logos_Ecoles/2018_2020/cesi_300.jpg" width="20%/9" height="50%/9" class ="logo">
@@ -73,6 +72,4 @@
 </form>
 </div>
 </nav>
-</body>
-</html>
 
