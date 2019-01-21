@@ -32,7 +32,7 @@ class UsersController extends Controller
         //validate the request...
         if(request()->password == request()->password_confirmation)
         {
-            if(request()->password = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$")
+            if(request()->password == "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$")
             {
                 $hash = password_hash(request()->password, PASSWORD_DEFAULT);
                 $rawdata = array(
@@ -75,24 +75,40 @@ class UsersController extends Controller
         }
     }
 
-    public function connect(Request $requestt)
+    public function connect()
     {
+        $result = file_get_contents('https://h3cate.herokuapp.com/request/users/email/'.request()->email);
+        $header = self::parseHeaders($http_response_header);
 
-        $connect = Users::where("email",$requestt->emailc)
-            ->where("password",$requestt->passwordc)
-            ->first();
-    
-        if($connect)
+        if($result)
         {
-            $_SESSION['id']=$connect["id_user"];
-            $_SESSION['status']=$connect["id"];
-            $_SESSION['email']=$requestt->emailc;
-      
-            return redirect('/');
+            if($result !== '[]')
+            {
+                $result = str_replace('[', '', $result);
+                $result = str_replace(']', '', $result);
+
+                //$result = json_encode($result);
+                $result = json_decode($result, true);
+                
+                //echo var_dump($result);
+                //echo $result->password;
+
+                if(!password_verify(request()->password, $result['password']))
+                {
+                    return response('wrong email or password', 404);
+                }
+
+                $_SESSION['id'] = $result['id'];
+                return response('success', 200);
+            }
+            else
+            {
+                //return response('wrong email or password', 404);
+            }
         }
         else
         {
-            Print_r($connect);
+            //return response('something went wrong', $header['reponse_code']);
         }
     }
 
