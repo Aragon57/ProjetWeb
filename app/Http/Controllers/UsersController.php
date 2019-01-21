@@ -89,8 +89,7 @@ $connect = Users::where("email",$requestt->emailc)
         $_SESSION['email']=$requestt->emailc;
       
 
-      print_r(  $_SESSION['status']);
-          //  return redirect('/');
+          return redirect('/');
 
     }
     else{

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 session_start();
 use App\Event;
+use App\Image;
+use App\Comment;
+
+
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -30,5 +34,33 @@ class EventController extends Controller
 
         $event->save();
     return redirect('/');    }
+
+
+public function storeComment(Request $request)
+    {
+
+
+        $comment = new Comment();
+        $comment->text = $request->comment;
+        $comment->id_user = $request->id_user;
+        $comment->id_manif = $request->id_event;
+    
+
+
+        $comment->save();
+
+    return redirect('/');    }
+
+
+    public function display(){
+        $events = Event::all();
+        $img = Image::all();
+         $comments = Comment::all();
+
+
+
+    return view('event' , compact('events','img','comments'));
+
+    }
 
 }

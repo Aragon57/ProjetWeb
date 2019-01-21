@@ -32,9 +32,12 @@ Route::get('/inscription', function () {
     return view('inscription');
 });
 
-Route::get('/event', function () {
+Route::get('/event' , 'EventController@display', function () {
     return view('event');
 });
+
+
+Route::post('/comment', 'CommentController@store');
 
 Route::post('/inscription', 'UsersController@store');
 Route::post('/connexion', 'UsersController@connect');
