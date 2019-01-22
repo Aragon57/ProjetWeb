@@ -50,4 +50,7 @@ Route::post('/connexion', 'UsersController@connect');
 Route::get('/logout', 'UsersController@logout');
 Route::post('/idee', 'IdeeController@store');
 Route::post('/event', 'EventController@store');
+
 Route::get('/fetchcart', 'CartController@cart');
+
+Route::post('/article', 'ProductController@addarticle');
