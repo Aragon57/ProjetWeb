@@ -37,6 +37,10 @@ Route::get('/event' , 'EventController@display', function () {
     return view('event');
 });
 
+Route::get('/usernav', function () {
+    return view('layouts/usernav');
+});
+
 Route::post('/image', 'ImageController@store');
 
 Route::post('/comment', 'CommentController@store');
