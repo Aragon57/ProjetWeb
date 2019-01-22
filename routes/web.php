@@ -59,3 +59,5 @@ Route::get('/contact', function () {
 Route::get('/evenementdumois', function () {
     return view('evenementdumois');
 });
+
+Route::get('/islogged', 'UsersController@isLogged');

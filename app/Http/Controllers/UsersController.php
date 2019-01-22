@@ -32,18 +32,18 @@ class UsersController extends Controller
         //validate the request...
         if(request()->password == request()->password_confirmation)
         {
-            $uppercase = preg_match('@[A-Z]@', $password);
-            $lowercase = preg_match('@[a-z]@', $password);
-            $number    = preg_match('@[0-9]@', $password);
+            $uppercase = preg_match('@[A-Z]@', request()->password);
+            $lowercase = preg_match('@[a-z]@', request()->password);
+            $number    = preg_match('@[0-9]@', request()->password);
 
-            if(!$uppercase || !$lowercase || !$number || strlen($password) < 8)
+            if($uppercase && $lowercase && $number && strlen(request()->password) > 8)
             {
                 $hash = password_hash(request()->password, PASSWORD_DEFAULT);
                 $rawdata = array(
                     "name" => request()->name,
                     "surname" => request()->firstname,
                     "email" => request()->email,
-                    "nom" => request()->localisation,
+                    "nom" => mb_strtolower(request()->localisation, "UTF-8"),
                     "password" => $hash,
                     "id_status" => 1);
                 $data = json_encode($rawdata);
@@ -58,7 +58,7 @@ class UsersController extends Controller
                 $result = file_get_contents('https://h3cate.herokuapp.com/request/users', false, $context);
                 $header = self::parseHeaders($http_response_header);
 
-                if($result)
+                if($header['reponse_code'] == 200)
                 {
                     return response('success', 200);
                 }
@@ -66,7 +66,6 @@ class UsersController extends Controller
                 {
                     return response('something went wrong', $header['reponse_code']);
                 }
-
             }
             else
             {
