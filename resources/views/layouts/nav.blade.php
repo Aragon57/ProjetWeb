@@ -1,5 +1,7 @@
+
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <img src="https://s3-eu-west-1.amazonaws.com/assets.atout-on-line.com/images/ingenieur/Logos_Ecoles/2018_2020/cesi_300.jpg" width="20%/9" height="50%/9" class ="logo">
+    <img src="http://127.0.0.1:8000/img/logo.png"  class ="logo">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -13,11 +15,11 @@
                     BOUTIQUE
                 </a>
                 <div class="dropdown-menu bg-dark" >
-                    <a class="dropdown-item nav-lin" href="Aventador.html">BOUTIQUE</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item nav-lin" href="Aventador.html">VETEMENTS</a>
-                    <a class="dropdown-item nav-lin" href="Huracan.html">TASSES</a>
-                    <a class="dropdown-item nav-lin" href="Urus.html">GOODIES</a>
+                    <a class="dropdown-item nav-lin" href="">BOUTIQUE</a>
+                    <div class="dropdown-diviseur"></div>
+                    <a class="dropdown-item nav-lin" href="">VETEMENTS</a>
+                    <a class="dropdown-item nav-lin" href="">TASSES</a>
+                    <a class="dropdown-item nav-lin" href="">GOODIES</a>
                 </div>
             </li>
         </ul>
@@ -39,7 +41,7 @@
         </ul>
 
         <form class="form-inline">
-            <input class="form-control search mr-sm-2" type="search" placeholder="RECHERCHE" aria-label="Search">
+            <input class="form-search search mr-sm-2" type="search" placeholder="RECHERCHE" aria-label="Search">
             <button class=" recherche btn btnsearch my-1 my-sm-0" type="submit">RECHERCHE</button>
         </form>
     </div>

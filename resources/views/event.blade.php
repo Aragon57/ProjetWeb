@@ -6,13 +6,14 @@
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
-
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
     <title>Laravel</title>
     <!-- Fonts -->
 
     <!-- Styles -->
     <body style ="background-color:#1d2124">
-        <?php include('C:\Users\nicol\webLaravel\resources\views\layouts\nav.blade.php'); ?>
+        @include('layouts/nav')
 
 
 
@@ -44,12 +45,12 @@
 
                                 if($event->date == date("Y-m-d")){
 
-                                    echo '<div>
-                                    <h1>'. $event->name .'</h1>
+                                    echo '<div class="boite">
+                                    <h1>Evénement : '. $event->name .'</h1>
+                                    <hr>
+                                    <h6>Date de l\'événement : '. $event->date .  '&nbsp &nbsp &nbsp &nbsp' . 'Prix : ' . $event->price .'€</h6>
 
-                                    <h6>'. $event->date .  '&nbsp &nbsp' . 'Prix : ' . $event->price .'</h6>
-
-                                    <p>'.$event->description.'</p>
+                                    <p>Description : '.$event->description.'</p>
                                     ';
 
                                     if(isset($_SESSION['email'])){
@@ -86,21 +87,21 @@
 
 
                                     ;
-
+                                    echo '<div class="row">';
 
                                     foreach($img as $image){
 
 
                                         if($image['id_event']==$event['id']){
 
-                                            echo '<img src="'.'http://127.0.0.1:8000' .$image['image'] .'" class="" width="20%/9" height="20%/9">';
+                                            echo ' <div class="col-lg-5 col-md-10 sm-15"><img src="'.'http://127.0.0.1:8000' .$image['image'] .'" class="" ></div>';
                                         }
                                     }
 
 
                                     
 
-                                    echo '                               
+                                    echo '</div>                               
                                     <form method="post" action="/like" > '         .  csrf_field() .'
 
                                      <input type="hidden" name="id_event" value='. $event->id .'  >
@@ -113,24 +114,30 @@
 
 
 
-                                    echo '<div>
+                                    echo '
 
                                     <form method="post" action="/image" enctype= "multipart/form-data"> '.  csrf_field() .
 
 
                                     '<input type="file" name="fichier" required><br>
 
-                                    <input type="hidden" name="id_event" value='. $event->id .'  >
+                                    <input type="hidden" name="id_event" value='. $event->id .'  ><input type="submit" value="OK">
 
-                                    <input type="submit" value="OK">
+                                    
                                     </form>
-                                    </div> ';
+                                 
+                                <hr>
+                                <h6> <b> Commentaires :  </b></h6> <hr>';
 
 
                                     foreach($comments as $comment){
 
                                         if($comment->id_event == $event->id)
-                                            echo '<p>'. $comment->content .'</p>';
+
+
+                                            echo '<p>'. $comment->content .'</p> <hr>';
+
+                                   
 
                                     }
 
@@ -155,7 +162,7 @@
 
 
                                  }
-                                 echo '<hr>';
+                                 echo '</div> <hr>';
 
                              }
 
