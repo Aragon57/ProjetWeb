@@ -32,7 +32,11 @@ class UsersController extends Controller
         //validate the request...
         if(request()->password == request()->password_confirmation)
         {
-            if(request()->password == "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$")
+            $uppercase = preg_match('@[A-Z]@', $password);
+            $lowercase = preg_match('@[a-z]@', $password);
+            $number    = preg_match('@[0-9]@', $password);
+
+            if(!$uppercase || !$lowercase || !$number || strlen($password) < 8)
             {
                 $hash = password_hash(request()->password, PASSWORD_DEFAULT);
                 $rawdata = array(
@@ -113,6 +117,10 @@ class UsersController extends Controller
         }
     }
 
+    public function isLogged()
+    {
+
+    }
 
     public function logout(){
         session_unset();
