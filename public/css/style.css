@@ -273,6 +273,18 @@ background-color: white;
   border-color: #318CE7;
 }
 
+.btnsearchliked{
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  background-color: #318CE7; 
+}
+
+.btnsearchliked:hover{
+  color: #318CE7;
+    border-color: #318CE7;
+
+  background-color: #FFFFFF; 
+}
 .search{
   width:110px;
 }

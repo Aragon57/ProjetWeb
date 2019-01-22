@@ -6,13 +6,14 @@
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
-
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
     <title>Laravel</title>
     <!-- Fonts -->
 
     <!-- Styles -->
     <body style ="background-color:#1d2124">
-        <?php include('C:\Users\nicol\webLaravel\resources\views\layouts\nav.blade.php'); ?>
+        @include('layouts/nav')
 
 
 

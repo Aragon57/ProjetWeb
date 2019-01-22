@@ -15,11 +15,11 @@
                     BOUTIQUE
                 </a>
                 <div class="dropdown-menu bg-dark" >
-                    <a class="dropdown-item nav-lin" href="Aventador.html">BOUTIQUE</a>
+                    <a class="dropdown-item nav-lin" href="">BOUTIQUE</a>
                     <div class="dropdown-diviseur"></div>
-                    <a class="dropdown-item nav-lin" href="Aventador.html">VETEMENTS</a>
-                    <a class="dropdown-item nav-lin" href="Huracan.html">TASSES</a>
-                    <a class="dropdown-item nav-lin" href="Urus.html">GOODIES</a>
+                    <a class="dropdown-item nav-lin" href="">VETEMENTS</a>
+                    <a class="dropdown-item nav-lin" href="">TASSES</a>
+                    <a class="dropdown-item nav-lin" href="">GOODIES</a>
                 </div>
             </li>
         </ul>
