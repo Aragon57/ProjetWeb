@@ -59,3 +59,10 @@ Route::get('/contact', function () {
 Route::get('/evenementdumois', function () {
     return view('evenementdumois');
 });
+
+Route::get('/politique', function () {
+    return view('politique');
+});
+Route::get('/mentions', function () {
+    return view('mentions');
+});
