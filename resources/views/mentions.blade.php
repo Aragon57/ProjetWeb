@@ -27,7 +27,29 @@
 	<hr color="white">
 
 	<h6 class="blanc truc-a-centrer"><center>
-	<b>Editeur du site </b><br>
+	
+<b> Respect de la vie privée et collecte des données personnelles </b><br>
+<br>
+
+Soucieux de protéger la vie privée de ses clients, BDE Strasbourg s’engage dans la protection des données personnelles.<br> Une politique sur la protection des données personnelles rappelle nos principes et nos actions visant au respect de la réglementation applicable en matière de protection des données à caractère personnel.
+Pour lire l’intégralité de notre politique sur la Protection des données personnelles <a  class="blanc" href="politique"> cliquez-ici.</a> <br>
+<br>
+
+<b> <center> Déclaration à la CNIL  </b><br>
+<br>
+
+Conformément à la loi 78-17 du 6 janvier 1978 (modifiée par la loi 2004-801 du 6 août 2004 relative à la protection des personnes physiques à l'égard des traitements de données à caractère personnel) relative à l'informatique, aux fichiers et aux libertés, le site a fait l'objet d'une déclaration auprès de la Commission nationale de l'informatique et des libertés (www.cnil.fr).<br>
+<br>
+
+Par ailleurs, la mise en forme de ce site a nécessité le recours à des sources externes dont nous avons acquis les droits ou dont les droits d'utilisation sont ouverts : HTML 5 / CSS 3 / Bootstrap / FontAwesome / PHP / JavaScript /Jquery / NodeJS ..
+<br><br>
+
+<b> <center> Conditions d'utilisation</b><br>
+<br>Le site accessible par les url suivants : <b>www.000webhost.fr</b> est exploité dans le respect de la législation française. L'utilisation de ce site est régie par les présentes conditions générales. <br>En utilisant le site, vous reconnaissez avoir pris connaissance de ces conditions et les avoir acceptées. <br>
+</center><br>
+<br>
+
+<b>Editeur du site </b><br>
 <br>
 BDE CESI STRASBOURG<br>
 par CESI Ecole d'ingénieurs <br> 
@@ -67,28 +89,6 @@ Larnaca, <br>
 Cyprus<br>
 <br>
 <br>
-
-<b> Respect de la vie privée et collecte des données personnelles </b><br>
-<br>
-
-Soucieux de protéger la vie privée de ses clients, BDE Strasbourg s’engage dans la protection des données personnelles.<br> Une politique sur la protection des données personnelles rappelle nos principes et nos actions visant au respect de la réglementation applicable en matière de protection des données à caractère personnel.
-Pour lire l’intégralité de notre politique sur la Protection des données personnelles <a  class="blanc" href="politique"> cliquez-ici.</a> <br>
-<br>
-
-<b> <center> Déclaration à la CNIL  </b><br>
-<br>
-
-Conformément à la loi 78-17 du 6 janvier 1978 (modifiée par la loi 2004-801 du 6 août 2004 relative à la protection des personnes physiques à l'égard des traitements de données à caractère personnel) relative à l'informatique, aux fichiers et aux libertés, le site a fait l'objet d'une déclaration auprès de la Commission nationale de l'informatique et des libertés (www.cnil.fr).<br>
-<br>
-
-Par ailleurs, la mise en forme de ce site a nécessité le recours à des sources externes dont nous avons acquis les droits ou dont les droits d'utilisation sont ouverts : HTML 5 / CSS 3 / Bootstrap / FontAwesome / PHP / JavaScript /Jquery / NodeJS ..
-<br><br>
-
-<b> <center> Conditions d'utilisation</b><br>
-<br>Le site accessible par les url suivants : <b>www.000webhost.fr</b> est exploité dans le respect de la législation française. L'utilisation de ce site est régie par les présentes conditions générales. <br>En utilisant le site, vous reconnaissez avoir pris connaissance de ces conditions et les avoir acceptées. <br>
-</center><br>
-
-
 <b>Contactez-nous</b><br>
 <br>
 BDE Strasbourg est à votre disposition pour tous vos commentaires ou suggestions.<br>
