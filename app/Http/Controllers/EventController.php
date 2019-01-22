@@ -16,17 +16,18 @@ class EventController extends Controller
 
         if($request->punctuality = "Récurent"){
 
-            $punct = 0;
+            $punct = false;
 
         }
         else{
-            $punct =1;
+            $punct =true;
         }
         $event = new Event();
-        $event->titre_manif = $request->title_manif;
+        $event->name = $request->title_manif;
         $event->description = $request->desc_manif;
         $event->date = $request->date_manif;
         $event->punctuality = $punct;
+        $event->validate = true;
         $event->price = $request->price_manif;
         $event->id_user = $_SESSION["id"];
 

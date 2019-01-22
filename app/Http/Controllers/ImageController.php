@@ -1,85 +1,37 @@
 <?php
-
 namespace App\Http\Controllers;
+session_start();
 
 use App\Image;
 use Illuminate\Http\Request;
 
+
 class ImageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+     public function store(Request $request)
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Image $image)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Image $image)
-    {
-        //
-    }
+        $fichier= $request->fichier;
+ 
+        if(isset($_FILES['fichier'])){
+        $nomfichier='event'.$request->id_event .'.'. $i .'.png';
+        $chemin=" ..\..\..\public\img\\event\\";}
+if (!copy($fichier,$chemin.$nomfichier))
+{echo 'erreur';}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Image $image)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Image $image)
-    {
-        //
+       $image = new Image();
+        $image->image = '/img/event/'.$nomfichier;
+        $image->id_event = $request->id_event;
+
+        $image->id_user = $_SESSION['id'];
+        $image->save();
+        $i=$i+1;
+    return redirect('/');   
+
+
     }
 }
