@@ -51,6 +51,9 @@ Route::post('/idee', 'IdeeController@store');
 Route::put('/idee/{id}', 'IdeeController@change');
 Route::post('/event', 'EventController@store');
 
+Route::post('/eventregister', 'EventRegisterController@store');
+
+
 Route::post('/inscription', 'UsersController@store');
 
 Route::get('/footer', function () {

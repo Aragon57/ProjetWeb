@@ -53,7 +53,33 @@
                                     ';
 
                                     if(isset($_SESSION['email'])){
-                                        echo '<div><input class="favorite styled" type="button" value="S\'inscire"></div>';
+
+                                        $mess="S'enregistrer";
+
+                                        foreach ($eventregisters as $eventregister ) {
+                                            if($eventregister->id_user == $_SESSION['id'] && $eventregister->id_event == $event->id){
+                                                                                          $mess='Se désinscrire';      
+
+                                 }
+                                 else{
+                                                                              $mess='S\'enregistrer';      
+
+                                 }
+                             }
+
+                                   echo '   <form method="post" action="/eventregister" > '         .  csrf_field() .'
+
+                                     <input type="hidden" name="id_event" value='. $event->id .'  >
+
+                                    
+                                    <button type = "submit" class="  " type="submit">' . $mess.'</i></i> </button>
+                                    </form>
+                                    ';
+
+                                            
+                                        
+
+                                    
                                     }
 
 
@@ -312,22 +338,22 @@
 
                     '<div class="input-group form-group">
 
-                    <input type="text" name="title_manif" placeholder="Titre" require="required" class="form-control marge" >
+                    <input type="text" name="title_manif" placeholder="Titre"  class="form-control marge" required>
 
                     </div>
                     <div class="input-group form-group">
 
-                    <input type="date" name="date_manif" placeholder="Date" require="required" class="form-control marge" >
+                    <input type="date" name="date_manif" placeholder="Date"  class="form-control marge" required>
 
                     </div>
                     <div class="input-group form-group">
 
-                    <input type="float" name="price_manif" placeholder="Prix" require="required" class="form-control marge" >
+                    <input type="float" name="price_manif" placeholder="Prix"  class="form-control marge" required>
 
                     </div>
                     <div class="input-group form-group">
 
-                    <SELECT class="form-control" name="punctuality" size="1">
+                    <SELECT class="form-control" name="punctuality" size="1" required>
                     <OPTION>Récurent 
                     <OPTION>Ponctuelle
 
@@ -335,7 +361,7 @@
                     </div>
                     <div class="input-group form-group">
 
-                    <input type="text" name="desc_manif" placeholder="Description" require="required" class="form-control descr" >
+                    <input type="text" name="desc_manif" placeholder="Description"  class="form-control descr" required>
 
 
                     <div class="input-group form-group">

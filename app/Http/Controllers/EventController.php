@@ -7,6 +7,7 @@ use App\Users;
 use App\Image;
 use App\Comment;
 
+use App\EventRegister;
 
 use Illuminate\Http\Request;
 
@@ -41,10 +42,12 @@ class EventController extends Controller
         $events = Event::all();
         $img = Image::all();
          $comments = Comment::all();
+ $eventregisters = EventRegister::all();
 
 
 
-    return view('event' , compact('events','img','comments'));
+
+    return view('event' , compact('events','img','comments','eventregisters'));
 
     }
 
