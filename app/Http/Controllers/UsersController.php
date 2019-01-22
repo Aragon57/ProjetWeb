@@ -187,7 +187,16 @@ class UsersController extends Controller
         return response('true', 200);
     }
 
-    public function logout(){
+    public function logout()
+    {
+        $opts = array('http' => array(
+            'method' => 'DELETE',
+        ));
+
+        $context = stream_context_create($opts);
+        $result = file_get_contents('https://h3cate.herokuapp.com/request/token/id/'.$_SESSION['id'], false, $context);
+        $header = self::parseHeaders($http_response_header);
+
         session_unset();
         return redirect('/');
     }
