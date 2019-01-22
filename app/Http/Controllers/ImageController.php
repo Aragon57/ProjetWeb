@@ -5,22 +5,21 @@ session_start();
 use App\Image;
 use Illuminate\Http\Request;
 
-
 class ImageController extends Controller
 {
-
-
      public function store(Request $request)
     {
 
+$token = openssl_random_pseudo_bytes(16);
+
+$token = bin2hex($token);
 
         $fichier= $request->fichier;
- 
-        if(isset($_FILES['fichier'])){
-        $nomfichier='event'.$request->id_event .'.'. $i .'.png';
+        if(isset($_FILES['fichier'])){  
+        $nomfichier='event'.$request->id_event .'.'. $token . '.png';
         $chemin=" ..\..\..\public\img\\event\\";}
-if (!copy($fichier,$chemin.$nomfichier))
-{echo 'erreur';}
+        if (!copy($fichier,$chemin.$nomfichier))
+        {echo 'erreur';}
 
 
        $image = new Image();
@@ -29,7 +28,6 @@ if (!copy($fichier,$chemin.$nomfichier))
 
         $image->id_user = $_SESSION['id'];
         $image->save();
-        $i=$i+1;
     return redirect('/');   
 
 

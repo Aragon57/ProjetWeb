@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <body style ="background-color:#1d2124">
-        <?php include('C:\Users\nicol\webLaravel\resources\views\nav.blade.php'); ?>
+        <?php include('C:\Users\nicol\webLaravel\resources\views\layouts\nav.blade.php'); ?>
 
 
 
@@ -34,7 +34,7 @@
 
 
 
-                        echo '<h1>Evenements du jour </h1>';
+                        echo ' <h1 align="center">Evenements du jour </h1>';
 
 
                         foreach ($events as $event) {
@@ -45,9 +45,9 @@
                                 if($event->date == date("Y-m-d")){
 
                                     echo '<div>
-                                    <h1>'. $event->titre_manif .'</h1>
+                                    <h1>'. $event->name .'</h1>
 
-                                    <h6>'. $event->date .'</h6>
+                                    <h6>'. $event->date .  '&nbsp &nbsp' . 'Prix : ' . $event->price .'</h6>
 
                                     <p>'.$event->description.'</p>
                                     ';
@@ -72,25 +72,39 @@
                                     }
 
 
+                                    
 
-                                     echo '<div>
-                              
-                               <form method="post" action="/image" enctype= "multipart/form-data"> '                .  csrf_field() .
+                                    echo '                               
+                                    <form method="post" action="/like" > '         .  csrf_field() .'
+
+                                     <input type="hidden" name="id_event" value='. $event->id .'  >
+
+                                    
+                                    <button type = "submit" class=" like btn  " type="submit"><i class="fas fa-heart"></i></i> </button>
+                                    </form>
+                                    ';
+                                
 
 
-                               '<input type="file" name="fichier" required><br>
 
-                               <input type="hidden" name="id_event" value='. $event->id .'  >
+                                    echo '<div>
 
-                               <input type="submit" value="OK">
-                               </form>
-                               </div> ';
+                                    <form method="post" action="/image" enctype= "multipart/form-data"> '.  csrf_field() .
+
+
+                                    '<input type="file" name="fichier" required><br>
+
+                                    <input type="hidden" name="id_event" value='. $event->id .'  >
+
+                                    <input type="submit" value="OK">
+                                    </form>
+                                    </div> ';
 
 
                                     foreach($comments as $comment){
 
-                                        if($comment->id_manif == $event->id_manif)
-                                            echo '<p>'. $comment->text .'</p>';
+                                        if($comment->id_event == $event->id)
+                                            echo '<p>'. $comment->content .'</p>';
 
                                     }
 
@@ -98,37 +112,36 @@
 
                                     if(isset($_SESSION['email'])){
 
-                                       echo    '<form action="/comment" method="post">'.
-                                       csrf_field() .
+                                     echo    '<form action="/comment" method="post">'.
+                                     csrf_field() .
 
-                                       '<div class="input-group form-group">
+                                     '<div class="input-group form-group">
 
-                                       <input type="text" id="comment" name="comment" placeholder="Commentaire" require="required" class="form-control marge" >
-                                       <input id="id_event" name="id_event" type="hidden" value="'.$event->id_manif .'">
-                                       <input id="id_user" name="id_user" type="hidden" value="'.$_SESSION['id'].'">
+                                     <input type="text" id="comment" name="comment" placeholder="Commentaire" class="form-control marge" required>
+                                     <input id="id_event" name="id_event" type="hidden" value="'.$event->id .'" required>
+                                     <input id="id_user" name="id_user" type="hidden" value="'.$_SESSION['id'].'" required>
+                                   
+
+                                     <input type="submit" value="Envoyer" class="btnsearch marge">
                                        </div>
-
-                                       <div class="input-group form-group">
-                                       <input type="submit" value="Envoyer" class="btnsearch marge">
-                                       </div>
-                                       </form>
-                                       ';
+                                     </form>
+                                     ';
 
 
-                                   }
-                                   echo '<hr>';
+                                 }
+                                 echo '<hr>';
 
-                               }
+                             }
 
-                           }
-                       }
+                         }
+                     }
 
-                       echo '<h1>Evenements à venir </h1>';
+                     echo '<h1 align="center">Evenements à venir </h1>';
 
 
 
 
-                       foreach ($events as $event) {
+                     foreach ($events as $event) {
 
 
                         if($event->validate == 1){
@@ -138,14 +151,14 @@
                                 echo '<div>
                                 <h1>'. $event->name .'</h1>
 
-                                <h6>'. $event->date .'</h6>
+                                <h6>'. $event->date .  '&nbsp &nbsp' . 'Prix : ' . $event->price .'</h6>
 
                                 <p>'.$event->description.'</p>
                                 ';
 
 
                                 if(isset($_SESSION['email'])){
-                                    echo '<input class="favorite styled" type="button" value="S\'inscire">';
+                                    echo '<div><input class="favorite styled" type="button" value="S\'inscire"> </div>';
                                 }
 
                                 foreach($img as $image){
@@ -155,27 +168,24 @@
                                         echo '<img src="'.'http://127.0.0.1:8000' .$image['image'] .'" class="" width="20%/9" height="20%/9">';
                                     }
                                 }
+   echo '<div>
 
-                                 echo '<input type="checkbox" id="showpopup"/>
-                               <label for="showpopup"><i class="fas fa-camera  photo"></i></label>
-                               <div id="popup">
-                               <form method="post" action="/image" enctype= "multipart/form-data"> '                .  csrf_field() .
+                                    <form method="post" action="/image" enctype= "multipart/form-data"> '.  csrf_field() .
 
 
-                               '<input type="file" name="fichier"><br>
-                               <input type="text" name="namefile" placeholder="Nom du fichier"><br>
+                                    '<input type="file" name="fichier" required><br>
 
-                               <input type="hidden" name="id_event" value='. $event->id .'  >
+                                    <input type="hidden" name="id_event" value='. $event->id .'  >
 
-                               <input type="submit" value="OK">
-                               </form>
-                               </div>';
+                                    <input type="submit" value="OK">
+                                    </form>
+                                    </div> ';
 
 
                                 foreach($comments as $comment){
 
-                                    if($comment->id_manif == $event->id_manif)
-                                        echo '<p>'. $comment->text .'</p>';
+                                    if($comment->id_event == $event->id)
+                                        echo '<p>'. $comment->content .'</p>';
 
                                 }
 
@@ -183,36 +193,35 @@
 
                                 if(isset($_SESSION['email'])){
 
-                                   echo    '<form action="/comment" method="post">'.
-                                   csrf_field() .
+                                  echo    '<form action="/comment" method="post">'.
+                                     csrf_field() .
 
-                                   '<div class="input-group form-group">
+                                     '<div class="input-group form-group">
 
-                                   <input type="text" id="comment" name="comment" placeholder="Commentaire" require="required" class="form-control marge" >
-                                   <input id="id_event" name="id_event" type="hidden" value="'.$event->id_manif .'">
-                                   <input id="id_user" name="id_user" type="hidden" value="'.$_SESSION['id'].'">
-                                   </div>
+                                     <input type="text" id="comment" name="comment" placeholder="Commentaire" class="form-control marge" required>
+                                     <input id="id_event" name="id_event" type="hidden" value="'.$event->id .'" required>
+                                     <input id="id_user" name="id_user" type="hidden" value="'.$_SESSION['id'].'" required>
+                                   
 
-                                   <div class="input-group form-group">
-                                   <input type="submit" value="Envoyer" class="btnsearch marge">
-                                   </div>
-                                   </form>
-                                   ';
-                               }
+                                     <input type="submit" value="Envoyer" class="btnsearch marge">
+                                       </div>
+                                     </form>
+                                     ';
+                             }
 
-                               echo '<hr>';
-                           }
-                       }
-                   }
-
-
-
-                   echo  '<h1> Evenements passés </h1>';
+                             echo '<hr>';
+                         }
+                     }
+                 }
 
 
 
+                 echo  '<h1 align="center"> Evenements passés </h1>';
 
-                   foreach ($events as $event) {
+
+
+
+                 foreach ($events as $event) {
 
                     if($event->validate == true){
 
@@ -220,9 +229,9 @@
 
 
                             echo '<div>
-                            <h1>'. $event->titre_manif .'</h1>
+                            <h1>'. $event->name .'</h1>
 
-                            <h6>'. $event->date .'</h6>
+                            <h6>'. $event->date .  '&nbsp &nbsp' . 'Prix : ' . $event->price .'</h6>
 
                             <p>'.$event->description.'</p>
                             ';
@@ -231,7 +240,7 @@
 
 
                             if(isset($_SESSION['email'])){
-                                echo '<input class="favorite styled" type="button" value="S\'inscire">';
+                                echo '<div><input class="favorite styled" type="button" value="S\'inscire"></div>';
                             }
 
                             foreach($img as $image){
@@ -243,57 +252,61 @@
                             }
 
 
+    echo '<div>
 
-                             echo '<input type="checkbox" id="showpopup"/>
-                               <label for="showpopup"><i class="fas fa-camera  photo"></i></label>
-                               <div id="popup">
-                               <form method="post" action="/image" enctype= "multipart/form-data"> '                .  csrf_field() .
+                                    <form method="post" action="/image" enctype= "multipart/form-data"> '.  csrf_field() .
 
 
-                               '<input type="file" name="fichier"><br>
-                               <input type="text" name="namefile" placeholder="Nom du fichier"><br>
+                                    '<input type="file" name="fichier" required><br>
 
-                               <input type="hidden" name="id_event" value='. $event->id .'  >
+                                    <input type="hidden" name="id_event" value='. $event->id .'  >
 
-                               <input type="submit" value="OK">
-                               </form>
-                               </div>';
+                                    <input type="submit" value="OK">
+                                    </form>
+                                    </div> ';
+
+
+                                    foreach($comments as $comment){
+
+                                    if($comment->id_event == $event->id)
+                                        echo '<p>'. $comment->content .'</p>';
+
+                                }
 
 
                             if(isset($_SESSION['email'])){
 
-                               echo    '<form action="/comment" method="post">'.
-                               csrf_field() .
+                             echo    '<form action="/comment" method="post">'.
+                                     csrf_field() .
 
-                               '<div class="input-group form-group">
+                                     '<div class="input-group form-group">
 
-                               <input type="text" id="comment" name="comment" placeholder="Commentaire" require="required" class="form-control marge" >
-                               <input id="id_event" name="id_event" type="hidden" value="'.$event->id_manif .'">
-                               <input id="id_user" name="id_user" type="hidden" value="'.$_SESSION['id'].'">
-                               </div>
+                                     <input type="text" id="comment" name="comment" placeholder="Commentaire" class="form-control marge" required>
+                                     <input id="id_event" name="id_event" type="hidden" value="'.$event->id .'" required>
+                                     <input id="id_user" name="id_user" type="hidden" value="'.$_SESSION['id'].'" required>
+                                   
 
-                               <div class="input-group form-group">
-                               <input type="submit" value="Envoyer" class="btnsearch marge">
-                               </div>
-                               </form>
-                               ';
-
+                                     <input type="submit" value="Envoyer" class="btnsearch marge">
+                                       </div>
+                                     </form>
+                                     ';
 
 
 
-                           }
-                           echo '<hr>';
 
-                       }
-                   }
+                         }
+                         echo '<hr>';
 
-               }?>
+                     }
+                 }
 
-               <?php 
+             }?>
 
-               if(isset($_SESSION['email'])){
+             <?php 
 
-                if($_SESSION['status'] == 2){
+             if(isset($_SESSION['email'])){
+
+                
                     echo    '<form action="/event" method="post">'.
                     csrf_field() .
 
@@ -332,7 +345,7 @@
                 }else{
 
                 }
-            }
+            
             ?>
             <div class="col-lg-1 col-md-2 col-sm-3">
 

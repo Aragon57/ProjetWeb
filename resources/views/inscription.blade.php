@@ -58,31 +58,31 @@
                                 </div>
 <SELECT class="form-control" name="localisation" size="1">
                                 <OPTION>Strasbourg 
-                                    <OPTION>Nancy
-                                        <OPTION>Reims
-                                            <OPTION>Dijon
-                                                <OPTION>Lyon
-                                                <OPTION>Arras 
-                                                <OPTION>Brest
-                                                <OPTION>Saint-Nazaire 
-                                                <OPTION>Strasbourg 
-                                                <OPTION>Bordeaux 
-                                                <OPTION>Nice 
-                                                <OPTION>Pau 
-                                                <OPTION>Toulouse 
-                                                <OPTION>Angoulême 
-                                                <OPTION>Grenoble 
-                                                <OPTION>La Rochelle
-                                                <OPTION>Châteauroux 
-                                                <OPTION>Paris Nanterre 
-                                                <OPTION>Le Mans
-                                                <OPTION>Caen 
-                                                <OPTION>Rouen 
-                                                <OPTION>Lille
-                                                <OPTION>Montpellier
-                                                <OPTION>Nantes
-                                                <OPTION>Orléans
-                                                </SELECT>
+                                <OPTION>Nancy
+                                <OPTION>Reims
+                                <OPTION>Dijon
+                                <OPTION>Lyon
+                                <OPTION>Arras 
+                                <OPTION>Brest
+                                <OPTION>Saint-Nazaire 
+                                <OPTION>Strasbourg 
+                                <OPTION>Bordeaux 
+                                <OPTION>Nice 
+                                <OPTION>Pau 
+                                <OPTION>Toulouse 
+                                <OPTION>Angoulême 
+                                <OPTION>Grenoble 
+                                <OPTION>La Rochelle
+                                <OPTION>Châteauroux 
+                                <OPTION>Paris Nanterre 
+                                <OPTION>Le Mans
+                                <OPTION>Caen 
+                                <OPTION>Rouen 
+                                <OPTION>Lille
+                                <OPTION>Montpellier
+                                <OPTION>Nantes
+                                <OPTION>Orléans
+                                </SELECT>
                             </div>
 
 

@@ -41,6 +41,9 @@ Route::post('/image', 'ImageController@store');
 
 Route::post('/comment', 'CommentController@store');
 
+Route::post('/like', 'LikeController@store');
+
+
 Route::post('/inscription', 'UsersController@store');
 Route::post('/connexion', 'UsersController@connect');
 Route::get('/logout', 'UsersController@logout');

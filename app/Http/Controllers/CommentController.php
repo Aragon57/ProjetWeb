@@ -12,9 +12,9 @@ class CommentController extends Controller
 
 
         $comment = new Comment();
-        $comment->text = $request->comment;
+        $comment->content = $request->comment;
         $comment->id_user = $request->id_user;
-        $comment->id_manif = $request->id_event;
+        $comment->id_event = $request->id_event;
     
 
 

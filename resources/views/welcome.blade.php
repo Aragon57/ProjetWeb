@@ -13,7 +13,7 @@
       
         <!-- Styles -->
     <body style ="background-color:#1d2124">
-        <?php include('C:\Users\nicol\webLaravel\resources\views\nav.blade.php'); ?>
+        <?php include('C:\Users\nicol\webLaravel\resources\views\layouts\nav.blade.php'); ?>
      
 
     <div class="container-fluid text-center "> 
