@@ -1,9 +1,9 @@
 hr
 {
-padding:2px;
-background-color:#318CE7;
-border:0;
-border-radius: 0px;
+  padding:2px;
+  background-color:#318CE7;
+  border:0;
+  border-radius: 0px;
 }
 
 /* Fond du gadget de la barre de recherche */
@@ -22,9 +22,11 @@ border-radius: 0px;
 	background:#f5f5f5;
 	color:#000000;
 	border-radius:0px;
-	width:200px;
-	border:1px solid #ccc;
-	box-shadow:1px 1px 3px #999;
+	width:60%;
+  min-width: 50px;  
+  max-width: 300px;
+  border:1px solid #ccc;
+  box-shadow:1px 1px 3px #999;
 }
 
 /* Style the search field */
@@ -43,7 +45,7 @@ form.searchbox input[type=text] {
 /* Style the submit button */
 form.searchbox button {
   float: left;
-  width: 4%;
+  width: 4.5%;
   padding: 5px;
   background: #318CE7;
   color: white;
@@ -82,8 +84,13 @@ form.searchbox input:focus {
 
 
 
+
+
+
+
 .dropdownmenu {
-background-color: #666;
+  background-color: #FFFFFF;
+
 }
 /* Suppression des puces et des marges pour les listes du menu et des sous-menus */ 
 .dropdownmenu,
@@ -91,47 +98,52 @@ background-color: #666;
   list-style-type: none; 
   margin: 0px; 
   padding: 0px;
+
 } 
 .dropdownmenu ul { /* Masquage des sous-menu par defaut */
-display: none;
+  display: none;
 }
 .dropdownmenu li {
-/* Disposition horizontale des elements de menu */
-display: inline-block;
-/* Positionnement relative des elements de menu pour pouvoir positionner les sous-menu correctement en absolu */
-position: relative;
+  /* Disposition horizontale des elements de menu */
+  display: inline-block;
+  /* Positionnement relative des elements de menu pour pouvoir positionner les sous-menu correctement en absolu */
+  position: relative;
 }
 .dropdownmenu a {
-/* On transforme les liens en bloc pour pouvoir les dimensionner */
-display: block;
-/* Dimensions des liens */ 
+  /* On transforme les liens en bloc pour pouvoir les dimensionner */
+  display: block;
+  /* Dimensions des liens */ 
   width: 120px; 
   height: 40px; 
   /* Doit etre equivalent a la hauteur du menu pour centrer le texte verticalement */
-padding: 10px 10px;
-text-align: center;
+  padding: 7px 10px;
+  text-align: center;
+  border: 1px solid;
+  border-color: #dddddd;
+  text-decoration:none; 
 }
 .dropdownmenu li:hover ul {
-/* Affichage du soumenu au survol */
-display: block;
-/* Positionnement du sous-menu */ 
+  /* Affichage du soumenu au survol */
+  display: block;
+  /* Positionnement du sous-menu */ 
   position: absolute; 
-  top: 36px; /* Hauteur du menu + hauteur du padding top et bottom : 30 + 3 + 3 = 36 */ 
+  top: 40px; /* Hauteur du menu + hauteur du padding top et bottom : 30 + 3 + 3 = 36 */ 
   left: 0px; /* Decalage du sous-menu par rapport aux liens du menu*/ 
-  z-index: 100; /* Gestion de la superposition des sous-menus par rapport au reste de la page */ }
+z-index: 100; /* Gestion de la superposition des sous-menus par rapport au reste de la page */ }
+
 .dropdownmenu ul a { /* Changement de l'affichage des liens des sous-menus pour ne pas les afficher en inline-block comme les liens de menu, ils seront donc verticaux */
 display: block;
 }
 
 /* Gestion des couleurs */
 .dropdownmenu li { 
-  background-color: #666; /* Couleur d'arriere-plan du menu */
+  background-color: #FFFFFF; /* Couleur d'arriere-plan du menu */
 }
 .dropdownmenu li a { 
-  color: #ccc; /* Couleur du texte du menu */ 
+  color: #000000; /* Couleur du texte du menu */ 
 }
 .dropdownmenu li:hover {
-  background-color: #000; /* Couleur d'arriere-plan du menu au survol */
+  background-color: #318CE7; /* Couleur d'arriere-plan du menu au survol */
 }
 .dropdownmenu li:hover a {
   color: #fff; /* Couleur du texte du menu au survol */ 
@@ -140,7 +152,7 @@ display: block;
   background-color: #ccc; /* Couleur d'arriere-plan des sous-menu */ 
 }
 .dropdownmenu ul li:hover {
-  background-color: #000; /* Couleur d'arriere-plan des sous-menu au survol */ 
+  background-color: #318CE7; /* Couleur d'arriere-plan des sous-menu au survol */ 
 }
 .dropdownmenu ul li a {
   color: #666; /* Couleur du texte des sous-menu */ 

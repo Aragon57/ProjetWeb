@@ -14,12 +14,10 @@ public function display(){
 
         $threefirst = Product::paginate(3);
 
-$firsts = Product::orderBy('nbsell','DESC')->paginate(3);
+        $firsts = Product::orderBy('nbsell','DESC')->paginate(3);
 
     return view('boutique' , compact('products','firsts'));
 
     }
-
-
 
 }
