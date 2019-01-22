@@ -103,12 +103,12 @@ class UsersController extends Controller
             }
             else
             {
-                //return response('wrong email or password', 404);
+                return response('wrong email or password', 404);
             }
         }
         else
         {
-            //return response('something went wrong', $header['reponse_code']);
+            return response('something went wrong', $header['reponse_code']);
         }
     }
 

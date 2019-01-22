@@ -56,26 +56,26 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
     <script>
-        // $(document).ready(() => {
-        //     $('form').submit((event) => {
-        //         event.preventDefault();
+        $(document).ready(() => {
+            $('form').submit((event) => {
+                event.preventDefault();
 
-        //         var form = $('form');
+                var form = $('form');
 
-        //         $.ajax({
-        //             type : 'POST',
-        //             url : '/connexion',
-        //             data : form.serialize(),
-        //             dataType : 'text',
-        //             encode : true,
-        //             success : (data) => {
-        //                 document.location.href='/';
-        //             },
-        //             error : (data) => {
-        //                 document.getElementById("error").innerHTML = data['responseText'];
-        //             }
-        //         });
-        //     });
-        // });
+                $.ajax({
+                    type : 'POST',
+                    url : '/connexion',
+                    data : form.serialize(),
+                    dataType : 'text',
+                    encode : true,
+                    success : (data) => {
+                        document.location.href='/';
+                    },
+                    error : (data) => {
+                        document.getElementById("error").innerHTML = data['responseText'];
+                    }
+                });
+            });
+        });
     </script>
 </html>
