@@ -19,6 +19,11 @@
      opacity: 0.5;
 }
 
+like:target {
+color : red;
+}
+
+
 .dropgris{
   background-color:;
 }
@@ -106,6 +111,11 @@ overflow:auto;
   color : #C0C0C0;
   padding: 0.5rem 1rem;
   text-decoration:none;
+
+}
+
+.like:hover{
+    color : red;
 
 }
 

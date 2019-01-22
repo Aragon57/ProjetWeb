@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 session_start();
 use App\Event;
+use App\Users;
 use App\Image;
 use App\Comment;
 
+use App\EventRegister;
 
 use Illuminate\Http\Request;
 
@@ -30,37 +32,22 @@ class EventController extends Controller
         $event->validate = true;
         $event->price = $request->price_manif;
         $event->id_user = $_SESSION["id"];
-
-
-
         $event->save();
     return redirect('/');    }
 
 
-public function storeComment(Request $request)
-    {
-
-
-        $comment = new Comment();
-        $comment->text = $request->comment;
-        $comment->id_user = $request->id_user;
-        $comment->id_manif = $request->id_event;
-    
-
-
-        $comment->save();
-
-    return redirect('/');    }
 
 
     public function display(){
         $events = Event::all();
         $img = Image::all();
          $comments = Comment::all();
+ $eventregisters = EventRegister::all();
 
 
 
-    return view('event' , compact('events','img','comments'));
+
+    return view('event' , compact('events','img','comments','eventregisters'));
 
     }
 

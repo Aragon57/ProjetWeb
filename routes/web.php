@@ -45,12 +45,18 @@ Route::post('/image', 'ImageController@store');
 
 Route::post('/comment', 'CommentController@store');
 
+Route::post('/like', 'LikeController@store');
+
+
 Route::post('/inscription', 'UsersController@store');
 Route::post('/connexion', 'UsersController@connect');
 Route::get('/logout', 'UsersController@logout');
 Route::post('/idee', 'IdeeController@store');
 Route::put('/idee/{id}', 'IdeeController@change');
 Route::post('/event', 'EventController@store');
+
+Route::post('/eventregister', 'EventRegisterController@store');
+
 
 Route::post('/inscription', 'UsersController@store');
 
