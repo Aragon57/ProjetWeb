@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +34,10 @@ Route::get('/inscription', function () {
     return view('inscription');
 });
 
+Route::get('/cart', function () {
+    return view('cart');
+});
+
 Route::get('/event' , 'EventController@display', function () {
     return view('event');
 });
@@ -44,3 +50,4 @@ Route::post('/connexion', 'UsersController@connect');
 Route::get('/logout', 'UsersController@logout');
 Route::post('/idee', 'IdeeController@store');
 Route::post('/event', 'EventController@store');
+Route::get('/fetchcart', 'CartController@cart');

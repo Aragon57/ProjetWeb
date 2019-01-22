@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     
-public function display(){
+    public function display() {
         $products = Product::all();
 
 
@@ -16,8 +16,9 @@ public function display(){
 
         $firsts = Product::orderBy('nbsell','DESC')->paginate(3);
 
-    return view('boutique' , compact('products','firsts'));
-
+        return view('boutique' , compact('products','firsts'));
+    }
+        
     }
 
-}
+
