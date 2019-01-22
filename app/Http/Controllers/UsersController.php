@@ -89,12 +89,7 @@ class UsersController extends Controller
             {
                 $result = str_replace('[', '', $result);
                 $result = str_replace(']', '', $result);
-
-                //$result = json_encode($result);
                 $result = json_decode($result, true);
-                
-                //echo var_dump($result);
-                //echo $result->password;
 
                 if(!password_verify(request()->password, $result['password']))
                 {
@@ -103,6 +98,30 @@ class UsersController extends Controller
 
                 $_SESSION['id'] = $result['id'];
                 $_SESSION['email'] = $result['email'];
+                $_SESSION['status'] = $result['id_status'];
+
+                $rawdata = array(
+                    "token" => session_id(),
+                    "id" => $_SESSION['id']
+                );
+                $data = json_encode($rawdata);
+
+                $opts = array('http' => array(
+                    'method' => 'POST',
+                    'header' => 'Content-type: application/json',
+                    'content' => $data
+                ));
+
+                $context = stream_context_create($opts);
+                $result = file_get_contents('https://h3cate.herokuapp.com/request/token', false, $context);
+                $header = self::parseHeaders($http_response_header);
+
+                if($header['reponse_code'] != 200)
+                {
+                    return response('something went wrong', $header['reponse_code']);
+                }
+                
+                $_SESSION['token'] = session_id();
                 return response('success', 200);
             }
             else
@@ -118,10 +137,66 @@ class UsersController extends Controller
 
     public function isLogged()
     {
+        if(!isset($_SESSION['token']))
+        {
+            return response('no token', 200);
+        }
 
+
+        //GET user id
+        $result = file_get_contents('https://h3cate.herokuapp.com/request/token/token/'.$_SESSION['token']);
+        $header = self::parseHeaders($http_response_header);
+        
+        if($header['reponse_code'] != 200)
+        {
+            return response('false', $header['reponse_code']);
+        }
+        
+        if($result === '[]')
+        {
+            return response('false', 200);
+        }
+
+        $result = str_replace('[', '', $result);
+        $result = str_replace(']', '', $result);
+        $result = json_decode($result, true);
+
+
+        //GET user info
+        $result = file_get_contents('https://h3cate.herokuapp.com/request/users/id/'.$result['id']);
+        $header = self::parseHeaders($http_response_header);
+
+        if($header['reponse_code'] != 200)
+        {
+            return response('false', $header['reponse_code']);
+        }
+        
+        if($result === '[]')
+        {
+            return response('false', 200);
+        }
+
+        $result = str_replace('[', '', $result);
+        $result = str_replace(']', '', $result);
+        $result = json_decode($result, true);
+
+        $_SESSION['id'] = $result['id'];
+        $_SESSION['email'] = $result['email'];
+        $_SESSION['status'] = $result['id_status'];
+
+        return response('true', 200);
     }
 
-    public function logout(){
+    public function logout()
+    {
+        $opts = array('http' => array(
+            'method' => 'DELETE',
+        ));
+
+        $context = stream_context_create($opts);
+        $result = file_get_contents('https://h3cate.herokuapp.com/request/token/id/'.$_SESSION['id'], false, $context);
+        $header = self::parseHeaders($http_response_header);
+
         session_unset();
         return redirect('/');
     }
