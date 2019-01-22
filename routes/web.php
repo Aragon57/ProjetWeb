@@ -32,6 +32,7 @@ Route::get('/inscription', function () {
     return view('inscription');
 });
 
+
 Route::get('/event' , 'EventController@display', function () {
     return view('event');
 });
@@ -46,3 +47,15 @@ Route::get('/logout', 'UsersController@logout');
 Route::post('/idee', 'IdeeController@store');
 Route::put('/idee/{id}', 'IdeeController@change');
 Route::post('/event', 'EventController@store');
+
+Route::post('/inscription', 'UsersController@store');
+
+Route::get('/footer', function () {
+    return view('footer');
+});
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::get('/evenementdumois', function () {
+    return view('evenementdumois');
+});

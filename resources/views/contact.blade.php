@@ -1,76 +1,3 @@
-<footer class="container-fluid text-center footer-dark bg-dark">
-  <div class="container-fluid text-center"> 
-
-      <h2></h2>
-      <hr>
-        <div class="row">
-
-          <div class="col-lg-4 col-md-5 col-sm-6">
-                <img  src="https://upload.wikimedia.org/wikipedia/fr/1/1d/Lamborghini-Logo.svg" width="50%"  class="d-inline-block align-top img-responsive" alt=""></a>
-          </div>
-          <div class="col-lg-4 col-md-5 col-sm-6">
-            <div class="Contact text-left">
-
-                <h4 class="blanc"> En savoir plus </h4>
-                <p class = "blanc"> Home</p>
-                <p class = "blanc"> Aventador</p>
-                <p class = "blanc"> Huracan </p>
-                <p class = "blanc"> Urus </p>
-              </div>
-          </div>
-          
-<div class="col-lg-1 col-md-2 col-sm-3" >
-
-        <a  class="youtube" href="https://www.youtube.com/channel/UC9DXZC8BCDOW6pYAQKgozqw" > 
-          
-          <i class="fab fa-youtube"></i>
-          <p> Youtube </p>
-        
-        </a>
-      </div>
-        <div class="col-lg-1 col-md-2 col-sm-3">
-            <a class="twitter" href="https://twitter.com/lamborghini" > 
-              
-<i class="fab fa-twitter-square"></i>              <p> Twitter </p>
-            
-            </a>
-        </div>
-          <div class="col-lg-1 col-md-2 col-sm-3">
-
-            <a class="facebook" href="https://www.facebook.com/Lamborghini/" >
-              
-                <i class="fab fa-facebook"></i> 
-                <p> Facebook </p>
-              
-            </a>
-            
-          </div>
-          
-        
-        
-      <div class="col-lg-1 col-md-2 col-sm-3">
-          <a class="insta" href="https://www.instagram.com/lamborghini/?hl=fr" > 
-            
-            <i class="fab fa-instagram"></i>
-            <p> Instagram </p>
-          
-          </a>
-        
-      </div>
-    
-    
-      
-  </div>
-  </div>
-  </div>
-  
-
-</a>
-</div>
-
-
-</footer>
-=======
 <!doctype html>
 <html lang="en">
   <head>
@@ -84,14 +11,18 @@
 	
     <!-- Bootstrap core CSS -->
  <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
  <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
-
  
-  </head>
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+ 
   
-  
-  <body>
 
     <header>
 	
@@ -99,9 +30,30 @@
 	 
 	 
 	 
+<div class="container">
+	<div class="box">
+		<div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+		<div class='details'><h3> 67380 Lingolsheim FRANCE</h3></div>
+	</div>
+	
+	<div class="box">
+		<div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+		<div class='details'><h3>06 78 56 52 00</h3></div>
+	</div>
+	
+	<div class="box">
+		<div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+		<div class='details'><h3>bde.strasbourg@viacesi.fr</h3></div>
+	</div>
+</div>
+
+
 	 
 	 
-		 <!-- FOOTER -->
+	 
+	 
+
+	 <!-- FOOTER -->
       <!-- Footer -->
 <footer class="page-footer font-small mdb-color lighten-3 pt-4 ">
 
@@ -134,7 +86,7 @@
         <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1 blanc">
 
           <!-- Contact details -->
-          <h5 class="font-weight-bold text-center mb-4 blanc ">Où NOUS TROUVER</h5>
+          <h5 class="font-weight-bold text-center mb-4 blanc ">OU NOUS TROUVER</h5>
 
           <ul class="list-unstyled">
             <li>
