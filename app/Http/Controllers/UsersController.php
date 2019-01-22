@@ -99,6 +99,7 @@ class UsersController extends Controller
                 }
 
                 $_SESSION['id'] = $result['id'];
+                $_SESSION['email'] = $result['email'];
                 return response('success', 200);
             }
             else
