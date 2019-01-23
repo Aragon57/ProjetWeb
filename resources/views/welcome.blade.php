@@ -4,16 +4,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<link href= "{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+<link href= "{{ asset('css/style.css') }}" rel="stylesheet">
 <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+
 
         <title>Laravel</title>
         <!-- Fonts -->
       
         <!-- Styles -->
     <body style ="background-color:#1d2124">
-        <?php include('C:\Users\nicol\webLaravel\resources\views\nav.blade.php'); ?>
+        @include('layouts/nav')
      
 
     <div class="container-fluid text-center "> 
@@ -52,31 +55,20 @@
                 </div>
                 <div class="col-lg-1 col-md-2 col-sm-3">
                    
-                <div class="col-lg-3 col-md-4 col-sm-5">
-                    <h2><br> Lamborghini HURACAN</h2>
-                                        <hr>
-
-                    
-                    <img id="Huracan" class="img-responsive" src="./image/huracanDay.jpg" width="100%" alt="Third slide">
-                    <div clas="container-fluid text-left">
-                        <br>
-                            <p>320 000 $</p>
-                    <a class ="btn btn-secondary" href="Huracan.html"> Ajouter au panier >> </a>
-                    </div>
+               
 
 
 
 
-                    <hr>
+                  
                 </div>
             </div>
         </div>
-
-
+    </div>
     </body>
+
     <?php include('C:\Users\nicol\webLaravel\resources\views\footer.blade.php'); ?>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
 </html>
