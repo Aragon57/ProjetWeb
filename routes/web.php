@@ -100,4 +100,7 @@ Route::get('/conditions', function () {
 Route::get('/credits', function () {
     return view('credits');
 });
+Route::get('/modal', function () {
+    return view('modal');
+});
 
