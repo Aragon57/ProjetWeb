@@ -150,7 +150,7 @@
      <div class="text-center py-3 blanc "> 
       <a class="blanc" href="politique">Politique de confidentialité |</a>
 	  <a  class="blanc" href="mentions"> Mentions légales |</a>
-	  <a  class="blanc" href="mentions"> Conditions générales de vente |</a>
+	  <a  class="blanc" href="conditions"> Conditions générales de vente |</a>
 	  <a  class="blanc" href="https://mdbootstrap.com/education/bootstrap/"> Crédits |</a>
 	  <a  class="blanc"> CESI 2019  </a>
     </div>

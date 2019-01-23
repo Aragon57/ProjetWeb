@@ -66,3 +66,6 @@ Route::get('/politique', function () {
 Route::get('/mentions', function () {
     return view('mentions');
 });
+Route::get('/conditions', function () {
+    return view('conditions');
+});

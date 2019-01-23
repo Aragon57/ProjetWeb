@@ -25,7 +25,7 @@
 	
 	<hr color="white">
 
-	<h6 class="blanc truc-a-centrer"><center>
+	<h6 class="blanc  containerr"><center>
 	
 <b> Respect de la vie privée et collecte des données personnelles </b><br>
 <br>
@@ -91,7 +91,7 @@ Cyprus<br>
 <b>Contactez-nous</b><br>
 <br>
 BDE Strasbourg est à votre disposition pour tous vos commentaires ou suggestions.<br>
-Vous pouvez nous écrire en français par courrier électronique à : <b>bde.strasbourg@viacesi.fr </b> </h6>
+Vous pouvez nous écrire en français par courrier électronique à : <b>bde.stras@viacesi.fr </b> </h6>
   
 <!-- Footer -->
 
