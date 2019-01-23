@@ -73,6 +73,15 @@ else
     }
 
 
+      public function destroy(Request $request)
+    {
+        $product =  Product::where('id', $request->id_product)
+                            ->delete();
+                                return redirect('/boutique'); 
+
+    }
+
+
 
         
     }

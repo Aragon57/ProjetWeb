@@ -76,15 +76,13 @@ Route::get('/contact', function () {
 Route::get('/evenementdumois', function () {
     return view('evenementdumois');
 });
+Route::post('/product/destroy', 'ProductController@destroy');
 
 Route::get('/islogged', 'UsersController@isLogged');
 
 Route::get('/fetchcart', 'CartController@cart');
 
 Route::post('/article', 'ProductController@addarticle');
-
-
-Route::delete('product/{id}/delete', 'ProductController@delete');
 
 Route::post('/tocart', 'CommandController@addarticle');
 
