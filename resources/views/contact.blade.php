@@ -1,9 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title> BDE STRASBOURG </title>
+	
+    <!-- Bootstrap core CSS -->
+ <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
+ <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
+ 
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+ 
+  
+
+    <header>
+	
+	 </header>
+	 
+	 
+	 
+<div class="container">
+	<div class="box">
+		<div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+		<div class='details'><h3> 67380 Lingolsheim FRANCE</h3></div>
+	</div>
+	
+	<div class="box">
+		<div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+		<div class='details'><h3>06 78 56 52 00</h3></div>
+	</div>
+	
+	<div class="box">
+		<div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+		<div class='details'><h3>bde.strasbourg@viacesi.fr</h3></div>
+	</div>
+</div>
+
 
 	 
 	 
-		 <!-- FOOTER -->
+	 
+	 
+
+	 <!-- FOOTER -->
       <!-- Footer -->
-<footer class="page-footer font-small mdb-color lighten-3 pt-4  ">
+<footer class="page-footer font-small mdb-color lighten-3 pt-4 ">
 
     <!-- Footer Links -->
     <div class="container text-center text-md-left blanc">
@@ -34,7 +86,7 @@
         <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1 blanc">
 
           <!-- Contact details -->
-          <h5 class="font-weight-bold text-center mb-4 blanc ">Où NOUS TROUVER</h5>
+          <h5 class="font-weight-bold text-center mb-4 blanc ">OU NOUS TROUVER</h5>
 
           <ul class="list-unstyled">
             <li>
@@ -109,3 +161,5 @@
   </footer>
   <!-- Footer -->
   
+   </body>
+</html>

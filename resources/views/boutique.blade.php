@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Boutique BDE Strasbourg</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Boutique BDE Strasbourg</title>
   
-  <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
-
-
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
-
-
  <!-- Nav bar -->
 
 
@@ -122,14 +117,14 @@
 
        <?php 
 
-       foreach($firsts as $first){
+      foreach ($firsts as $first) {
         echo '<div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
 
-        <img src="'.'http://127.0.0.1:8000/' .$first->image .'"   height="60%/9" width="100%/9" class="" >
+        <img src="' . 'http://127.0.0.1:8000/' . $first->image . '"   height="60%/9" width="100%/9" class="" >
 
         <div class="">
-        <h4 class="card-title">' .$first->name. '</h4> 
+        <h4 class="card-title">' . $first->name . '</h4> 
         <h5> Prix : ' . $first->price . '€</h5>
         <p class="card-text">' . $first->description . '</p>
         <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
@@ -200,14 +195,14 @@
             <div class="row">
               <?php 
 
-              foreach($products as $product){
+              foreach ($products as $product) {
                 echo '<div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-
-                <img src="'.'http://127.0.0.1:8000/' .$product->image .'"   height="60%/9" width="100%/9" class="" >
+                <input type="hidden" class="id" name="id" value="'.$product->id.'">
+                <img src="' . 'http://127.0.0.1:8000/' . $product->image . '"   height="60%/9" width="100%/9" class="" >
 
                 <div class="">
-                <h4 class="card-title">' .$product->name. '</h4> 
+                <h4 class="card-title">' . $product->name . '</h4> 
                 <h5> Prix : ' . $product->price . '€</h5>
                 <p class="card-text">' . $product->description . '</p>
                 <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
@@ -240,8 +235,18 @@
       <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
 
-    </body>
-
-    </html>
+  </body>
+  <script>
+    $(document).ready(()=>{
+      $('addtocart-btn').click(()=>{
+        let send_data = $('input[name=id]');
+        $.post('', send_data, (data, status)=>{
+          console.log(data);
+          console.log(status);
+        });
+      });
+    });
+  </script>  
+</html>
 
 

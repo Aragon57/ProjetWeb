@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Idee extends Model
 {
-               protected $table = 'idea';
+               protected $table = 'event';
 
 }

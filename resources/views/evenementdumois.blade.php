@@ -1,9 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
 
+    <title> BDE STRASBOURG </title>
+	
+    <!-- Bootstrap core CSS -->
+ <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+ <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
+
+ 
+  </head>
+  
+  
+  <body>
+
+    <header>
+	
+	 </header>
+	 
+	 
+	 
 	 
 	 
 		 <!-- FOOTER -->
       <!-- Footer -->
-<footer class="page-footer font-small mdb-color lighten-3 pt-4  ">
+<footer class="page-footer font-small mdb-color lighten-3 pt-4 ">
 
     <!-- Footer Links -->
     <div class="container text-center text-md-left blanc">
@@ -109,3 +136,5 @@
   </footer>
   <!-- Footer -->
   
+   </body>
+</html>
