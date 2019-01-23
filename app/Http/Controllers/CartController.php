@@ -18,4 +18,8 @@
 
             return view('cart' , compact('content','filtered'));
         }
+
+        public function addtocart() {
+            
+        }
     }
