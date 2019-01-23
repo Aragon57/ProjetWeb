@@ -36,7 +36,7 @@ class UsersController extends Controller
             $lowercase = preg_match('@[a-z]@', request()->password);
             $number    = preg_match('@[0-9]@', request()->password);
 
-            if($uppercase && $lowercase && $number && strlen(request()->password) > 8)
+            if($uppercase && $lowercase && $number && strlen(request()->password) > 3)
             {
                 $hash = password_hash(request()->password, PASSWORD_DEFAULT);
                 $rawdata = array(

@@ -107,7 +107,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center links">
-                        Vous n'avez pas encore de compte?<a href="#">Inscrivez-vous</a>
+                        Vous avez déjà un compte?<a href="/connexion">Connectez vous</a>
                     </div>
                     <div class="d-flex justify-content-center">
                     </div>

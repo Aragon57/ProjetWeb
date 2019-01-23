@@ -15,7 +15,7 @@
         <!-- Fonts -->
       
         <!-- Styles -->
-    <body style ="background-color:#1d2124">
+    <body>
         @include('layouts/nav')
      
 

@@ -18,7 +18,7 @@ $dossier = " ..\..\..\public\img\\event\\";
 $fichier = basename($_FILES['userfile']['name']);
 $taille_maxi = 100000;
 $taille = filesize($_FILES['userfile']['tmp_name']);
-$extensions = array('.png', '.gif', '.jpg', '.jpeg');
+$extensions = array('.png', '.gif', '.jpg', '.jpeg','.PNG');
 $extension = strrchr($_FILES['userfile']['name'], '.'); 
 //Début des vérifications de sécurité...
 if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau

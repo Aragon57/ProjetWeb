@@ -77,22 +77,23 @@ $class='btnsearch';
              
 
             
-echo '<input type="checkbox" id="showpopup"/>
-        <label for="showpopup">Cliquer ici pour afficher ou cacher le formulaire</label>
-        <div id="popup">
-            <form method="PUT" action="/idee/'.$idea->id .'" >
-                <input type="date" name="date" placeholder="date"/><br/>
-                <input type="text" name="description" placeholder="Modifier description"/><br/>
+echo '<a href="#" onclick = "toggle(\'foo\');">Cliquer pour basculer l\'état du div suivant</a>
+            <div id="foo"  style="visibility:hidden">
+            <form method="put" action="/idee/'.$idea->id .'"/>
+                <input type="date" name="date">
+                <input type="text" name="description" placeholder="Modifier description"/>
                  <SELECT class="form-control" name="punctuality" size="1">
                                 <OPTION>Récurent 
                                 <OPTION>Ponctuelle
 
                                 </SELECT><br/>
-                <input type="hidden" name="validate" value = "1"/><br/>
+                <input type="hidden" name="validate" value = "1"/>
+                <input type="hidden" name="id_event" value = "'.  $idea->id  . ' "/>
 
-                <input type="submit" name="register" value="Je m\'inscris"/></form><br/>
-            </form>
-        </div>';
+                <input type="submit" name="register" value="Valider l\idée"/></form>
+            </form> 
+            </div> <hr>';
+        
 
     }
 }
@@ -114,7 +115,7 @@ echo '<input type="checkbox" id="showpopup"/>
                         <div class="input-group form-group">
                             <input type="submit" value="Envoyer" class="btnsearch marge">
                         </div>
-                </div>'; 
+                </div> '; 
 
 
 
