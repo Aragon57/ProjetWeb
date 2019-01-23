@@ -39,8 +39,8 @@
       <br>
 
 
-      <div class="col-lg-12 col-md-24 col-sm-36" > 
-        <h4 id="searchtitle" align="left" >Recherchez un article </h4>
+  <div>
+    <h4 id="searchtitle" align="left" >Recherchez un article </h4>
 
         <div class="recherche_p">
           <form class="searchbox" action="/search" method="get">
@@ -48,11 +48,13 @@
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
         </div>
-      </div>
+  </div>
 
 
-      <div class="w3-container">
-  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green w3-large">Ajouter un article</button>
+ <div class="w3-container">
+  <div align="left">
+  <button onclick="document.getElementById('id01').style.display='block'" id="addarticles-btn">Ajouter un article</button>
+  </div>
 
   <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:3000px">
@@ -77,36 +79,32 @@
 
           <label><b>Nombre d'articles en stock</b></label>
           <input class="w3-input w3-border w3-margin-bottom" type="integer" placeholder="" name="stock" required>
-     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+          <input type="hidden" name="MAX_FILE_SIZE" value="100000">
 
 
-          <label><b>Types d'articles</b></label>
-<SELECT class="form-control" name="category" size="1">
-                                <OPTION>Vêtements 
-                                    <OPTION>Goodies
-                                        <OPTION>Accessoires
-                                            
-                                                </SELECT>
+          <label><b>Type de l'article</b></label>
+           <select class="form-control" name="category" size="1">
+             <option>Vêtements 
+             <option>Goodies
+             <option>Accessoires                    
+           </select> <br>
 
-          <label><b>Image</b></label>
-<input type="hidden" name="MAX_FILE_SIZE" value="100000">
-  Envoyez ce fichier : <input name="userfile" type="file" />
-  
-          
-          <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Confirmer</button>
+          <label><b>Ajouter une image ?</b></label><br>
+          <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="MAX_FILE_SIZE" value="100000"> Envoyez ce fichier: <input name="userfile" type="file" />
+          <br><br>
+
+          <button id="ok-btn" type="submit">Confirmer</button>
+
         </div>
       </form>
-
-      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Annuler</button>
-  
-      </div>
 
     </div>
   </div>
 </div>
 
- 
+  
+  
+
       <br> 
       <hr>
 
