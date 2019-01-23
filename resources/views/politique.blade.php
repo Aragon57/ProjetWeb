@@ -30,7 +30,7 @@
 	<br><h1 class="blanc text-center">   Politique de confidentialité :</h1><br><br>
 	<hr color="white">
 	
-<h6 class= "blanc containerpol">  Dans le cadre de son activité les membres du BDE CESI Strasbourg sont amenés à traiter des informations vous concernant.
+<h6 class= "blanc containerr">  Dans le cadre de son activité les membres du BDE CESI Strasbourg sont amenés à traiter des informations vous concernant.
  <br>
  
  Cette Politique de confidentialité vous informe de la manière dont nous recueillons et traitons vos données personnelles.<br> Ainsi nous vous invitons à la lire attentivement.

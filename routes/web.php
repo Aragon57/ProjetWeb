@@ -69,3 +69,6 @@ Route::get('/mentions', function () {
 Route::get('/conditions', function () {
     return view('conditions');
 });
+Route::get('/credits', function () {
+    return view('credits');
+});

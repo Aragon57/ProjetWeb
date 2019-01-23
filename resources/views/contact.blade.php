@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    
    
-    <title> BDE STRASBOURG </title>
+    <title> Contact </title>
 	
     <!-- Bootstrap core CSS -->
  <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
@@ -22,14 +22,12 @@
 <body>
  
   
+<br>
+<br>
 
-    <header>
 	
-	
-
-	 </header>
-	 
-	 
+	<h1 class="blanc text-center"> Contact : </h1>
+	<hr color="white">
 	 
 <div class="container">
 	<div class="box">

@@ -67,7 +67,7 @@
             </li>
             <li>
               <p>
-                <a href="">INSCRIPTION</a>
+                <a href="inscription">INSCRIPTION</a>
               </p>
             </li>
             <li>
@@ -151,7 +151,7 @@
       <a class="blanc" href="politique">Politique de confidentialité |</a>
 	  <a  class="blanc" href="mentions"> Mentions légales |</a>
 	  <a  class="blanc" href="conditions"> Conditions générales de vente |</a>
-	  <a  class="blanc" href="https://mdbootstrap.com/education/bootstrap/"> Crédits |</a>
+	  <a  class="blanc" href="credits"> Crédits |</a>
 	  <a  class="blanc"> CESI 2019  </a>
     </div>
     <!-- Copyright -->

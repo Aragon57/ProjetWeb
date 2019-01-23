@@ -79,17 +79,18 @@ La société CESI BDE Strasbourg dans le processus de vente à distance, n’est
 Tous les éléments du site 000webhost.net sont et restent la propriété intellectuelle et exclusive de la société BDE CESI Strasbourg. Personne n’est autorisé à reproduire, exploiter, ou utiliser à quelque titre que ce soit, même partiellement, des éléments du site qu’ils soient sous forme de photo, logo, visuel ou texte.
 <br><br>
 <b>Article 11. Données à caractère personnel</b><br>
-La société CESI BDE Strasbourg s'engage à préserver la confidentialité des informations fournies par l’acheteur, qu'il serait amené à transmettre pour l'utilisation de certains services. Toute information le concernant est soumise aux dispositions de la loi n° 78-17 du 6 janvier 1978. A ce titre, l'internaute dispose d'un droit d'accès, de modification et de suppression des informations le concernant. Il peut en faire la demande à tout moment par courrier à l’adresse suivante : 2, Allée des foulons, Parc des Tanneries 67380 Lingolsheim.
+La société CESI BDE Strasbourg s'engage à préserver la confidentialité des informations fournies par l’acheteur, qu'il serait amené à transmettre pour l'utilisation de certains services. Toute information le concernant est soumise aux dispositions de la loi n° 78-17 du 6 janvier 1978. A ce titre, l'internaute dispose d'un droit d'accès, de modification et de suppression des informations le concernant. Il peut en faire la demande à tout moment par courrier à l’adresse suivante : <br><b>2, Allée des foulons, Parc des Tanneries 67380 Lingolsheim.</b>
 <br><br>
 <b>Article 12. Règlement des litiges <br></b>
 Les présentes conditions de vente à distance sont soumises à la loi française. Pour tous litiges ou contentieux, le Tribunal compétent sera celui de Strasbourg.
 <br><br><br>
-<b>MERCI.</b>
+
+
+<b>MERCI.</b></center>
 
 	
-	
-	
-	</h6>
+</h6>
+</body>
   
 <!-- Footer -->
 
