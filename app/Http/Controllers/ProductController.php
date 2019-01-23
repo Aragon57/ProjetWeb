@@ -71,6 +71,9 @@ else
 
         return view('boutique' , compact('products','firsts'));
     }
+
+
+
         
     }
 
