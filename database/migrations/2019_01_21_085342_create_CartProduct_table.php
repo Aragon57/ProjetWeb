@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventRegisterTable extends Migration
+class CreateCartProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateEventRegisterTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_register', function (Blueprint $table) {
+        Schema::create('cartproduct', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_user');
-            $table->integer('id_event');
+            $table->integer('id_product');
+            $table->integer('id_command');
+            $table->integer('quantity');
+
+
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateEventRegisterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_register');
+        Schema::dropIfExists('cartproduct');
     }
 }
