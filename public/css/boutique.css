@@ -70,22 +70,18 @@ form.searchbox::after {
 
 
 #searchtitle {
-  padding-left: 9px; 
+  padding-left: 16px; 
   
 }
 
 #filteredproducts {
-  padding-left: 9px; 
+  padding-left: 0px; 
   
 }
 
 form.searchbox input:focus {
  width :40% ;
 }
-
-
-
-
 
 
 
@@ -177,7 +173,7 @@ display: block;
 
 #addarticles-btn {
  
-  width: 15%;
+  width: 13.3%;
   padding: 8px;
   background: #318CE7;
   color: white;
@@ -186,4 +182,13 @@ display: block;
   border-color: #dddddd;
   border-left: none; /* Prevent double borders */
   cursor: pointer;
+}
+
+.tri {
+  /* Style sur les boutons de tri */
+}
+
+
+.active-tri {
+  background-color:#879bb5;
 }
