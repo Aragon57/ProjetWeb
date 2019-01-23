@@ -1,4 +1,3 @@
-<?php session_start() ?>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -7,13 +6,14 @@
 <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
-
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
         <title>Laravel</title>
         <!-- Fonts -->
       
         <!-- Styles -->
     <body style ="background-color:#1d2124">
-        <?php include('C:\Users\nicol\webLaravel\resources\views\nav.blade.php'); ?>
+        @include('layouts/nav')
      
 
 
@@ -27,23 +27,77 @@
                 </div>
                 <div class="col-lg-10 col-md-20 col-sm-30 whitos ">
 
-
 <?php
 
-$ideas = App\Idee::all();
-
 foreach ($ideas as $idea) {
+    $i = 0;
+$class='btnsearch';
+    if($idea->validate == false){
+
     echo '<div>
-            <h1>'. $idea->name_idea .'</h1>
-            <p>'.$idea->desc_idea.'</p>
+            <h1>'. $idea->name .'</h1>
+            <p>'.$idea->description.'</p>
             <hr>';
 
-            
+        if(isset($_SESSION['email'])){
 
-    
+
+                                        foreach ($likes as $like ) {
+                                             if($like->id_event == $idea->id){
+                                                $i=$i+1;
+                                            }
+                                            if($like->id_user == $_SESSION['id'] && $like->id_event == $idea->id){
+                                                                                          $class='btnsearchliked';     
+                                                                                          break; 
+
+                                 }
+                                 else{
+                                                                              $class='btnsearch';      
+
+                                 }
+                             }
+
+                                   echo '   <form method="post" action="/like" > '         .  csrf_field() .'
+
+                                     <input type="hidden" name="id_event" value='. $idea->id .'  >
+                                     <input type="hidden" name="type" value="2" >
+                                     <input type="hidden" name="page" value="/idee"  >
+
+                                    <button type = "submit" class="'. $class. '" type="submit">Vote : '. $i .'</i></i> </button>
+                                    </form>
+                                    ';
+
+                                            
+                                        
+
+                                    
+                                    }
+
+
+             
+
+            
+echo '<input type="checkbox" id="showpopup"/>
+        <label for="showpopup">Cliquer ici pour afficher ou cacher le formulaire</label>
+        <div id="popup">
+            <form method="PUT" action="/idee/'.$idea->id .'" >
+                <input type="date" name="date" placeholder="date"/><br/>
+                <input type="text" name="description" placeholder="Modifier description"/><br/>
+                 <SELECT class="form-control" name="punctuality" size="1">
+                                <OPTION>Récurent 
+                                <OPTION>Ponctuelle
+
+                                </SELECT><br/>
+                <input type="hidden" name="validate" value = "1"/><br/>
+
+                <input type="submit" name="register" value="Je m\'inscris"/></form><br/>
+            </form>
+        </div>';
+
+    }
 }
 ?>
-<?php if(isset($_SESSION['status'])){
+<?php 
     echo    '<form action="/idee" method="post">'.
                             csrf_field() .
 
@@ -54,16 +108,18 @@ foreach ($ideas as $idea) {
                             </div>
                             <div class="input-group form-group">
                                
-                                <input type="text" name="desc" placeholder="Description" require="required" class="form-control descr" >
+                                <input type="text" name="desc" placeholder="Description" require="required" class="form-control topleft descr" >
 
                     
                         <div class="input-group form-group">
                             <input type="submit" value="Envoyer" class="btnsearch marge">
                         </div>
                 </div>'; 
-}else{
 
-}
+
+
+
+
 ?>
                 <div class="col-lg-1 col-md-2 col-sm-3">
                    
@@ -83,4 +139,10 @@ foreach ($ideas as $idea) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        
+       <script src="{{ asset('js/script.js') }}"></script>
+
+
+    
+
 </html>
