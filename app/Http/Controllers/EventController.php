@@ -7,7 +7,7 @@ use App\Users;
 use App\Image;
 use App\Comment;
 
-use App\EventRegister;
+use App\Like;
 
 use Illuminate\Http\Request;
 
@@ -42,12 +42,14 @@ class EventController extends Controller
         $events = Event::all();
         $img = Image::all();
          $comments = Comment::all();
- $eventregisters = EventRegister::all();
+ $subscribes = Like::where('type',3)
+                ->get();
+ $likes = Like::where('type',1)
+                ->get();
 
 
 
-
-    return view('event' , compact('events','img','comments','eventregisters'));
+    return view('event' , compact('events','img','comments','subscribes','likes'));
 
     }
 

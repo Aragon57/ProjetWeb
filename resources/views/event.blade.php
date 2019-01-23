@@ -39,7 +39,11 @@
 
 
                         foreach ($events as $event) {
+                            $mess='S\'inscire';
+                            $heart="fas fa-heart";
+                            $messlike='';
 
+                            $i =-1;
                             if($event->validate == true){
 
 
@@ -55,11 +59,12 @@
 
                                     if(isset($_SESSION['email'])){
 
-                                        $mess="S'enregistrer";
 
-                                        foreach ($eventregisters as $eventregister ) {
-                                            if($eventregister->id_user == $_SESSION['id'] && $eventregister->id_event == $event->id){
-                                                                                          $mess='Se désinscrire';      
+                                        foreach ($subscribes as $subscribe ) {
+
+                                            if($subscribe->id_user == $_SESSION['id'] && $subscribe->id_event == $event->id){
+                                                                                          $mess='Se désinscrire';     
+                                                                                          break; 
 
                                  }
                                  else{
@@ -68,11 +73,12 @@
                                  }
                              }
 
-                                   echo '   <form method="post" action="/eventregister" > '         .  csrf_field() .'
+                                   echo '   <form method="post" action="/like" > '         .  csrf_field() .'
 
                                      <input type="hidden" name="id_event" value='. $event->id .'  >
+                                     <input type="hidden" name="type" value="3" >
+                                     <input type="hidden" name="page" value="/event"  >
 
-                                    
                                     <button type = "submit" class="  " type="submit">' . $mess.'</i></i> </button>
                                     </form>
                                     ';
@@ -101,13 +107,35 @@
 
                                     
 
+
+                                        foreach ($likes as $like ) {
+                                    if($like->id_event == $event->id){
+                                                $i=$i+1;
+                                            }
+                                            if($like->id_user == $_SESSION['id'] && $like->id_event == $event->id){
+                                                                                          $heart="fas fa-heart red";
+                                                                                          if ($i==0){
+                                                                                            $messlike='';
+                                                                                          } else{                                                                                          $messlike ="Vous et " .$i. " personne(s) ont liké";
+}   
+                                                                                          break; 
+
+                                 }
+                                 else{
+                                                                              $heart="fas fa-heart";      
+                                                                            $messlike='';
+                                 }
+                             }
+
+
                                     echo '</div>                               
                                     <form method="post" action="/like" > '         .  csrf_field() .'
-
+                                    <input type="hidden" name="page" value="/event"  >
+                                    <input type="hidden" name="type" value=1 >
                                      <input type="hidden" name="id_event" value='. $event->id .'  >
 
                                     
-                                    <button type = "submit" class=" like btn  " type="submit"><i class="fas fa-heart"></i></i> </button>
+                                    <button type = "submit" class=" like btn  " type="submit"><i class="'. $heart.'">' . $messlike. '</i></i> </button>
                                     </form>
                                     ';
                                 
@@ -119,7 +147,7 @@
                                     <form method="post" action="/image" enctype= "multipart/form-data"> '.  csrf_field() .
 
 
-                                    '<input type="file" name="fichier" required><br>
+                                    '<input type="file" name="userfile" required><br>
 
                                     <input type="hidden" name="id_event" value='. $event->id .'  ><input type="submit" value="OK">
 
@@ -206,7 +234,7 @@
                                     <form method="post" action="/image" enctype= "multipart/form-data"> '.  csrf_field() .
 
 
-                                    '<input type="file" name="fichier" required><br>
+                                    '<input type="file" name="userfile" required><br>
 
                                     <input type="hidden" name="id_event" value='. $event->id .'  >
 

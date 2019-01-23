@@ -7,6 +7,7 @@ session_start();
 
 use App\Event;
 use App\EventRegister;
+use App\Like;
 
 use Illuminate\Http\Request;
 
@@ -31,9 +32,10 @@ class IdeeController extends Controller
  $eventregisters = EventRegister::all();
         $ideas = Event::where('validate',false) 
                 ->get();
+        $likes= Like::where('type',2)
+                ->get();
 
-
-    return view('idee' , compact('ideas','eventregisters'));
+    return view('idee' , compact('ideas','eventregisters','likes'));
 
     
 

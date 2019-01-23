@@ -30,7 +30,8 @@
 <?php
 
 foreach ($ideas as $idea) {
-
+    $i = 0;
+$class='btnsearch';
     if($idea->validate == false){
 
     echo '<div>
@@ -38,24 +39,41 @@ foreach ($ideas as $idea) {
             <p>'.$idea->description.'</p>
             <hr>';
 
-            foreach ($eventregisters as $eventregister) {
-                                            if($eventregister->id_user == $_SESSION['id'] && $eventregister->id_event == $idea->id){
-                                                    $class= 'btn btnsearchliked';                                            
+        if(isset($_SESSION['email'])){
+
+
+                                        foreach ($likes as $like ) {
+                                             if($like->id_event == $idea->id){
+                                                $i=$i+1;
+                                            }
+                                            if($like->id_user == $_SESSION['id'] && $like->id_event == $idea->id){
+                                                                                          $class='btnsearchliked';     
+                                                                                          break; 
 
                                  }
                                  else{
-                                                                                    
-                                            $class= 'btn btnsearch';
+                                                                              $class='btnsearch';      
+
                                  }
-                             echo '   <form method="post" action="/eventregister" > '         .  csrf_field() .'
+                             }
 
-                                    <input type="hidden" name="id_event" value='. $idea->id .'  >
+                                   echo '   <form method="post" action="/like" > '         .  csrf_field() .'
 
-                                    
-                                    <button type = "submit" class="' . $class  . '" type="submit">' . 'Vote : </i></i> </button>
+                                     <input type="hidden" name="id_event" value='. $idea->id .'  >
+                                     <input type="hidden" name="type" value="2" >
+                                     <input type="hidden" name="page" value="/idee"  >
+
+                                    <button type = "submit" class="'. $class. '" type="submit">Vote : '. $i .'</i></i> </button>
                                     </form>
                                     ';
-            }
+
+                                            
+                                        
+
+                                    
+                                    }
+
+
              
 
             
