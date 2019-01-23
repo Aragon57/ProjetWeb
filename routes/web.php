@@ -88,4 +88,16 @@ Route::delete('product/{id}/delete', 'ProductController@delete');
 
 Route::post('/tocart', 'CommandController@addarticle');
 
+Route::get('/politique', function () {
+    return view('politique');
+});
+Route::get('/mentions', function () {
+    return view('mentions');
+});
+Route::get('/conditions', function () {
+    return view('conditions');
+});
+Route::get('/credits', function () {
+    return view('credits');
+});
 
