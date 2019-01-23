@@ -6,6 +6,9 @@ namespace App\Http\Controllers;
 session_start();
 
 use App\Event;
+use App\EventRegister;
+use App\Like;
+
 use Illuminate\Http\Request;
 
 class IdeeController extends Controller
@@ -26,11 +29,13 @@ class IdeeController extends Controller
     public function display(){
 
 
+ $eventregisters = EventRegister::all();
+        $ideas = Event::where('validate',false) 
+                ->get();
+        $likes= Like::where('type',2)
+                ->get();
 
-        $ideas = Event::all();
-
-
-    return view('idee' , compact('ideas'));
+    return view('idee' , compact('ideas','eventregisters','likes'));
 
     
 

@@ -1,20 +1,16 @@
 <?php
+
 namespace App\Http\Controllers;
 
-session_start();
-
-use App\Image;
+use App\Product;
 use Illuminate\Http\Request;
 
-class ImageController extends Controller
+class ProductController extends Controller
 {
 
 
-    public function store(Request $request)
-    {
-
-
-$dossier = " ..\..\..\public\img\\event\\";
+	 public function addarticle(Request $request){
+$dossier = 'C:\Users\fakep\projetwebcesi\public\img\boutique\\';
 $fichier = basename($_FILES['userfile']['name']);
 $taille_maxi = 100000;
 $taille = filesize($_FILES['userfile']['tmp_name']);
@@ -39,14 +35,17 @@ if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
      if(move_uploaded_file($_FILES['userfile']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
      {
           echo 'Upload effectué avec succès !';
-         $image = new Image();
-        $image->image = '/img/event/'.$_FILES['userfile']['name'];
-        $image->id_event = $request->id_event;
+           $article = new Product();
+        $article->name = $request->name;
+        $article->description = $request->description;
+        $article->price = $request->price;
+        $article->stock = $request->stock;
+        $article->nbsell = 0;
+        $article->image ='img/boutique/'.$_FILES['userfile']['name'];
+        $article->category = $request->category;
+        $article->save();
 
-        $image->id_user = 1;
-        $image->save();
-    return redirect('/');   
-
+    return redirect('/boutique'); 
      }
      else //Sinon (la fonction renvoie FALSE).
      {
@@ -54,9 +53,28 @@ if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
      }
 }
 else
+    
 {
      echo $erreur;
 }
 
-}
-}
+          }
+
+    
+    public function display() {
+        $products = Product::all();
+
+
+        $threefirst = Product::paginate(3);
+
+        $firsts = Product::orderBy('nbsell','DESC')->paginate(3);
+
+        return view('boutique' , compact('products','firsts'));
+    }
+
+
+
+        
+    }
+
+

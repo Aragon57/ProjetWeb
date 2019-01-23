@@ -6,13 +6,14 @@
 <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
-
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
         <title>Laravel</title>
         <!-- Fonts -->
       
         <!-- Styles -->
     <body style ="background-color:#1d2124">
-        <?php include('C:\Users\nicol\webLaravel\resources\views\nav.blade.php'); ?>
+        @include('layouts/nav')
      
 
 
@@ -28,15 +29,52 @@
 
 <?php
 
-
 foreach ($ideas as $idea) {
-
+    $i = 0;
+$class='btnsearch';
     if($idea->validate == false){
 
     echo '<div>
             <h1>'. $idea->name .'</h1>
             <p>'.$idea->description.'</p>
             <hr>';
+
+        if(isset($_SESSION['email'])){
+
+
+                                        foreach ($likes as $like ) {
+                                             if($like->id_event == $idea->id){
+                                                $i=$i+1;
+                                            }
+                                            if($like->id_user == $_SESSION['id'] && $like->id_event == $idea->id){
+                                                                                          $class='btnsearchliked';     
+                                                                                          break; 
+
+                                 }
+                                 else{
+                                                                              $class='btnsearch';      
+
+                                 }
+                             }
+
+                                   echo '   <form method="post" action="/like" > '         .  csrf_field() .'
+
+                                     <input type="hidden" name="id_event" value='. $idea->id .'  >
+                                     <input type="hidden" name="type" value="2" >
+                                     <input type="hidden" name="page" value="/idee"  >
+
+                                    <button type = "submit" class="'. $class. '" type="submit">Vote : '. $i .'</i></i> </button>
+                                    </form>
+                                    ';
+
+                                            
+                                        
+
+                                    
+                                    }
+
+
+             
 
             
 echo '<input type="checkbox" id="showpopup"/>
@@ -59,7 +97,7 @@ echo '<input type="checkbox" id="showpopup"/>
     }
 }
 ?>
-<?php if(isset($_SESSION['status'])){
+<?php 
     echo    '<form action="/idee" method="post">'.
                             csrf_field() .
 
@@ -77,9 +115,7 @@ echo '<input type="checkbox" id="showpopup"/>
                             <input type="submit" value="Envoyer" class="btnsearch marge">
                         </div>
                 </div>'; 
-}else{
 
-}
 
 
 

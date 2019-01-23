@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,6 +26,7 @@
 
 <!-- Footer -->
 <footer class="page-footer blanc ">
+
 
 
     <!-- Footer Links -->
@@ -157,4 +159,6 @@
     <!-- Copyright -->
 
   </footer>
+
   <!-- Footer -->
+
