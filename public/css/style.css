@@ -18,6 +18,16 @@
   color: red;
 }
 
+
+ body{
+  background-color: #1d2124;
+
+}
+
+
+.whitos{
+  background-color: white;
+}
 #grayBack 
 {
      position: fixed;
