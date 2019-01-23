@@ -46,7 +46,7 @@
 
         public function addarticle(Request $request) {
 
-            $id_command = self::findcommand($request);
+            /*$id_command = self::findcommand($request);
             if(!$id_command)
             {
                 $id = self::createcommand($request);
@@ -60,6 +60,6 @@
 
             $article->save();
 
-            return response(true, 200);
+            return response(true, 200);*/
         }
     }
