@@ -74,10 +74,6 @@ else
 
 
 
-   public function delete($id){
-   Post::destroy($id);
-   return redirect()->action('PostController@index');
-}
         
     }
 
