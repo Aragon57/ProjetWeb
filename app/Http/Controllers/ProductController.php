@@ -9,10 +9,7 @@ class ProductController extends Controller
 {
 
 
-	 public function addarticle(Request $request)
-    {
-
-
+	 public function addarticle(Request $request){
 $dossier = 'C:\Users\fakep\projetwebcesi\public\img\boutique\\';
 $fichier = basename($_FILES['userfile']['name']);
 $taille_maxi = 100000;
@@ -56,13 +53,13 @@ if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
      }
 }
 else
+    
 {
      echo $erreur;
 }
 
-
-
           }
+
     
     public function display() {
         $products = Product::all();

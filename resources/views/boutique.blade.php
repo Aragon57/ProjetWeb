@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Boutique BDE Strasbourg</title>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Boutique BDE Strasbourg</title>
+
+  <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
   
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
+
+
 </head>
 
 <body>
+
+
  <!-- Nav bar -->
+
+ @include('layouts/nav')
 
 
  <!-- Premier container-->
@@ -34,8 +44,8 @@
       <br>
 
 
-      <div class="col-lg-12 col-md-24 col-sm-36" > 
-        <h4 id="searchtitle" align="left" >Recherchez un article </h4>
+  <div>
+    <h4 id="searchtitle" align="left" >Recherchez un article </h4>
 
         <div class="recherche_p">
           <form class="searchbox" action="/search" method="get">
@@ -43,11 +53,15 @@
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
         </div>
-      </div>
+  </div>
 
 
-      <div class="w3-container">
-  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green w3-large">Ajouter un article</button>
+<!-- Ajouter un article -->
+
+ <div class="w3-container">
+  <div align="left">
+  <button onclick="document.getElementById('id01').style.display='block'" id="addarticles-btn">Ajouter un article</button>
+  </div>
 
   <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:3000px">
@@ -72,36 +86,29 @@
 
           <label><b>Nombre d'articles en stock</b></label>
           <input class="w3-input w3-border w3-margin-bottom" type="integer" placeholder="" name="stock" required>
-     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+          <input type="hidden" name="MAX_FILE_SIZE" value="100000">
 
 
-          <label><b>Types d'articles</b></label>
-<SELECT class="form-control" name="category" size="1">
-                                <OPTION>Vêtements 
-                                    <OPTION>Goodies
-                                        <OPTION>Accessoires
-                                            
-                                                </SELECT>
+          <label><b>Type de l'article</b></label>
+           <select class="form-control" name="category" size="1">
+             <option>Vêtements 
+             <option>Goodies
+             <option>Accessoires                    
+           </select> <br>
 
-          <label><b>Image</b></label>
-<input type="hidden" name="MAX_FILE_SIZE" value="100000">
-  Envoyez ce fichier : <input name="userfile" type="file" />
-  
-          
-          <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Confirmer</button>
+          <label><b>Ajouter une image ?</b></label><br>
+          <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="MAX_FILE_SIZE" value="100000"> Envoyez ce fichier: <input name="userfile" type="file" />
+          <br><br>
+
+          <button id="ok-btn" type="submit">Confirmer</button>
+
         </div>
       </form>
-
-      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Annuler</button>
-  
-      </div>
 
     </div>
   </div>
 </div>
 
- 
       <br> 
       <hr>
 
@@ -119,14 +126,14 @@
 
        <?php 
 
-      foreach ($firsts as $first) {
+       foreach($firsts as $first){
         echo '<div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
 
-        <img src="' . 'http://127.0.0.1:8000/' . $first->image . '"   height="60%/9" width="100%/9" class="" >
+        <img src="'.'http://127.0.0.1:8000/' .$first->image .'"   height="60%/9" width="100%/9" class="" >
 
         <div class="">
-        <h4 class="card-title">' . $first->name . '</h4> 
+        <h4 class="card-title">' .$first->name. '</h4> 
         <h5> Prix : ' . $first->price . '€</h5>
         <p class="card-text">' . $first->description . '</p>
         <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
@@ -175,36 +182,52 @@
       <div class="recherche_p">
         <div id="filteredproducts" align="left">
 
-         <ul class="dropdownmenu">
-          
-          <li><a href="">Prix</a>
-            <li><a href="#">Nom</a>
-              <li><a href="#">Vêtements</a>
-                <li><a href="#">Accessoires</a>
-                  <li><a href="#">Goodies</a>
-                  </ul>
+        <ul class="dropdownmenu">
+            <li><button class="btn btn-light tri"> Prix </button></li>
+            <li><button class="btn btn-light tri" value="1"> Vêtements </button></li>
+            <li ><button class="btn btn-light tri" value="2"> Accessoires </button></li>
+            <li><button class="btn btn-light tri" value="3"> Goodies </button></li>
+        </ul >
+
                 </div>
               </div>
             </div>
 
-            <br>
+            <br> 
 
 
-            <!--------------->
+       <!--------------->
 
-            <br>
+       <!------All articles--------->
+
 
             <div class="row">
+
               <?php 
 
-              foreach ($products as $product) {
-                echo '<div class="col-lg-4 col-md-6 mb-4">
+              foreach($products as $product){
+
+                
+
+                $cate = $product['category'];
+
+     $caract_interdit = array( 
+                'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+                'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
+                'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
+                'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
+                'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', ' '=>'' );
+
+                $cate = strtr( $cate, $caract_interdit );
+                $cate = strtolower($cate);
+
+                echo '<div class= "col-lg-4 col-md-6 mb-4 article '. $cate.'">
                 <div class="card h-100">
-                <input type="hidden" class="id" name="id" value="'.$product->id.'">
-                <img src="' . 'http://127.0.0.1:8000/' . $product->image . '"   height="60%/9" width="100%/9" class="" >
+
+                <img src="'.'http://127.0.0.1:8000/' .$product->image .'"   height="60%/9" width="100%/9" class="" >
 
                 <div class="">
-                <h4 class="card-title">' . $product->name . '</h4> 
+                <h4 class="card-title">' .$product->name. '</h4> 
                 <h5> Prix : ' . $product->price . '€</h5>
                 <p class="card-text">' . $product->description . '</p>
                 <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
@@ -212,12 +235,12 @@
                 </div>
 
                 </div>
-                </div>
-                ';
+                </div>';
               }
+             
               ?>
 
-
+            
             </div>
           </div>
 
@@ -231,24 +254,14 @@
         </div>
       </div>
 
-
-      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
       <script src="{{ asset('js/jquery.min.js') }}"></script>
+      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
       <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ asset('/js/boutique.js') }}"></script>
 
 
-  </body>
-  <script>
-    $(document).ready(()=>{
-      $('addtocart-btn').click(()=>{
-        let send_data = $('input[name=id]');
-        $.post('', send_data, (data, status)=>{
-          console.log(data);
-          console.log(status);
-        });
-      });
-    });
-  </script>  
-</html>
+    </body>
+
+    </html>
 
 
