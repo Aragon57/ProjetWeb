@@ -11,7 +11,6 @@
 
   <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
   <link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
   <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
@@ -25,7 +24,7 @@
 
  <!-- Nav bar -->
 
- @include('layouts/nav')
+
 
 
  <!-- Premier container-->
@@ -138,6 +137,8 @@
         <p class="card-text">' . $first->description . '</p>
         <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
 
+
+
         </div>
 
         </div>
@@ -146,6 +147,7 @@
       }
 
       ?>
+
 
     </div>
   </div>
@@ -165,7 +167,7 @@
   <div class="col-lg-1 col-md-2 col-sm-3 bg-dark">
   </div>
 
-  <div class="col-lg-10 col-md-20 col-sm-30">
+  <div class="col-lg-10 col-md-20 col-sm-30 ">
     <div clas="container-fluid text-left">
       <hr>
       <h4> Tous nos produits </h4>
@@ -245,7 +247,7 @@
           </div>
 
 
-          <div class="col-lg-1 col-md-2 col-sm-3 bg-dark">
+          <div class="col-lg-1 col-md-2 col-sm-3 bg-dark ">
           </div>
 
 

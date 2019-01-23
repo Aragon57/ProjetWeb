@@ -71,6 +71,13 @@ else
 
         return view('boutique' , compact('products','firsts'));
     }
+
+
+
+   public function delete($id){
+   Post::destroy($id);
+   return redirect()->action('PostController@index');
+}
         
     }
 
