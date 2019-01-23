@@ -6,6 +6,7 @@ use App\Event;
 use App\Users;
 use App\Image;
 use App\Comment;
+use App\commentImage;
 
 use App\Like;
 
@@ -48,9 +49,10 @@ class EventController extends Controller
                 ->get();
  $likepics = Like::where('type',4)
                 ->get();
+         $commentImages = commentImage::all();
 
 
-    return view('event' , compact('events','img','comments','subscribes','likes','likepics'));
+    return view('event' , compact('events','img','comments','subscribes','likes','likepics','commentImages'));
 
     }
 

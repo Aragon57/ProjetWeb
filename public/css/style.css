@@ -78,6 +78,11 @@ color : red;
 }
 
 
+body{
+  background-color: #1d2124;
+
+}
+
 #customPopup 
 {
      display: none;
@@ -259,6 +264,10 @@ margin-right: 5px;
 
 .card-footer{
   height:100px;
+}
+
+.jour{
+  text-align : center;
 }
 
 .login_btn{

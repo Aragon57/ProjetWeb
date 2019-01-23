@@ -29,23 +29,24 @@ class IdeeController extends Controller
     public function display(){
 
 
- $eventregisters = EventRegister::all();
         $ideas = Event::where('validate',false) 
                 ->get();
         $likes= Like::where('type',2)
                 ->get();
 
-    return view('idee' , compact('ideas','eventregisters','likes'));
+    return view('idee' , compact('ideas','likes'));
 
     
 
 }
 
 
-	  public function change(Request $request,$id)
+    public function update(Request $request, $id)
     {
-        $posts = Event::findOrFail($id);
+      $posts = Post::findOrFail($id);
         $posts->update($request->all());
 
-}
+        return $posts;
+    }
+
 }

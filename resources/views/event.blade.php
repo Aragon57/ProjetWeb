@@ -12,7 +12,7 @@
     <!-- Fonts -->
 
     <!-- Styles -->
-    <body style ="background-color:#1d2124">
+    <body >
         @include('layouts/nav')
 
 
@@ -35,7 +35,7 @@
 
 
 
-                        echo ' <h1 align="center">Evenements du jour </h1>';
+                        echo ' <h1 class="jour">Evenements du jour </h1>';
 
 
                         foreach ($events as $event) {
@@ -52,7 +52,7 @@
                                     echo '<div class="boite">
                                     <h1>Evénement : '. $event->name .'</h1>
                                     <hr>
-                                    <h6>Date de l\'événement : '. $event->date .  '&nbsp &nbsp &nbsp &nbsp' . 'Prix : ' . $event->price .'€</h6>
+                                    <h6>Date de l\'événement : '. $event->date .  '&nbsp;&nbsp;&nbsp;&nbsp; ' . 'Prix : ' . $event->price .'€</h6>
 
                                     <p>Description : '.$event->description.'</p>
                                     ';
@@ -79,7 +79,7 @@
                                       <input type="hidden" name="type" value="3" >
                                       <input type="hidden" name="page" value="/event"  >
 
-                                      <button type = "submit" class="  " type="submit">' . $mess.'</i></i> </button>
+                                      <button type ="submit" class="" >' . $mess.' </button>
                                       </form>
                                       ';
 
@@ -100,7 +100,7 @@
 
                                     if($image['id_event']==$event['id']){
 
-                                        echo ' <div class="col-lg-5 col-md-10 sm-15"><img src="'.'http://127.0.0.1:8000' .$image['image'] .'" class="" ></div>';
+                                        echo ' <div class="col-lg-5 col-md-10 sm-15"><img src="'.'http://127.0.0.1:8000' .$image['image'] .' alt="Probleme chargement" class="" ></div>';
                                     }
                                 }
 
@@ -135,7 +135,7 @@
                       <input type="hidden" name="id_event" value='. $event->id .'  >
 
 
-                      <button type = "submit" class=" like btn  " type="submit"><i class="'. $heart.'">' . $messlike. '</i></i> </button>
+                      <button type = "submit" class=" like bt "><i class="'. $heart.'">' . $messlike. '</i> </button>
                       </form>
                       ';
 
@@ -178,11 +178,9 @@
 
                        '<div class="input-group form-group">
 
-                       <input type="text" id="comment" name="comment" placeholder="Commentaire" class="form-control marge" required>
-                       <input id="id_event" name="id_event" type="hidden" value="'.$event->id .'" required>
-                       <input id="id_user" name="id_user" type="hidden" value="'.$_SESSION['id'].'" required>
-
-
+                       <input type="text"  name="comment" placeholder="Commentaire" class="form-control marge" required>
+                       <input name="id_event" type="hidden" value="'.$event->id .'">
+                       <input name="id_user" type="hidden" value="'.$_SESSION['id'].'">
                        <input type="submit" value="Envoyer" class="btnsearch marge">
                        </div>
                        </form>
@@ -197,7 +195,7 @@
            }
        }
 
-       echo '<h1 align="center">Evenements à venir </h1>';
+       echo '<h1 class="jour">Evenements à venir </h1>';
 
 
 
@@ -217,7 +215,7 @@
                                     echo '<div class="boite">
                                     <h1>Evénement : '. $event->name .'</h1>
                                     <hr>
-                                    <h6>Date de l\'événement : '. $event->date .  '&nbsp &nbsp &nbsp &nbsp' . 'Prix : ' . $event->price .'€</h6>
+                                    <h6>Date de l\'événement : '. $event->date .  '&nbsp;&nbsp;&nbsp;&nbsp; ' . 'Prix : ' . $event->price .'€</h6>
 
                                     <p>Description : '.$event->description.'</p>
                                     ';
@@ -244,7 +242,7 @@
                                       <input type="hidden" name="type" value="3" >
                                       <input type="hidden" name="page" value="/event"  >
 
-                                      <button type = "submit" class="  " type="submit">' . $mess.'</i></i> </button>
+                                      <button type = "submit" class="  ">' . $mess.' </button>
                                       </form>
                                       ';
 
@@ -265,7 +263,7 @@
 
                                     if($image['id_event']==$event['id']){
 
-                                        echo ' <div class="col-lg-5 col-md-10 sm-15"><img src="'.'http://127.0.0.1:8000' .$image['image'] .'" class="" ></div>';
+                                        echo ' <div class="col-lg-5 col-md-10 sm-15"><img src="'.'http://127.0.0.1:8000' .$image['image'] .'" class="" alt="Probleme chargement"></div>';
                                     }
                                 }
 
@@ -343,9 +341,9 @@
 
                        '<div class="input-group form-group">
 
-                       <input type="text" id="comment" name="comment" placeholder="Commentaire" class="form-control marge" required>
-                       <input id="id_event" name="id_event" type="hidden" value="'.$event->id .'" required>
-                       <input id="id_user" name="id_user" type="hidden" value="'.$_SESSION['id'].'" required>
+                       <input type="text" name="comment" placeholder="Commentaire" class="form-control marge" required>
+                       <input name="id_event" type="hidden" value="'.$event->id .'" >
+                       <input name="id_user" type="hidden" value="'.$_SESSION['id'].'" >
                        
 
                        <input type="submit" value="Envoyer" class="btnsearch marge">
@@ -364,7 +362,7 @@
 
 
 
-  echo  '<h1 align="center"> Evenements passés </h1>';
+  echo  '<h1 class="jour"> Evenements passés </h1>';
 
 
 
@@ -374,41 +372,46 @@
                             $heart="fas fa-heart";
                             $messlike='';
 
-                            $i =-1;
+                            $i =-1; 
+
+
+
+
                             if($event->validate == true){
 
 
                                 if($event->date < date("Y-m-d")){
 
+
+
+
                                     echo '<div class="boite">
                                     <h1>Evénement : '. $event->name .'</h1>
                                     <hr>
-                                    <h6>Date de l\'événement : '. $event->date .  '&nbsp &nbsp &nbsp &nbsp' . 'Prix : ' . $event->price .'€</h6>
+                                    <h6>Date de l\'événement : '. $event->date .  '&nbsp;&nbsp;&nbsp;&nbsp;  ' . 'Prix : ' . $event->price .'€</h6>
 
                                     <p>Description : '.$event->description.'</p>
                                     ';
 
                                   ;
-                                  echo '<div class="row">';
+                                  echo ' <hr> <h5> Photos de l\'événement : </h5> <div class="row ">
+                                  ';
 
                                   foreach($img as $image){
 
-
+                                    $i=-1;
                                     if($image['id_event']==$event['id']){
 
-                                        echo ' <div class="col-lg-5 col-md-10 sm-15"><img src="'.'http://127.0.0.1:8000' .$image['image'] .'" class="" ></div>';
-                                    }
-                                }
+                                        echo ' <div class="col-lg-4 col-md-8 sm-12 text-center"><img src="'.'http://127.0.0.1:8000' .$image['image'] .'" alt="Probleme chargement"
 
+                                        class="" >';
+                                    
 
-                                
-
-
-                                foreach ($likes as $like ) {
-                                    if($like->id_event == $event->id){
+                                foreach ($likepics as $likepic ) {
+                                    if($likepic->id_event == $image->id){
                                         $i=$i+1;
                                     }
-                                    if($like->id_user == $_SESSION['id'] && $like->id_event == $event->id){
+                                    if($likepic->id_user == $_SESSION['id'] && $likepic->id_event == $image->id){
                                       $heart="fas fa-heart red";
                                       if ($i==0){
                                         $messlike='';
@@ -423,22 +426,71 @@
                           }
                       }
 
+                      foreach($commentImages as $commentImage){
 
-                      echo '</div>                               
+                         if($commentImage->id_image == $image->id)
+
+
+                            echo '<p>'. $commentImage->content .'</p> <hr>';
+
+
+
+                      }
+                         echo '                           
+                      
                       <form method="post" action="/like" > '         .  csrf_field() .'
                       <input type="hidden" name="page" value="/event"  >
-                      <input type="hidden" name="type" value=1 >
-                      <input type="hidden" name="id_event" value='. $event->id .'  >
+                      <input type="hidden" name="type" value=4 >
+                      <input type="hidden" name="id_event" value='. $image->id .'  >
 
                       
-                      <button type = "submit" class=" like btn  " type="submit"><i class="'. $heart.'">' . $messlike. '</i></i> </button>
+                      <button type = "submit" class=" like btn  " ><i class="'. $heart.'">' . $messlike. '</i> </button>
                       </form>
+                      
                       ';
+
+
+
+
+ if(isset($_SESSION['email'])){
+
+                       echo    '<form action="/commentImage" method="post">'.
+                       csrf_field() . '
+
+                     
+
+                       <input type="text"  name="comment" placeholder="Commentaire" class="" required>
+                       <input name="id_image" type="hidden" value="'.$image->id .'" >
+                       <input name="id_user" type="hidden" value="'.$_SESSION['id'].'" >
+                       
+
+                       <input type="submit" value="Envoyer" class="btnsearch marge">
+                   
+                       </form>
+                       </div>
+                       ';
+
+
+                   }
+
+                                    }
+
+
+                                }
+
+
+                            
+
+                      echo '</div>';                               
+                      
                       
 
+                      foreach ($subscribes as $subscribe) {
+                          if(($subscribe->id_user == $_SESSION['id'] && $subscribe->id_event == $event->id )){
 
+                                echo '<hr><h5> Vous avez participé à cet event !! </h5>
+                                   <h5> Ajout de photos : </h5>
 
-                      echo '
 
                       <form method="post" action="/image" enctype= "multipart/form-data"> '.  csrf_field() .
 
@@ -450,8 +502,14 @@
                       
                       </form>
                       
-                      <hr>
-                      <h6> <b> Commentaires :  </b></h6> <hr>';
+                      <hr>';
+
+                          }
+                      }
+
+
+                   
+                      echo '<h6> <b> Commentaires :  </b></h6> <hr>';
 
 
                       foreach($comments as $comment){
@@ -474,9 +532,9 @@
 
                        '<div class="input-group form-group">
 
-                       <input type="text" id="comment" name="comment" placeholder="Commentaire" class="form-control marge" required>
-                       <input id="id_event" name="id_event" type="hidden" value="'.$event->id .'" required>
-                       <input id="id_user" name="id_user" type="hidden" value="'.$_SESSION['id'].'" required>
+                       <input type="text" name="comment" placeholder="Commentaire" class="form-control marge" required>
+                       <input name="id_event" type="hidden" value="'.$event->id .'" >
+                       <input name="id_user" type="hidden" value="'.$_SESSION['id'].'" >
                        
 
                        <input type="submit" value="Envoyer" class="btnsearch marge">
@@ -494,6 +552,7 @@
        }
 
 ?>
+
 
 <?php 
 
@@ -510,17 +569,17 @@ if(isset($_SESSION['email'])){
     </div>
     <div class="input-group form-group">
 
-    <input type="date" name="date_manif" placeholder="Date"  class="form-control marge" required>
+    <input type="date" name="date_manif"   class="form-control marge" required>
 
     </div>
     <div class="input-group form-group">
 
-    <input type="float" name="price_manif" placeholder="Prix"  class="form-control marge" required>
+    <input type="number" step="0.01" name="price_manif" placeholder="Prix"  class="form-control marge" required>
 
     </div>
     <div class="input-group form-group">
 
-    <SELECT class="form-control" name="punctuality" size="1" required>
+    <SELECT class="form-control" name="punctuality" size="1">
     <OPTION>Récurent 
     <OPTION>Ponctuelle
 
@@ -529,12 +588,12 @@ if(isset($_SESSION['email'])){
     <div class="input-group form-group">
 
     <input type="text" name="desc_manif" placeholder="Description"  class="form-control descr" required>
-
+    </div>
 
     <div class="input-group form-group">
     <input type="submit" value="Envoyer" class="btnsearch marge">
     </div>
-    </div>'; 
+    </form>'; 
 }else{
 
 }
@@ -545,6 +604,7 @@ if(isset($_SESSION['email'])){
 
 </div>
 
+</div>
 
 
 
@@ -552,10 +612,11 @@ if(isset($_SESSION['email'])){
 </div>
 </div>
 
-
-</body>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+</body>
+
 </html>
