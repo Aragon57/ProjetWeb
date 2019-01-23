@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/boutique', function () {
+Route::get('/boutique', 'ProductController@display' ,function () {
     return view('boutique');
 });
 
@@ -30,6 +32,10 @@ Route::get('/idee',  'IdeeController@display',  function () {
 
 Route::get('/inscription', function () {
     return view('inscription');
+});
+
+Route::get('/cart', function () {
+    return view('cart');
 });
 
 
@@ -55,6 +61,7 @@ Route::post('/idee', 'IdeeController@store');
 Route::put('/idee/{id}', 'IdeeController@change');
 Route::post('/event', 'EventController@store');
 
+
 Route::post('/eventregister', 'EventRegisterController@store');
 
 
@@ -71,3 +78,8 @@ Route::get('/evenementdumois', function () {
 });
 
 Route::get('/islogged', 'UsersController@isLogged');
+
+Route::get('/fetchcart', 'CartController@cart');
+
+Route::post('/article', 'ProductController@addarticle');
+
