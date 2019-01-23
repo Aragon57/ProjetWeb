@@ -83,3 +83,5 @@ Route::get('/fetchcart', 'CartController@cart');
 
 Route::post('/article', 'ProductController@addarticle');
 
+Route::post('/tocart', 'CommandController@addarticle');
+

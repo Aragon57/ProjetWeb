@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -215,6 +216,7 @@
                 </div>
                 ';
               }
+              @csrf
               ?>
 
 
@@ -238,14 +240,31 @@
 
 
   </body>
+  <?php $_SESSION['id'] = 333; ?>
   <script>
     $(document).ready(()=>{
-      $('addtocart-btn').click(()=>{
-        let send_data = $('input[name=id]');
-        $.post('', send_data, (data, status)=>{
-          console.log(data);
-          console.log(status);
-        });
+      $('.addtocart-btn').click(()=>{
+          console.log("here");
+          var form = {
+            'id_user' : "<?php echo $_SESSION['id']?>",
+            'id_product' : $('input[name=id]').val(),
+            'id_command' : 0,
+            'quantity' : 1
+          }
+
+          $.ajax({
+            type : 'POST',
+            url : '/tocart',
+            data : form,
+            dataType : 'text',
+            encode : true,
+            success : (data) => {
+              console.log(data);
+            },
+            error : (data) => {
+              console.log(data);
+            }
+          });
       });
     });
   </script>  
