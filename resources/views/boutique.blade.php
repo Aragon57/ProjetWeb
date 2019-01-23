@@ -11,6 +11,7 @@
 
   <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
   <link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
   <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
@@ -23,6 +24,8 @@
 
 
  <!-- Nav bar -->
+
+ @include('layouts/nav')
 
 
  <!-- Premier container-->
@@ -52,6 +55,8 @@
         </div>
   </div>
 
+
+<!-- Ajouter un article -->
 
  <div class="w3-container">
   <div align="left">
@@ -103,9 +108,6 @@
     </div>
   </div>
 </div>
-
-  
-  
 
       <br> 
       <hr>
@@ -181,28 +183,31 @@
         <div id="filteredproducts" align="left">
 
         <ul class="dropdownmenu">
-            <li><button class="btn btn-light tri" data="materielinformatique"> Prix </button></li>
-            <li><button class="btn btn-light tri" data="1"> Vêtements </button></li>
-            <li ><button class="btn btn-light tri" data="2"> Accessoires </button></li>
-            <li><button class="btn btn-light tri" data="3"> Goodies </button></li>
+            <li><button class="btn btn-light tri"> Prix </button></li>
+            <li><button class="btn btn-light tri" value="1"> Vêtements </button></li>
+            <li ><button class="btn btn-light tri" value="2"> Accessoires </button></li>
+            <li><button class="btn btn-light tri" value="3"> Goodies </button></li>
         </ul >
 
                 </div>
               </div>
             </div>
 
-            <br>
+            <br> 
 
 
-            <!--------------->
+       <!--------------->
 
-            <br>
+       <!------All articles--------->
+
 
             <div class="row">
 
               <?php 
 
               foreach($products as $product){
+
+                
 
                 $cate = $product['category'];
 
@@ -232,9 +237,10 @@
                 </div>
                 </div>';
               }
+             
               ?>
 
-
+            
             </div>
           </div>
 
@@ -248,9 +254,8 @@
         </div>
       </div>
 
-
-      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
       <script src="{{ asset('js/jquery.min.js') }}"></script>
+      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
       <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
       <script src="{{ asset('/js/boutique.js') }}"></script>
 
