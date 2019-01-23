@@ -46,10 +46,11 @@ class EventController extends Controller
                 ->get();
  $likes = Like::where('type',1)
                 ->get();
+ $likepics = Like::where('type',4)
+                ->get();
 
 
-
-    return view('event' , compact('events','img','comments','subscribes','likes'));
+    return view('event' , compact('events','img','comments','subscribes','likes','likepics'));
 
     }
 
