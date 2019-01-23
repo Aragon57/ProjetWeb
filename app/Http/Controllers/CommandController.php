@@ -5,6 +5,7 @@
     use App\CartProduct;
     use Illuminate\Http\Request;
     use Illuminate\Console\Command;
+    use Symfony\Component\Debug\Exception\FatalThrowableError;
 
     session_start();
 
@@ -33,33 +34,57 @@
         }
 
         public function findcommand(Request $request) {
-            try
-            {
-                $command = App\Commands::where('id_user', '=', $request->id_user)->firstOrFail();
-                return $command->id_command;
-            }
-            catch(Exception $error)
+            $command = Commands::where('id_user', '=', $request->id_user)->first();
+            if($command == null)
             {
                 return false;
             }
+            
+            return $command->id;
         }
 
         public function addarticle(Request $request) {
-
-            /*$id_command = self::findcommand($request);
+            
+            $id_command = self::findcommand($request);
             if(!$id_command)
             {
                 $id = self::createcommand($request);
                 $request->id_command = $id;
             }
+            else
+            {
+                $request->id_command = $id_command;
+            }
 
-            $article = new CartProduct;
-            $article->id_product = $request->id_product;
-            $article->id_command = $request->id_command;
-            $article->quantity = $request->quantity;
+            $product_id = self::findproduct($request);
+            if($product_id)
+            {
+                $article = CartProduct::find($product_id);
+                $article->quantity += $request->quantity; 
+            }
+            else
+            {
+                $article = new CartProduct;
+                $article->id_product = $request->id_product;
+                $article->id_command = $request->id_command;
+                $article->quantity = $request->quantity;
+            }
 
             $article->save();
 
-            return response(true, 200);*/
+            return response("true", 200);
+        }
+
+        public function findproduct(Request $request) {
+            $product = CartProduct::where('id_command', '=', $request->id_command)
+                ->where('id_product', '=', $request->id_product)
+                ->first();
+            
+            if($product == null)
+            {
+                return false;
+            }
+                
+            return $product->id;
         }
     }

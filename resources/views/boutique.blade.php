@@ -254,21 +254,12 @@
               <span onclick="document.getElementById('addarcticle').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
             </div>
         
-            <form class="w3-container" action="/article" method="post" enctype="multipart/form-data" >
+            <form id="addtocart" class="w3-container" action="/tocart" method="post" enctype="multipart/form-data" >
               @csrf
               <div class="w3-section">
-                <label><b>Nom de l'article</b></label>
                 <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_product" value={{ $product->id }}>
-        
-                <label><b>Description de l'article</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="description" required>
-        
-                <label><b>Prix de l'article</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="float" placeholder="" name="price" required>
-        
-                <label><b>Nombre d'articles en stock</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="integer" placeholder="" name="stock" required>
-                <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+                <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_user" value={{ $_SESSION['id'] }}>
+                <input class="w3-input w3-border w3-margin-bottom" type="integer" name="quantity" value="1" required>
         
                 <button id="ok-btn" type="submit">Confirmer</button>
               </div>
@@ -289,26 +280,23 @@
   
   <script>
     $(document).ready(()=>{
-      $('#<?php echo $_SESSION['id'] ?>').submit((event)=>{
+      $('#addtocart').submit((event)=>{
           event.preventDefault();
           console.log("here");
-          var form = {
-            'id_user' : "<?php echo $_SESSION['id'] ?>",
-            'id_product' : $('input[name=id]').val(),
-            'id_command' : 0,
-            'quantity' : 1
-          }
+          var form = $('#addtocart');
 
           $.ajax({
             type : 'POST',
-            url : 'tocart',
-            data : form,
+            url : '/tocart',
+            data : form.serialize(),
             dataType : 'text',
             encode : true,
             success : (data) => {
+              console.log("true");
               console.log(data);
             },
             error : (data) => {
+              console.log("false");
               console.log(data);
             }
           });
