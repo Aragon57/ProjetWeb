@@ -78,6 +78,10 @@ Route::get('/evenementdumois', function () {
     return view('evenementdumois');
 });
 
+Route::get('/cart', 'CommandController@show', function() {
+    return view('cart');
+});
+
 Route::get('/islogged', 'UsersController@isLogged');
 
 Route::get('/fetchcart', 'CartController@cart');
@@ -88,5 +92,5 @@ Route::post('/article', 'ProductController@addarticle');
 Route::delete('product/{id}/delete', 'ProductController@delete');
 
 Route::post('/tocart', 'CommandController@addarticle');
-
-
+Route::post('/showcart', 'CommandController@show');
+Route::post('/product', 'ProductController@getProduct');

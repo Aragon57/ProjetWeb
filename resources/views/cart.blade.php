@@ -1,3 +1,6 @@
+@php
+	$_SESSION['id'] = 333;	
+@endphp
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -8,7 +11,8 @@
 
 
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/cart.css') }}" rel="stylesheet">
         <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
         <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
         
@@ -37,38 +41,50 @@
 						        </tr>
 					        </thead>
 
-					        <tbody>
-						        <tr>
-							        <td data-th="Product">
-								        <div class="row">
-									        <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-									        <div class="col-sm-10">
-										        <h4 class="nomargin">Product 1</h4>
-										        <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
-									        </div>
-								        </div>
-							        </td>
-							        <td data-th="Price">$1.99</td>
-							        <td data-th="Quantity">
-								        <input type="number" class="form-control text-center" value="1">
-							        </td>
-							        <td data-th="Subtotal" class="text-center">1.99</td>
-							        <td class="actions" data-th="">
-								        <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-								        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
-							        </td>
-						        </tr>
-					        </tbody>
+							@php
+								$total = 0;
+							@endphp
 
-					        <tfoot>
+							@foreach ($articles as $item)
+								@php
+									$article = App\product::find($item->id_product);
+									$subtotal = $item->quantity * $article->price;
+									$total += $subtotal;
+								@endphp
+
+								<tbody>
+									<tr>
+										<td data-th="Product">
+											<div class="row">
+											<div class="col-sm-2 hidden-xs"><img src="http://127.0.0.1:8000/{{ $article->image }}" alt="..." class="img-responsive img-product"/></div>
+												<div class="col-sm-10">
+												<h4 class="nomargin">{{ $article->name }}</h4>
+												<p>{{ $article->description }}</p>
+												</div>
+											</div>
+										</td>
+										<td data-th="Price">{{ $article->price }}</td>
+										<td data-th="Quantity">
+											<input type="number" class="form-control text-center" value="{{ $item->quantity }}">
+										</td>
+										<td data-th="Subtotal" class="text-center">{{ $subtotal }}</td>
+										<td class="actions" data-th="">
+											<button class="btn btn-info btn-sm" onclick="deleteArticle({{ $item->id_product }});"><i class="fas fa-sync-alt"></i></button>
+											<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>								
+										</td>
+									</tr>
+								</tbody>
+							@endforeach
+
+					        <tfoot class="footer">
 						        <tr class="visible-xs">
-							        <td class="text-center"><strong>Total 1.99</strong></td>
+							        <td class="text-center"><strong>Total {{ $total }}</strong></td>
 						        </tr>
 						        <tr>
 							        <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							        <td colspan="2" class="hidden-xs"></td>
-							        <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
-							        <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+							        <td class="hidden-xs text-center"><strong>Total €{{ $total }}</strong></td>
+							        <td><a href="#" id="checkout" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						        </tr>
 					        </tfoot>
 				        </table>
@@ -77,14 +93,12 @@
 
                 <div class="col-lg-1 col-md-2 col-sm-3 bg-dark"></div>
             </div>
-        </div>
+		</div>
+		<script>
+			function deleteArticle(id) {
+				@php
+				@endphp
+			}
+		</script>
     </body>
-
-    <script>
-        $(document).ready(() => {
-            $.get('/fetchcart', (data, status)=>{
-                
-            });
-        });
-    </script>
 </html>
