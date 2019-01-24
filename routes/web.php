@@ -103,7 +103,27 @@ Route::post('/article', 'ProductController@addarticle');
 Route::delete('product/{id}/delete', 'ProductController@delete');
 
 Route::post('/tocart', 'CommandController@addarticle');
+
 Route::post('/showcart', 'CommandController@show');
 Route::delete('/product', 'CommandController@deleteproduct');
 Route::post('/product', 'ProductController@getProduct');
 Route::put('/product', 'CommandController@updatequantity');
+
+
+Route::get('/politique', function () {
+    return view('politique');
+});
+Route::get('/mentions', function () {
+    return view('mentions');
+});
+Route::get('/conditions', function () {
+    return view('conditions');
+});
+Route::get('/credits', function () {
+    return view('credits');
+});
+Route::get('/modal', function () {
+    return view('modal');
+});
+
+
