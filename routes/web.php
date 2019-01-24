@@ -47,6 +47,10 @@ Route::get('/usernav', function () {
     return view('layouts/usernav');
 });
 
+Route::get('/cartview', function () {
+    return view('layouts/cartview');
+});
+
 Route::post('/image', 'ImageController@store');
 
 Route::post('/comment', 'CommentController@store');
@@ -93,4 +97,6 @@ Route::delete('product/{id}/delete', 'ProductController@delete');
 
 Route::post('/tocart', 'CommandController@addarticle');
 Route::post('/showcart', 'CommandController@show');
+Route::delete('/product', 'CommandController@deleteproduct');
 Route::post('/product', 'ProductController@getProduct');
+Route::put('/product', 'CommandController@updatequantity');

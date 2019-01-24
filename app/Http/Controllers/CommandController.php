@@ -100,9 +100,18 @@
             return view('cart', compact("articles"));
         }
 
-        public function deleteproduct($id) {
-            $article = CartProduct::where('id_command', '=', $_SESSION['id_cart'])->where('id_product', '=', $id)->get();
+        public function deleteproduct(Request $request) {
+            $article = CartProduct::where('id', '=', $request->id)->first();
             $article->forceDelete();
+
+            return response('true', 200);
+        }
+
+        public function updatequantity(Request $request) {
+            $article = CartProduct::find($request->id);
+            $article->quantity = $request->quantity;
+
+            $article->save();
 
             return response('true', 200);
         }
