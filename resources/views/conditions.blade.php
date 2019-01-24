@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,17 +15,15 @@
  <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
 </head>
 
-<header>
-</header>
-
+@include('nav')
 
 <body>
  	<br>
-	<br><h1 class="blanc mention"> Conditions générales de vente :</h1><br><br> 
+	<br><h1 class="blanc mention text-center"> Conditions générales de vente :</h1><br><br> 
 	
-	<hr color="white">
+	<hr class="blanc">
 
-	<h6 class="blanc containerr"><center>
+	<h6 class="blanc containerr text-center">
 	
 	<br>
 	Les présentes conditions de vente sont conclues d’une part par la société BDE CESI Strasbourg au capital social de 1000 euros dont le siège social est situé à Lingolsheim (2, Allée des foulons, Parc des Tanneries 67380) immatriculée au Registre du Commerce et des Sociétés de Strasbourg sous le numéro 77572257200820 ci-après dénommée BDE de Strasbourg et gérant le site 000webhost.net et, d’autre part, par toute personne physique ou morale souhaitant procéder à un achat via le site internet 000webhost.net dénommée ci-après "l’acheteur".
@@ -86,7 +84,7 @@ Les présentes conditions de vente à distance sont soumises à la loi français
 <br><br><br>
 
 
-<b>MERCI.</b></center>
+<b>MERCI.</b>
 
 	
 </h6>

@@ -19,6 +19,8 @@
 
 
 </head>
+
+@include('nav')
 <body>
  
   
@@ -27,7 +29,7 @@
 
 	
 	<h1 class="blanc text-center"> Contact : </h1>
-	<hr color="white">
+	<hr class="blanc">
 	 
 <div class="container">
 	<div class="box">
@@ -42,20 +44,13 @@
 	
 	<div class="box">
 		<div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
-		<div class='details'><h3>bde.strasbourg@viacesi.fr</h3></div>
+		<div class='details'><h3>bde.stras@viacesi.fr</h3></div>
 	</div>
 </div>
 
-
-	 
-	 
-	 
-	 
-	<footer>
 	 <!-- FOOTER -->
 	@include('footer');
-	</footer>
-
+	
   
    </body>
 </html>
