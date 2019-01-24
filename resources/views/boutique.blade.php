@@ -50,7 +50,7 @@ $_SESSION['id'] = 333;
 
 
       <div>
-        <h4 id="searchtitle" align="left" >Recherchez un article </h4>
+        <h4 id="searchtitle" class="gauche" >Recherchez un article </h4>
 
         <div class="recherche_p">
           <form class="searchbox" action="/search" method="get">
@@ -64,7 +64,7 @@ $_SESSION['id'] = 333;
       <!-- Ajouter un article -->
 
       <div class="w3-container">
-        <div align="left">
+        <div class="gauche">
           <button onclick="document.getElementById('id01').style.display='block'" id="addarticles-btn">Ajouter un article</button>
         </div>
 
@@ -87,18 +87,18 @@ $_SESSION['id'] = 333;
                 <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="description" required>
 
                 <label><b>Prix de l'article</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="float" placeholder="" name="price" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="number" placeholder="" name="price" required>
 
                 <label><b>Nombre d'articles en stock</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="integer" placeholder="" name="stock" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="number" placeholder="" name="stock" required>
                 <input type="hidden" name="MAX_FILE_SIZE" value="100000">
 
 
                 <label><b>Type de l'article</b></label>
-                <select class="form-control" name="category" size="1">
-                 <option>Vêtements 
-                   <option>Goodies
-                     <option>Accessoires                    
+                <select class="form-control" name="category" value=  size="1">
+                                @foreach($categories as $category)
+         <option> {{ $category->name }}
+          @endforeach
                      </select> <br>
 
                      <label><b>Ajouter une image ?</b></label><br>
@@ -110,6 +110,37 @@ $_SESSION['id'] = 333;
                    </div>
                  </form>
 
+               </div>
+             </div>
+           </div>
+
+                      <div class="w3-container">
+        <div class="gauche">
+          <button onclick="document.getElementById('id02').style.display='block'" id="addarticles-btn">Ajouter une catégorie</button>
+        </div>
+
+        <div id="id02" class="w3-modal">
+          <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:3000px">
+
+            <div class="w3-center"><br>
+              <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+            </div>
+
+            <form class="w3-container" action="/category" method="post" enctype="multipart/form-data" >
+              {{ csrf_field() }}
+
+              <div class="w3-section">
+
+                <label><b>Nom de la catégorie</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Catégorie" name="category" required>
+
+
+
+                     <button id="ok-btn" type="submit">Confirmer</button>
+
+                   </div>
+                 </form>
+                 
                </div>
              </div>
            </div>
@@ -135,7 +166,7 @@ $_SESSION['id'] = 333;
               echo '<div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
 
-              <img src="' . 'http://127.0.0.1:8000/' . $first->image . '"   height="60%/9" width="100%/9" class="" >
+              <img src="' . 'http://127.0.0.1:8000/' . $first->image . '"   height="60%/9" width="100%/9" class="" alt="erreur">
 
               <div class="">
               <h4 class="card-title">' . $first->name . '</h4> 
@@ -188,13 +219,14 @@ $_SESSION['id'] = 333;
 
 
           <div class="recherche_p">
-            <div id="filteredproducts" align="left">
+            <div id="filteredproducts" class="gauche">
 
               <ul class="dropdownmenu">
-                <li><button class="btn btn-light tri"> Prix </button></li>
-                <li><button class="btn btn-light tri" value="1"> Vêtements </button></li>
-                <li ><button class="btn btn-light tri" value="2"> Accessoires </button></li>
-                <li><button class="btn btn-light tri" value="3"> Goodies </button></li>
+                  <li><button class="btn btn-light tri"> Prix </button></li>
+
+                @foreach($categories as $category)
+                <li><button class="btn btn-light tri" value={{$category->id}} > {{$category->name}} </button></li>
+                @endforeach
               </ul >
 
             </div>
@@ -213,7 +245,7 @@ $_SESSION['id'] = 333;
 
           @foreach ($products as $product)
           @php 
-          $cate = $product['category'];
+          $cate = $product['id_category'];
 
           $caract_interdit = array(
           'Š' => 'S', 'š' => 's', 'Ž' => 'Z', 'ž' => 'z', 'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A', 'Ç' => 'C', 'È' => 'E', 'É' => 'E',
@@ -229,7 +261,7 @@ $_SESSION['id'] = 333;
 
           <div class= "col-lg-4 col-md-6 mb-4 article {{ $cate }}">
             <div class="card h-100">
-              <img src="http://127.0.0.1:8000/{{ $product->image }}"   height="60%/9" width="100%/9" class="" >
+              <img src="http://127.0.0.1:8000/{{ $product->image }}"   height="60%/9" width="100%/9" class="" alt="erreur" >
               <div class="">
                 <h4 class="card-title"> {{ $product->name }}</h4> 
                 <h5> Prix :{{ $product->price }}€</h5>
@@ -278,13 +310,13 @@ $_SESSION['id'] = 333;
           <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="description" required>
 
           <label><b>Prix de l'article</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="float" placeholder="" name="price" required>
+          <input class="w3-input w3-border w3-margin-bottom" type="number" placeholder="" name="price" required>
 
           <label><b>Nombre d'articles en stock</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="integer" placeholder="" name="stock" required>
+          <input class="w3-input w3-border w3-margin-bottom" type="number" placeholder="" name="stock" required>
           <input type="hidden" name="MAX_FILE_SIZE" value="100000">
 
-          <button id="ok-btn" type="submit">Confirmer</button>
+          <button class="ok-btn" type="submit">Confirmer</button>
         </div>
       </form>
     </div>

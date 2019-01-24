@@ -64,6 +64,7 @@ Route::post('/event', 'EventController@store');
 
 Route::post('/eventregister', 'EventRegisterController@store');
 
+Route::post('/category', 'CategoryController@store');
 
 Route::post('/inscription', 'UsersController@store');
 
