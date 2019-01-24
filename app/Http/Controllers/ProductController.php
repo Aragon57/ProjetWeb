@@ -74,7 +74,10 @@ else
 
     
     public function display() {
+
+    
         $products = Product::all();
+
         $categories = Category::all();
 
         $threefirst = Product::paginate(3);

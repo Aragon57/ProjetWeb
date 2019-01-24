@@ -1,4 +1,4 @@
-@php 
+  @php 
 session_start();
 $_SESSION['id'] = 333;
 @endphp
@@ -17,21 +17,69 @@ $_SESSION['id'] = 333;
 
   <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
   <link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
-
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
   <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
 
   <script src="{{ asset('js/jquery.min.js') }}"></script>
+
 </head>
 
 <body>
 
+<!-- TEST -->
+<div class="container-fluid text-center"> 
+  <div class="row">
+
+<div class="col-lg-1 col-md-2 col-sm-3 bg-dark">
+</div>
+
+<div class="col-lg-10 col-md-20 col-sm-30">
+ <div class="row">
+    <div class="card-deck">
+
+      <div class="card">
+        <img class="card-img-top" src="//placehold.it/720x350" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">Prix: </p>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+      </div>
+
+       <div class="card">
+        <img class="card-img-top" src="//placehold.it/720x350" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+      </div>
+
+       <div class="card">
+        <img class="card-img-top" src="//placehold.it/720x350" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="col-lg-1 col-md-2 col-sm-3 bg-dark">
+</div>
+</div>
+
+
+</div>
+
+
+<!-- FIN TEST -->
+
 
  <!-- Nav bar -->
-
-
-
 
  <!-- Premier container-->
 
@@ -52,7 +100,7 @@ $_SESSION['id'] = 333;
       <div>
         <h4 id="searchtitle" class="gauche" >Recherchez un article </h4>
 
-        <div class="recherche_p">
+        <div class="recherche_bar">
           <form class="searchbox" action="/search" method="get">
             <input type="text" placeholder="" name="q">
             <button type="submit"><i class="fa fa-search"></i></button>
@@ -65,7 +113,7 @@ $_SESSION['id'] = 333;
 
       <div class="w3-container">
         <div class="gauche">
-          <button onclick="document.getElementById('id01').style.display='block'" id="addarticles-btn">Ajouter un article</button>
+          <button onclick="document.getElementById('id01').style.display='block'" class="addarticles-btn">Ajouter un article</button>
         </div>
 
         <div id="id01" class="w3-modal">
@@ -95,7 +143,7 @@ $_SESSION['id'] = 333;
 
 
                 <label><b>Type de l'article</b></label>
-                <select class="form-control" name="category" value=  size="1">
+                <select class="form-control" name="category" size="1">
                                 @foreach($categories as $category)
          <option> {{ $category->name }}
           @endforeach
@@ -105,7 +153,7 @@ $_SESSION['id'] = 333;
                      <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="MAX_FILE_SIZE" value="100000"> Envoyez ce fichier: <input name="userfile" type="file" />
                      <br><br>
 
-                     <button id="ok-btn" type="submit">Confirmer</button>
+                     <button class="ok-btn" type="submit">Confirmer</button>
 
                    </div>
                  </form>
@@ -114,9 +162,9 @@ $_SESSION['id'] = 333;
              </div>
            </div>
 
-                      <div class="w3-container">
+      <div class="w3-container">
         <div class="gauche">
-          <button onclick="document.getElementById('id02').style.display='block'" id="addarticles-btn">Ajouter une catégorie</button>
+          <button onclick="document.getElementById('id02').style.display='block'" class="addarticles-btn">Ajouter une catégorie</button>
         </div>
 
         <div id="id02" class="w3-modal">
@@ -136,7 +184,7 @@ $_SESSION['id'] = 333;
 
 
 
-                     <button id="ok-btn" type="submit">Confirmer</button>
+                     <button class="ok-btn" type="submit">Confirmer</button>
 
                    </div>
                  </form>
@@ -166,15 +214,13 @@ $_SESSION['id'] = 333;
               echo '<div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
 
-              <img src="' . 'http://127.0.0.1:8000/' . $first->image . '"   height="60%/9" width="100%/9" class="" alt="erreur">
+              <img src="' . 'http://127.0.0.1:8000/' . $first->image . '" class="imgshop" alt="erreur">
 
-              <div class="">
+              <div class="card-block">
               <h4 class="card-title">' . $first->name . '</h4> 
               <h5> Prix : ' . $first->price . '€</h5>
               <p class="card-text">' . $first->description . '</p>
               <button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
-
-
 
               </div>
 
@@ -205,7 +251,7 @@ $_SESSION['id'] = 333;
       </div>
 
       <div class="col-lg-10 col-md-20 col-sm-30 ">
-        <div clas="container-fluid text-left">
+        <div class="container-fluid text-left">
           <hr>
           <h4> Tous nos produits </h4>
         </div>
@@ -215,18 +261,20 @@ $_SESSION['id'] = 333;
 
         <br>
         <div class="col-lg-12 col-md-24 col-sm-36" >
-          <h4 id="filteredproducts" align="left" > &nbsp;&nbsp;<i class="fas fa-filter fa-1x"></i><span></span> Triez par : </h4>
+          <h4 class="filteredproducts gauche" > &nbsp;&nbsp;<i class="fas fa-filter fa-1x"></i><span></span> Triez par : </h4>
 
-
-          <div class="recherche_p">
-            <div id="filteredproducts" class="gauche">
+          <div class="recherche_bar">
+            <div class="filteredproducts gauche">
 
               <ul class="dropdownmenu">
-                  <li><button class="btn btn-light tri"> Prix </button></li>
+
+                  <li><button id="tri-prix" class="btn btn-light classer" value="Prix"> Prix </button></li>
+                  <li><button id="tri-nom" class="btn btn-light classer" value="Nom"> Nom </button></li>
 
                 @foreach($categories as $category)
                 <li><button class="btn btn-light tri" value={{$category->id}} > {{$category->name}} </button></li>
                 @endforeach
+
               </ul >
 
             </div>
@@ -235,18 +283,16 @@ $_SESSION['id'] = 333;
 
         <br> 
 
+        <!-- -->
 
-        <!--------------->
+        <!--All articles-->
 
-        <!------All articles--------->
-
-
-        <div class="row">
+        <div id="sdq" class="row">
 
           @foreach ($products as $product)
           @php 
           $cate = $product['id_category'];
-
+         
           $caract_interdit = array(
           'Š' => 'S', 'š' => 's', 'Ž' => 'Z', 'ž' => 'z', 'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A', 'Ç' => 'C', 'È' => 'E', 'É' => 'E',
           'Ê' => 'E', 'Ë' => 'E', 'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'Ñ' => 'N', 'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O', 'Õ' => 'O', 'Ö' => 'O', 'Ø' => 'O', 'Ù' => 'U',
@@ -259,12 +305,13 @@ $_SESSION['id'] = 333;
           $cate = strtolower($cate);
           @endphp
 
-          <div class= "col-lg-4 col-md-6 mb-4 article {{ $cate }}">
+          <div class= "col-lg-4 col-md-6 mb-4 article {{ $cate }} articles">
+            
             <div class="card h-100">
-              <img src="http://127.0.0.1:8000/{{ $product->image }}"   height="60%/9" width="100%/9" class="" alt="erreur" >
-              <div class="">
-                <h4 class="card-title"> {{ $product->name }}</h4> 
-                <h5> Prix :{{ $product->price }}€</h5>
+              <img src="http://127.0.0.1:8000/{{ $product->image }}" class="imgshop" alt="erreur" >
+              
+                <h4 class="card-title nom-article"> {{ $product->name }}</h4> 
+                <h5 class="prix-article"> Prix :{{ $product->price }}€</h5>
                 <p class="card-text">{{ $product->description }}</p>
                 <button onclick="document.getElementById('addarcticle').style.display='block'" class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
                 <form action="/product/destroy" method="post">
@@ -274,13 +321,11 @@ $_SESSION['id'] = 333;
                   <button type="submit" class="addtocart-btn"><i class="fas fa-trash-alt"></i></button>
                 </form>
 
-
-
-
               </div>
-            </div>
+            
           </div>
-        </form>
+      
+
         @endforeach
 
 
@@ -327,10 +372,7 @@ $_SESSION['id'] = 333;
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('/js/boutique.js') }}"></script>
-
-
-
-</body>
+<script src="{{ asset('/js/filterpricenameboutique.js') }}"></script>
 
 <script>
   $(document).ready(()=>{
@@ -360,6 +402,23 @@ $_SESSION['id'] = 333;
     });
   });
 </script>  
+<script>
+$(document).ready(()=>{
+    $("#tri-prix").click(()=>{
+        if($('#sdq').hasClass('checked'))
+        {
+          $('#sdq').load("/articlenon");
+          $('#sdq').removeClass("checked");
+        }
+        else
+        {
+          $('#sdq').load("/article");
+          $('#sdq').addClass("checked");
+        }
+    });
+});
+</script>
+</body>
 </html>
 
 

@@ -47,6 +47,14 @@ Route::get('/usernav', function () {
     return view('layouts/usernav');
 });
 
+Route::get('/article', function () {
+    return view('layouts/article');
+});
+
+Route::get('/articlenon', function () {
+    return view('layouts/articlenon');
+});
+
 Route::post('/image', 'ImageController@store');
 
 Route::post('/comment', 'CommentController@store');

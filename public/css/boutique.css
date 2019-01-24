@@ -7,7 +7,7 @@ hr
 }
 
 /* Fond du gadget de la barre de recherche */
-.recherche_p {
+.recherche_bar {
   margin: auto 0 auto auto;
   background-color: rgba(0, 0, 0, 0);   /* Couleur de fond */
   border-style: solid;   /* Style de la bordure  */
@@ -27,6 +27,7 @@ hr
 	background:#f5f5f5;
 	color:#000000;
 	border-radius:0px;
+
 	width:60%;
   min-width: 50px;  
   max-width: 300px;
@@ -78,8 +79,9 @@ form.searchbox::after {
   
 }
 
-#filteredproducts {
+.filteredproducts {
   padding-left: 0px; 
+  text-align:left;
   
 }
 
@@ -162,7 +164,7 @@ display: block;
   color: #f00; /* Couleur du texte des sous-menu au survol */
 }
 
-#ok-btn {
+.ok-btn {
  
   width: 25%;
   padding: 6px;
@@ -175,7 +177,7 @@ display: block;
   cursor: pointer;
 }
 
-#addarticles-btn {
+.addarticles-btn {
  
   width: 13.3%;
   padding: 8px;
@@ -196,3 +198,28 @@ display: block;
 .active-tri {
   background-color:#879bb5;
 }
+
+
+.imgshop{
+
+  width: 100%;
+  height: auto;
+
+}
+
+.container-fluid { max-width: 8000px; }
+
+
+.card {
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+
+  img {
+    width: 100%;
+  }
+}
+
+
+
+
+
