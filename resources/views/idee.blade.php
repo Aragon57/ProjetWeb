@@ -5,9 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.js') }}"></script>
+
         <title>Laravel</title>
         <!-- Fonts -->
       
@@ -74,27 +76,28 @@ $class='btnsearch';
                                     }
 
 
-             
 
-            
-echo '<input type="checkbox" id="showpopup"/>
-        <label for="showpopup">Cliquer ici pour afficher ou cacher le formulaire</label>
-        <div id="popup">
-            <form method="PUT" action="/idee/'.$idea->id .'" >
-                <input type="date" name="date" placeholder="date"/><br/>
-                <input type="text" name="description" placeholder="Modifier description"/><br/>
-                 <SELECT class="form-control" name="punctuality" size="1">
-                                <OPTION>Récurent 
-                                <OPTION>Ponctuelle
 
-                                </SELECT><br/>
-                <input type="hidden" name="validate" value = "1"/><br/>
+                                   echo '   <form method="post" action="/validate" > '         .  csrf_field() .'
 
-                <input type="submit" name="register" value="Je m\'inscris"/></form><br/>
-            </form>
-        </div>';
+                                     <input type="hidden" name="id" value='. $idea->id .'  >
+                                     <input type="text" name="description" placeholder="description" >
+                                     <input type="date" name="date">
+                                    <input type="number" name="price" placeholder="prix">
+                                     <input type="hidden" name="name" value="'.  $idea->name  .'"  >
+                                     <input type="hidden" name="email" value="'.  $_SESSION['email']  .'"  >
+
+                                     <input type="hidden" name="validate" value=1  >
+
+                                    <button type = "submit" class="btn" type="submit">Valider</i></i> </button>
+                                    </form>
+                                    ';
 
     }
+
+
+
+
 }
 ?>
 <?php 
@@ -114,13 +117,21 @@ echo '<input type="checkbox" id="showpopup"/>
                         <div class="input-group form-group">
                             <input type="submit" value="Envoyer" class="btnsearch marge">
                         </div>
-                </div>'; 
+                </div>  
+                </form>';
+
+
 
 
 
 
 
 ?>
+
+
+
+
+
                 <div class="col-lg-1 col-md-2 col-sm-3">
                    
                  

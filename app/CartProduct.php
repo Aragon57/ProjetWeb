@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class CartProduct extends Model
 {
     protected $table = 'cartproduct';
 }

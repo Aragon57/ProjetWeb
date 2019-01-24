@@ -88,6 +88,11 @@ color : red;
 }
 
 
+body{
+  background-color: #1d2124;
+
+}
+
 #customPopup 
 {
      display: none;
@@ -122,6 +127,11 @@ overflow:auto;
     display: block;
 } 
 
+
+
+.commentdel{
+  flex-wrap :nowrap;
+}
 
 .logo{
 
@@ -192,13 +202,6 @@ height: 100%;
 align-content: center;
 }
 
-.card{
-height: 370px;
-margin-top: 20px;
-margin-bottom: 20px;
-width: 400px;
-background-color: rgba(0,0,0,0.5) !important;
-}
 
 .cardsignin{
 height: 550px;
@@ -269,6 +272,10 @@ margin-right: 5px;
 
 .card-footer{
   height:100px;
+}
+
+.jour{
+  text-align : center;
 }
 
 .login_btn{

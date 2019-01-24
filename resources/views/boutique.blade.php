@@ -17,12 +17,14 @@
 
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('/js/boutique.js') }}"></script>
   </head>
 
 <body>
@@ -233,11 +235,57 @@
                         <h4 class="card-title"> {{ $product->name }}</h4> 
                         <h5> Prix :{{ $product->price }}€</h5>
                         <p class="card-text">{{ $product->description }}</p>
-                        <button onclick="document.getElementById('addarcticle').style.display='block'" class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+                        <button onclick="document.getElementById('product{{ $product->id }}').style.display='block'" class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
                       </div>
                     </div>
                   </div>
-              </form>
+
+                  <div class="w3-container" style="padding: 0;">
+                    <div id="product{{ $product->id }}" class="w3-modal">
+                      <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:3000px">
+                        <div class="w3-center"><br>
+                          <span onclick="document.getElementById('product{{ $product->id }}').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                        </div>
+                      
+                        <form id="addtocart{{ $product->id }}" class="w3-container" action="/tocart" method="post" enctype="multipart/form-data" >
+                          @csrf
+                          <div class="w3-section">
+                            <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_product" value={{ $product->id }}>
+                            <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_user" value={{ $_SESSION['id'] }}>
+                            <input class="w3-input w3-border w3-margin-bottom" type="integer" name="quantity" value="1" required>
+                      
+                            <button id="ok-btn" type="submit">Confirmer</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+                  <script>
+                      $(document).ready(()=>{
+                        $('#addtocart{{ $product->id }}').submit((event)=>{
+                            event.preventDefault();
+                            console.log("here");
+                            var form = $('#addtocart{{ $product->id }}');
+                  
+                            $.ajax({
+                              type : 'POST',
+                              url : '/tocart',
+                              data : form.serialize(),
+                              dataType : 'text',
+                              encode : true,
+                              success : (data) => {
+                                console.log("true");
+                                console.log(data);
+                              },
+                              error : (data) => {
+                                console.log("false");
+                                console.log(data);
+                              }
+                            });
+                        });
+                      });
+                    </script> 
               @endforeach
 
             
@@ -248,75 +296,8 @@
 
         </div>
       </div>
-
-      <div class="w3-container">
-        <div id="addarcticle" class="w3-modal">
-          <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:3000px">
-            <div class="w3-center"><br>
-              <span onclick="document.getElementById('addarcticle').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-            </div>
-        
-            <form class="w3-container" action="/article" method="post" enctype="multipart/form-data" >
-              @csrf
-              <div class="w3-section">
-                <label><b>Nom de l'article</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_product" value={{ $product->id }}>
-        
-                <label><b>Description de l'article</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="description" required>
-        
-                <label><b>Prix de l'article</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="float" placeholder="" name="price" required>
-        
-                <label><b>Nombre d'articles en stock</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="integer" placeholder="" name="stock" required>
-                <input type="hidden" name="MAX_FILE_SIZE" value="100000">
-        
-                <button id="ok-btn" type="submit">Confirmer</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <script src="{{ asset('js/jquery.min.js') }}"></script>
-      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-      <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-      <script src="{{ asset('/js/boutique.js') }}"></script>
-
-
     </body>
-
-  </body>
-  
-  <script>
-    $(document).ready(()=>{
-      $('#<?php echo $_SESSION['id'] ?>').submit((event)=>{
-          event.preventDefault();
-          console.log("here");
-          var form = {
-            'id_user' : "<?php echo $_SESSION['id'] ?>",
-            'id_product' : $('input[name=id]').val(),
-            'id_command' : 0,
-            'quantity' : 1
-          }
-
-          $.ajax({
-            type : 'POST',
-            url : 'tocart',
-            data : form,
-            dataType : 'text',
-            encode : true,
-            success : (data) => {
-              console.log(data);
-            },
-            error : (data) => {
-              console.log(data);
-            }
-          });
-      });
-    });
-  </script>  
+  </body> 
 </html>
 
 
