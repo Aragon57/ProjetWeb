@@ -47,13 +47,15 @@ Route::get('/usernav', function () {
     return view('layouts/usernav');
 });
 
-Route::post('/image', 'ImageController@store');
+Route::post('/image', 'EventController@storeImage');
 
-Route::post('/comment', 'CommentController@store');
-Route::post('/commentImage', 'CommentImageController@store');
+Route::post('/comment', 'EventController@storeComment');
+Route::post('/commentImage', 'EventController@storeCommentImage');
+Route::post('/event/downloadPic', 'EventController@downloadPic');
 
 Route::post('/like', 'LikeController@store');
 
+Route::post('/validate', 'IdeeController@update');
 
 Route::post('/inscription', 'UsersController@store');
 Route::post('/connexion', 'UsersController@connect');
@@ -61,9 +63,10 @@ Route::get('/logout', 'UsersController@logout');
 Route::post('/idee', 'IdeeController@store');
 Route::put('/idee/{id}', 'IdeeController@update');
 Route::post('/event', 'EventController@store');
+Route::post('/image/delete', 'EventController@deleteImage');
 
+Route::post('/comment/delete', 'EventController@deleteComment');
 
-Route::post('/eventregister', 'EventRegisterController@store');
 
 
 Route::post('/inscription', 'UsersController@store');
