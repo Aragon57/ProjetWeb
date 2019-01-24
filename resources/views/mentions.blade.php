@@ -1,12 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    
-
+ 
+ 
     <title> BDE STRASBOURG </title>
 	
     <!-- Bootstrap core CSS -->
@@ -15,17 +11,14 @@
  <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
 </head>
 
-<header>
-</header>
-
+@include('nav')
 
 <body>
  	<br>
 	<br><h1 class="blanc mention"> Mentions légales :</h1><br><br> 
 	
-	<hr color="white">
-
-	<h6 class="blanc  containerr"><center>
+	<hr class="blanc">
+	<h6 class="blanc  containerr text-center">
 	
 <b> Respect de la vie privée et collecte des données personnelles </b><br>
 <br>
@@ -34,7 +27,7 @@ Soucieux de protéger la vie privée de ses clients, BDE Strasbourg s’engage d
 Pour lire l’intégralité de notre politique sur la Protection des données personnelles <a  class="blanc" href="politique"> cliquez-ici.</a> <br>
 <br>
 
-<b> <center> Déclaration à la CNIL  </b><br>
+<b> Déclaration à la CNIL  </b><br>
 <br>
 
 Conformément à la loi 78-17 du 6 janvier 1978 (modifiée par la loi 2004-801 du 6 août 2004 relative à la protection des personnes physiques à l'égard des traitements de données à caractère personnel) relative à l'informatique, aux fichiers et aux libertés, le site a fait l'objet d'une déclaration auprès de la Commission nationale de l'informatique et des libertés (www.cnil.fr).<br>
@@ -43,9 +36,9 @@ Conformément à la loi 78-17 du 6 janvier 1978 (modifiée par la loi 2004-801 d
 Par ailleurs, la mise en forme de ce site a nécessité le recours à des sources externes dont nous avons acquis les droits ou dont les droits d'utilisation sont ouverts : HTML 5 / CSS 3 / Bootstrap / FontAwesome / PHP / JavaScript /Jquery / NodeJS ..
 <br><br>
 
-<b> <center> Conditions d'utilisation</b><br>
+<b>  Conditions d'utilisation</b><br>
 <br>Le site accessible par les url suivants : <b>www.000webhost.fr</b> est exploité dans le respect de la législation française. L'utilisation de ce site est régie par les présentes conditions générales. <br>En utilisant le site, vous reconnaissez avoir pris connaissance de ces conditions et les avoir acceptées. <br>
-</center><br>
+<br>
 <br>
 
 <b>Editeur du site </b><br>

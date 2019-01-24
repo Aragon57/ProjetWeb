@@ -1,7 +1,7 @@
 
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <img src="http://127.0.0.1:8000/img/logo.png"  class ="logo">
+    <img src="http://127.0.0.1:8000/img/logo.png" alt="logo"  class ="logo">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -15,7 +15,7 @@
                     BOUTIQUE
                 </a>
                 <div class="dropdown-menu bg-dark" >
-                    <a class="dropdown-item nav-lin" href="">BOUTIQUE</a>
+                    <a class="dropdown-item nav-lin" href="/boutique">BOUTIQUE</a>
                     <div class="dropdown-diviseur"></div>
                     <a class="dropdown-item nav-lin" href="">VETEMENTS</a>
                     <a class="dropdown-item nav-lin" href="">TASSES</a>
@@ -25,7 +25,7 @@
         </ul>
     </div>
     <div class="mx-auto order-0">
-        <a class=" cesii" href="#"><h7>BDE CESI STRASBOURG</h7></a> 
+        <a class=" cesii" href="/">BDE CESI STRASBOURG</a> 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>

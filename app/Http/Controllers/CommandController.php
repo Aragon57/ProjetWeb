@@ -5,8 +5,10 @@
     use App\CartProduct;
     use Illuminate\Http\Request;
     use Illuminate\Console\Command;
+    use Symfony\Component\Debug\Exception\FatalThrowableError;
 
     session_start();
+    $_SESSION['id_cart'] = 1;
 
     class CommandController extends Controller
     {
@@ -33,33 +35,84 @@
         }
 
         public function findcommand(Request $request) {
-            try
-            {
-                $command = App\Commands::where('id_user', '=', $request->id_user)->firstOrFail();
-                return $command->id_command;
-            }
-            catch(Exception $error)
+            $command = Commands::where('id_user', '=', $request->id_user)->first();
+            if($command == null)
             {
                 return false;
             }
+            
+            return $command->id;
         }
 
         public function addarticle(Request $request) {
-
-            /*$id_command = self::findcommand($request);
+            
+            $id_command = self::findcommand($request);
             if(!$id_command)
             {
                 $id = self::createcommand($request);
                 $request->id_command = $id;
             }
+            else
+            {
+                $request->id_command = $id_command;
+            }
 
-            $article = new CartProduct;
-            $article->id_product = $request->id_product;
-            $article->id_command = $request->id_command;
+            $product_id = self::findproduct($request);
+            if($product_id)
+            {
+                $article = CartProduct::find($product_id);
+                $article->quantity += $request->quantity; 
+            }
+            else
+            {
+                $article = new CartProduct;
+                $article->id_product = $request->id_product;
+                $article->id_command = $request->id_command;
+                $article->quantity = $request->quantity;
+            }
+
+            $article->save();
+
+            return response("true", 200);
+        }
+
+        public function findproduct(Request $request) {
+            $product = CartProduct::where('id_command', '=', $request->id_command)
+                ->where('id_product', '=', $request->id_product)
+                ->first();
+            
+            if($product == null)
+            {
+                return false;
+            }
+                
+            return $product->id;
+        }
+
+        public function show(Request $request) {
+            if(!isset($_SESSION['id_cart']))
+            {
+                return view('cart', compact($articles));
+            }
+
+            $articles = CartProduct::where('id_command', '=', $_SESSION['id_cart'])->get();
+            
+            return view('cart', compact("articles"));
+        }
+
+        public function deleteproduct(Request $request) {
+            $article = CartProduct::where('id', '=', $request->id)->first();
+            $article->forceDelete();
+
+            return response('true', 200);
+        }
+
+        public function updatequantity(Request $request) {
+            $article = CartProduct::find($request->id);
             $article->quantity = $request->quantity;
 
             $article->save();
 
-            return response(true, 200);*/
+            return response('true', 200);
         }
     }

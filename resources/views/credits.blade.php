@@ -15,11 +15,9 @@
  <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
 </head>
 
-<header>
-</header>
-
-
+@include('nav')
 <body>
+
  	<br>
 	<br><h1 class="blanc mention"> Crédits :</h1><br><br> 
 	

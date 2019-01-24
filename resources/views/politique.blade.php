@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,18 +17,15 @@
 
 </head>
 
-<header>
-</header>
-
+@include ('nav')
 
 <body>
- 
-  
 
    
 	<br><br>
 	<br><h1 class="blanc text-center">   Politique de confidentialité :</h1><br><br>
-	<hr color="white">
+	
+	<hr class="blanc">
 	
 <h6 class= "blanc containerr">  Dans le cadre de son activité les membres du BDE CESI Strasbourg sont amenés à traiter des informations vous concernant.
  <br>
@@ -82,7 +79,7 @@ Vous avez le droit d’accéder à vos données personnelles et de demander qu�
 
 <br>Avant de répondre à votre demande, nous sommes susceptibles de vérifier votre identité et/ou vous demander de nous fournir davantage d’informations pour répondre à votre demande.<br> Nous nous efforcerons de donner suite à votre demande dans un délai raisonnable et, en tout état de cause, dans les délais fixés par la loi.
 <br>En cas de réponse insatisfaisante, vous pouvez introduire une réclamation auprès de la Commission nationale de l’informatique et des libertés (CNIL) 
-<h6/>
+</h6>
 
 
 @include('footer');

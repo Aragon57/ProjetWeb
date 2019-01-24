@@ -15,15 +15,18 @@ $_SESSION['id'] = 333;
   <title>Boutique BDE Strasbourg</title>
 
 
-  <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
 
-  <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('/js/boutique.js') }}"></script>
+  </head>
 
-</head>
 
 <body>
 
@@ -313,23 +316,70 @@ $_SESSION['id'] = 333;
                 <h4 class="card-title nom-article"> {{ $product->name }}</h4> 
                 <h5 class="prix-article"> Prix :{{ $product->price }}€</h5>
                 <p class="card-text">{{ $product->description }}</p>
-                <button onclick="document.getElementById('addarcticle').style.display='block'" class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
+                <button onclick="document.getElementById('product{{ $product->id }}').style.display='block'" class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
                 <form action="/product/destroy" method="post">
                   @csrf
                 <input type="hidden" name="id_product" value = {{ $product->id }}>
 
                   <button type="submit" class="addtocart-btn"><i class="fas fa-trash-alt"></i></button>
                 </form>
+                        
+                      </div>
+                    </div>
+                  </div>
 
-              </div>
-            
-          </div>
-      
+                  <div class="w3-container" style="padding: 0;">
+                    <div id="product{{ $product->id }}" class="w3-modal">
+                      <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:3000px">
+                        <div class="w3-center"><br>
+                          <span onclick="document.getElementById('product{{ $product->id }}').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                        </div>
+                      
+                        <form id="addtocart{{ $product->id }}" class="w3-container" action="/tocart" method="post" enctype="multipart/form-data" >
+                          @csrf
+                          <div class="w3-section">
+                            <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_product" value={{ $product->id }}>
+                            <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_user" value={{ $_SESSION['id'] }}>
+                            <input class="w3-input w3-border w3-margin-bottom" type="integer" name="quantity" value="1" required>
+                      
+                            <button id="ok-btn" type="submit">Confirmer</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+                  <script>
+                      $(document).ready(()=>{
+                        $('#addtocart{{ $product->id }}').submit((event)=>{
+                            event.preventDefault();
+                            console.log("here");
+                            var form = $('#addtocart{{ $product->id }}');
+                  
+                            $.ajax({
+                              type : 'POST',
+                              url : '/tocart',
+                              data : form.serialize(),
+                              dataType : 'text',
+                              encode : true,
+                              success : (data) => {
+                                console.log("true");
+                                console.log(data);
+                              },
+                              error : (data) => {
+                                console.log("false");
+                                console.log(data);
+                              }
+                            });
+                        });
+                      });
+                    </script>
 
         @endforeach
 
 
       </div>
+
     </div>
 
     <div class="col-lg-1 col-md-2 col-sm-3 bg-dark"></div>
@@ -419,6 +469,7 @@ $(document).ready(()=>{
 });
 </script>
 </body>
+
 </html>
 
 

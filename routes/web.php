@@ -47,30 +47,41 @@ Route::get('/usernav', function () {
     return view('layouts/usernav');
 });
 
+
 Route::get('/article', function () {
     return view('layouts/article');
 });
 
 Route::get('/articlenon', function () {
     return view('layouts/articlenon');
+
+Route::get('/cartview', function () {
+    return view('layouts/cartview');
 });
 
 Route::post('/image', 'ImageController@store');
 
-Route::post('/comment', 'CommentController@store');
+Route::post('/image', 'EventController@storeImage');
+
+
+Route::post('/comment', 'EventController@storeComment');
+Route::post('/commentImage', 'EventController@storeCommentImage');
+Route::post('/event/downloadPic', 'EventController@downloadPic');
 
 Route::post('/like', 'LikeController@store');
 
+Route::post('/validate', 'IdeeController@update');
 
 Route::post('/inscription', 'UsersController@store');
 Route::post('/connexion', 'UsersController@connect');
 Route::get('/logout', 'UsersController@logout');
 Route::post('/idee', 'IdeeController@store');
-Route::put('/idee/{id}', 'IdeeController@change');
+Route::put('/idee/{id}', 'IdeeController@update');
 Route::post('/event', 'EventController@store');
+Route::post('/image/delete', 'EventController@deleteImage');
 
+Route::post('/comment/delete', 'EventController@deleteComment');
 
-Route::post('/eventregister', 'EventRegisterController@store');
 
 Route::post('/category', 'CategoryController@store');
 
@@ -87,6 +98,10 @@ Route::get('/evenementdumois', function () {
 });
 Route::post('/product/destroy', 'ProductController@destroy');
 
+Route::get('/cart', 'CommandController@show', function() {
+    return view('cart');
+});
+
 Route::get('/islogged', 'UsersController@isLogged');
 
 Route::get('/fetchcart', 'CartController@cart');
@@ -94,6 +109,12 @@ Route::get('/fetchcart', 'CartController@cart');
 Route::post('/article', 'ProductController@addarticle');
 
 Route::post('/tocart', 'CommandController@addarticle');
+
+Route::post('/showcart', 'CommandController@show');
+Route::delete('/product', 'CommandController@deleteproduct');
+Route::post('/product', 'ProductController@getProduct');
+Route::put('/product', 'CommandController@updatequantity');
+
 
 Route::get('/politique', function () {
     return view('politique');
@@ -107,4 +128,8 @@ Route::get('/conditions', function () {
 Route::get('/credits', function () {
     return view('credits');
 });
+Route::get('/modal', function () {
+    return view('modal');
+});
+
 
