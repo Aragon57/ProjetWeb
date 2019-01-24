@@ -8,6 +8,7 @@
     use Symfony\Component\Debug\Exception\FatalThrowableError;
 
     session_start();
+    $_SESSION['id_cart'] = 1;
 
     class CommandController extends Controller
     {
@@ -86,5 +87,32 @@
             }
                 
             return $product->id;
+        }
+
+        public function show(Request $request) {
+            if(!isset($_SESSION['id_cart']))
+            {
+                return view('cart', compact($articles));
+            }
+
+            $articles = CartProduct::where('id_command', '=', $_SESSION['id_cart'])->get();
+            
+            return view('cart', compact("articles"));
+        }
+
+        public function deleteproduct(Request $request) {
+            $article = CartProduct::where('id', '=', $request->id)->first();
+            $article->forceDelete();
+
+            return response('true', 200);
+        }
+
+        public function updatequantity(Request $request) {
+            $article = CartProduct::find($request->id);
+            $article->quantity = $request->quantity;
+
+            $article->save();
+
+            return response('true', 200);
         }
     }

@@ -73,7 +73,10 @@ else
     }
 
 
-
+    public function getProduct($request) {
+         $article = Product::where('id', '=', $request->id_product)->get();
+         return view('cart', compact("article"));
+    }
         
     }
 

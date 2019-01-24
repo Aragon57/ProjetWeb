@@ -47,7 +47,15 @@ Route::get('/usernav', function () {
     return view('layouts/usernav');
 });
 
+
+Route::get('/cartview', function () {
+    return view('layouts/cartview');
+});
+
+Route::post('/image', 'ImageController@store');
+
 Route::post('/image', 'EventController@storeImage');
+
 
 Route::post('/comment', 'EventController@storeComment');
 Route::post('/commentImage', 'EventController@storeCommentImage');
@@ -81,6 +89,10 @@ Route::get('/evenementdumois', function () {
     return view('evenementdumois');
 });
 
+Route::get('/cart', 'CommandController@show', function() {
+    return view('cart');
+});
+
 Route::get('/islogged', 'UsersController@isLogged');
 
 Route::get('/fetchcart', 'CartController@cart');
@@ -91,5 +103,7 @@ Route::post('/article', 'ProductController@addarticle');
 Route::delete('product/{id}/delete', 'ProductController@delete');
 
 Route::post('/tocart', 'CommandController@addarticle');
-
-
+Route::post('/showcart', 'CommandController@show');
+Route::delete('/product', 'CommandController@deleteproduct');
+Route::post('/product', 'ProductController@getProduct');
+Route::put('/product', 'CommandController@updatequantity');
