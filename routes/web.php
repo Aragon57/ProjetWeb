@@ -75,6 +75,7 @@ Route::post('/image/delete', 'EventController@deleteImage');
 
 Route::post('/comment/delete', 'EventController@deleteComment');
 
+Route::post('/validatecommand', 'CommandController@validateCommand');
 
 
 Route::post('/inscription', 'UsersController@store');
