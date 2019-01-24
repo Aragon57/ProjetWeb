@@ -48,6 +48,13 @@ Route::get('/usernav', function () {
 });
 
 
+Route::get('/article', function () {
+    return view('layouts/article');
+});
+
+Route::get('/articlenon', function () {
+    return view('layouts/articlenon');
+
 Route::get('/cartview', function () {
     return view('layouts/cartview');
 });
@@ -76,6 +83,7 @@ Route::post('/image/delete', 'EventController@deleteImage');
 Route::post('/comment/delete', 'EventController@deleteComment');
 
 
+Route::post('/category', 'CategoryController@store');
 
 Route::post('/inscription', 'UsersController@store');
 
@@ -88,6 +96,7 @@ Route::get('/contact', function () {
 Route::get('/evenementdumois', function () {
     return view('evenementdumois');
 });
+Route::post('/product/destroy', 'ProductController@destroy');
 
 Route::get('/cart', 'CommandController@show', function() {
     return view('cart');
@@ -98,9 +107,6 @@ Route::get('/islogged', 'UsersController@isLogged');
 Route::get('/fetchcart', 'CartController@cart');
 
 Route::post('/article', 'ProductController@addarticle');
-
-
-Route::delete('product/{id}/delete', 'ProductController@delete');
 
 Route::post('/tocart', 'CommandController@addarticle');
 
