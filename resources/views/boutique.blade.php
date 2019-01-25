@@ -27,7 +27,7 @@
   	</head>
 
 	<body>
- <!-- Nav bar -->
+ <!-- Barre de navigation -->
 
  <!-- Premier container-->
 		@include('components/articlecard')
@@ -52,7 +52,7 @@
         				</div>
       				</div>
 
-      <!-- Ajouter un article -->
+    <!-- Ajouter un article -->
 
       				<div class="w3-container">
         				<div class="gauche">
@@ -100,7 +100,9 @@
                  			</form>
                			</div>
              		</div>
-           		</div>
+				   </div>
+				   
+     <!--Ajouter une categories -->
 
       			<div class="w3-container">
         			<div class="gauche">
@@ -135,20 +137,11 @@
 				   
            		<hr><br>
 
-           <!-- meilleur vente -->
+    <!-- Trois articles les plus vendus -->
 
            		<div class="row">
             		@foreach ($firsts as $first)
 						<div class="card-deck col-lg-4 col-md-6 mb-4">
-							{{-- <div class="card">
-								<img class="card-img-top" src="http://127.0.0.1:8000/{{ $first->image }}" alt="Card image cap">
-								<div class="card-block">
-									<h4 class="card-title">{{ $first->name }}</h4>
-									<p class="card-text prix-article">Prix: {{ $first->price }}€</p>
-									<p class="card-text">{{ $first->description }}</p>
-									<button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
-								</div>
-							</div> --}}
 							@php loadcard($first, false) @endphp
 						</div>
 					@endforeach
@@ -158,9 +151,10 @@
         	<div class="col-lg-1 col-md-2 col-sm-3 bg-dark"></div>
 
       	</div>
-    </div>
-
-    <!-- 2eme container -->
+	</div>
+	
+    <!-- Fin du premier container -->
+    <!-- Debut du second container -->
 
     <div class="container-fluid text-center"> 
      	<div class="row">
@@ -173,7 +167,7 @@
         		</div>
         		<hr>
 
-        <!-- Filter box -->
+    <!-- Barre du Filtre par prix et categories -->
 
         		<br>
         		<div class="col-lg-12 col-md-24 col-sm-36" >
@@ -194,7 +188,7 @@
 
         		<br> 
 
-        <!--All articles-->
+	<!-- Affichage de tous les articles de la boutique -->
 
         		<div id="sdq" class="row">
           			@foreach ($products as $product)
@@ -302,6 +296,7 @@
   		</div>
 	</div>
 </body>
+
 <script>
 	$(document).ready(()=>{
 		$('#{{ $_SESSION['id'] }}').submit((event)=>{
