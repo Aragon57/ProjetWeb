@@ -15,7 +15,7 @@
 </head>
     <body style ="background-color:#1d2124" class="co">
 
-        <?php include('C:\Users\nicol\webLaravel\resources\views\nav.blade.php'); ?>
+        @include('layouts/nav');
 
 
 
@@ -24,11 +24,11 @@
                 <div class="cardsignin">
                     <div class="card-header">
                         <h3>S'INSCRIRE</h3>
-
+                        <p id="error"></p>
                     </div>
                     <div class="card-body">
                         <form action="/inscription" method="post">
-                            {{ csrf_field() }}
+                            @csrf
 
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
@@ -58,31 +58,31 @@
                                 </div>
 <SELECT class="form-control" name="localisation" size="1">
                                 <OPTION>Strasbourg 
-                                    <OPTION>Nancy
-                                        <OPTION>Reims
-                                            <OPTION>Dijon
-                                                <OPTION>Lyon
-                                                <OPTION>Arras 
-                                                <OPTION>Brest
-                                                <OPTION>Saint-Nazaire 
-                                                <OPTION>Strasbourg 
-                                                <OPTION>Bordeaux 
-                                                <OPTION>Nice 
-                                                <OPTION>Pau 
-                                                <OPTION>Toulouse 
-                                                <OPTION>Angoulême 
-                                                <OPTION>Grenoble 
-                                                <OPTION>La Rochelle
-                                                <OPTION>Châteauroux 
-                                                <OPTION>Paris Nanterre 
-                                                <OPTION>Le Mans
-                                                <OPTION>Caen 
-                                                <OPTION>Rouen 
-                                                <OPTION>Lille
-                                                <OPTION>Montpellier
-                                                <OPTION>Nantes
-                                                <OPTION>Orléans
-                                                </SELECT>
+                                <OPTION>Nancy
+                                <OPTION>Reims
+                                <OPTION>Dijon
+                                <OPTION>Lyon
+                                <OPTION>Arras 
+                                <OPTION>Brest
+                                <OPTION>Saint-Nazaire 
+                                <OPTION>Strasbourg 
+                                <OPTION>Bordeaux 
+                                <OPTION>Nice 
+                                <OPTION>Pau 
+                                <OPTION>Toulouse 
+                                <OPTION>Angoulême 
+                                <OPTION>Grenoble 
+                                <OPTION>La Rochelle
+                                <OPTION>Châteauroux 
+                                <OPTION>Paris Nanterre 
+                                <OPTION>Le Mans
+                                <OPTION>Caen 
+                                <OPTION>Rouen 
+                                <OPTION>Lille
+                                <OPTION>Montpellier
+                                <OPTION>Nantes
+                                <OPTION>Orléans
+                                </SELECT>
                             </div>
 
 
@@ -107,7 +107,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center links">
-                        Vous n'avez pas encore de compte?<a href="#">Inscrivez-vous</a>
+                        Vous avez déjà un compte?<a href="/connexion">Connectez vous</a>
                     </div>
                     <div class="d-flex justify-content-center">
                     </div>
@@ -126,52 +126,28 @@
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 <script>
-    $(document).ready({
+    $(document).ready(() => {
         $('form').submit((event)=>{
             event.preventDefault();
-
-            let form_data = {
-                'name' : $('input[name=name]').val();
-                'firstname' : $('input[name=firstname]').val();
-                'email' : $('input[name=email]').val();
-                'localisation' : $('input[name=localisation]').val();
-                'password' : $('input[name=password]').val();
-                'password_confirmation' : $('input[name=password_confirmation]').val();
-            };
+            var form = $('form');
 
             $.ajax({
                 type : 'POST',
                 url : '/inscription',
-                data : form_data,
+                data : form.serialize(),
                 dataType : 'text',
-                encode : true
-            }).done((data)=>{
-                if(data == 'true'){
-                    window.location = "/";   
+                encode : true,
+                success : (data) => {
+                    document.location.href='/';
+                },
+                error : (data) => {
+                    document.getElementById("error").innerHTML = data['responseText'];
                 }
-                else if(data == 'false 1') {
-                    document.getElementById("error").innerHTML = "password doesn't match !";
-                }
-                else if(data == 'false 2') {
-                    document.getElementById("error").innerHTML = "email already exists !";
-                }
-                else if(data == 'false 3') {
-                    document.getElementById("error").innerHTML = "username already exists !";
-                }
-                else if(data == 'false 4') {
-                    document.getElementById("error").innerHTML = "password is too small !";
-                }
-                else {
-                    document.getElementById("error").innerHTML = "something went wrong !";
-                }
-
-                $('input[name=password]').val('');
-                $('input[name=password_confirmation]').val('');
             });
         });
     });

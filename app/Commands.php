@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Idee extends Model
+class Commands extends Model
 {
-    protected $table = 'event';
-
+    protected $table = 'command';
 }
