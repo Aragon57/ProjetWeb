@@ -178,7 +178,7 @@
 	<script>
 		$(document).ready(()=>{
 			$('#payer-liquide').click(()=>{
-				$.get('/validationCommand', {
+				$.get('/validatecommand', {
 					success : (data) => {
 						$('#payement-btn').style.display='none';
 						$('#payement-success').style.display='block';
