@@ -59,11 +59,8 @@ $class='btnsearch';
                                  }
                              }
 
-                                   echo '   <form method="post" action="/like" > '         .  csrf_field() .'
+                                   echo '   <form method="get" action="/voteidee/'.$idea->id.'" > '         .  csrf_field() .'
 
-                                     <input type="hidden" name="id_event" value='. $idea->id .'  >
-                                     <input type="hidden" name="type" value="2" >
-                                     <input type="hidden" name="page" value="/idee"  >
 
                                     <button type = "submit" class="'. $class. '" type="submit">Vote : '. $i .'</i></i> </button>
                                     </form>
@@ -76,7 +73,7 @@ $class='btnsearch';
                                     }
 
 
-
+                                    if($_SESSION['status']==4){
 
                                    echo '   <form method="post" action="/validate" > '         .  csrf_field() .'
 
@@ -92,6 +89,7 @@ $class='btnsearch';
                                     <button type = "submit" class="btn" type="submit">Valider</i></i> </button>
                                     </form>
                                     ';
+                                }
 
     }
 

@@ -26,6 +26,8 @@ Route::get('/connexion', function () {
 });
 
 
+
+
 Route::get('/idee',  'IdeeController@display',  function () {
     return view('idee');
 });
@@ -34,13 +36,23 @@ Route::get('/inscription', function () {
     return view('inscription');
 });
 
+
+Route::get('user/{id}', function($id)
+{
+    return 'User '.$id;
+});
+
 Route::get('/cart', function () {
     return view('cart');
 });
 
-
+Route::get('generate-pdf/{id}','EventIdController@generatePDF');
 Route::get('/event' , 'EventController@display', function () {
     return view('event');
+});
+
+Route::get('/event/{id}' , 'EventIdController@display', function () {
+    return view('eventId');
 });
 
 Route::get('/usernav', function () {
@@ -54,16 +66,25 @@ Route::get('/cartview', function () {
 
 Route::post('/image', 'ImageController@store');
 
-Route::post('/image', 'EventController@storeImage');
+Route::post('/add/image/{id}', 'EventController@storeImage');
+
+Route::get('/dlfile', 'EventController@get_file');
+
+Route::get('/voteidee/{id}', 'LikeController@storeVote');
 
 
 Route::post('/comment', 'EventController@storeComment');
 Route::post('/commentImage', 'EventController@storeCommentImage');
 Route::post('/event/downloadPic', 'EventController@downloadPic');
 
-Route::post('/like', 'LikeController@store');
+Route::get('/likepic/{id}', 'LikeController@store');
+Route::get('/register/{id}', 'LikeController@storeRegister');
 
 Route::post('/validate', 'IdeeController@update');
+
+Route::get('/image/report/{id}', 'EventController@reportImage');
+
+Route::get('/comment/report/{id}', 'EventController@reportComment');
 
 Route::post('/inscription', 'UsersController@store');
 Route::post('/connexion', 'UsersController@connect');
@@ -71,7 +92,7 @@ Route::get('/logout', 'UsersController@logout');
 Route::post('/idee', 'IdeeController@store');
 Route::put('/idee/{id}', 'IdeeController@update');
 Route::post('/event', 'EventController@store');
-Route::post('/image/delete', 'EventController@deleteImage');
+Route::get('/image/delete/{id}', 'EventController@deleteImage');
 
 Route::post('/comment/delete', 'EventController@deleteComment');
 
