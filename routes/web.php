@@ -64,6 +64,10 @@ Route::get('/cartview', function () {
     return view('layouts/cartview');
 });
 
+Route::get('/administration', function () {
+    return view('administration');
+});
+
 Route::post('/image', 'ImageController@store');
 
 Route::post('/add/image/{id}', 'EventController@storeImage');
