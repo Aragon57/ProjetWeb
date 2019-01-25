@@ -13,6 +13,10 @@
 
 }
 
+.div1 {
+  
+  border: 5px solid #6699ff;
+}
 
 .red{
   color: red;
@@ -21,6 +25,15 @@
 
  body{
   background-color: #1d2124;
+
+}
+
+
+.lien{
+
+  color: black;
+    text-decoration : none;
+
 
 }
 
@@ -89,7 +102,7 @@ color : red;
 
 
 body{
-  background-color: #1d2124;
+    background-image: linear-gradient(to right,  #737373 0%, white 9.5%  90.5%, #737373 );
 
 }
 
@@ -202,6 +215,10 @@ height: 100%;
 align-content: center;
 }
 
+.com{
+  align-content: center;
+   margin-left:50px; /* -largeur/2 */
+}
 
 .cardsignin{
 height: 550px;
@@ -257,6 +274,27 @@ box-shadow: 0 0 0 0 !important;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+
+
+.btnregist{
+
+  color: #318CE7;
+  border-color: #318CE7;
+  width : 220px;
+}
+
+.btnregist:hover{
+  color: #fff;
+  background-color: #318CE7 
+}
+
+hr
+{
+  padding:2px;
+  background-color: #808080;
+  border:0;
+  border-radius: 0px;
+}
 
 .remember{
 color: white;
@@ -324,5 +362,6 @@ margin-left: 4px;
 }
 
 .whitos{
+
   background-color: white;
 }

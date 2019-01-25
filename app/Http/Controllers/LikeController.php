@@ -6,16 +6,16 @@ session_start();
 
 use App\Like;
 use Illuminate\Http\Request;
-
+use PDF;
 class LikeController extends Controller
-{
+{  
+     public function store(int $id)
 
-     public function store(Request $request)
     {
 
-        $liked =  Like::where('id_event', $request->id_event)
+        $liked =  Like::where('id_event', $id)
                         ->where('id_user', $_SESSION['id'])
-                        ->where('type', $request->type)
+                        ->where('type', 4)
 
                         ->first();
 
@@ -23,7 +23,7 @@ class LikeController extends Controller
 
 
            $liked->delete();
-           return redirect($request->page);
+           return redirect('/event/'.$id);
 
         }
         else{
@@ -31,21 +31,84 @@ class LikeController extends Controller
 
 
         $like = new Like();
-                          $like->id_event =$request->id_event;
+        $like->id_event = $id;
+        $like->email =$_SESSION['email'];
 
-        $like->type =$request->type;
+        $like->type = 4;
         $like->id_user = $_SESSION['id'];
         $like->save();
         
-    return redirect($request->page);    }
+    return redirect('/event/'.$id);    }
 
 
 }
 
+     public function storeVote(int $id)
+    {
 
-    public function display(){
+        $liked =  Like::where('id_event', $id)
+                        ->where('id_user', $_SESSION['id'])
+                        ->where('type', 2)
+
+                        ->first();
+
+        if(isset($liked)){
 
 
-    }
+           $liked->delete();
+           return redirect('/idee');
+
+        }
+        else{
+
+
+
+        $like = new Like();
+        $like->id_event = $id;
+        $like->email =$_SESSION['email'];
+
+        $like->type = 2;
+        $like->id_user = $_SESSION['id'];
+        $like->save();
+        
+    return redirect('/idee');    }
+
+
+}
+
+    
+    public function storeRegister(int $id)
+    {
+
+        $registered =  Like::where('id_event', $id)
+                        ->where('id_user', $_SESSION['id'])
+                        ->where('type', 3 )
+
+                        ->first();
+
+        if(isset($registered)){
+
+
+           $registered->delete();
+           return redirect('/event/'.$id);
+
+        }
+        else{
+
+
+
+        $like = new Like();
+        $like->id_event = $id;
+        $like->email =$_SESSION['email'];
+
+        $like->type = 3;
+        $like->id_user = $_SESSION['id'];
+        $like->save();
+        
+    return redirect('/event/'.$id);    }
+
+
+}
+
 
 }
