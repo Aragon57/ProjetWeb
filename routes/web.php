@@ -97,6 +97,10 @@ Route::get('/shopcomp', function () {
     return view('components/shopcomp');
 });
 
+Route::get('/articlecard', function () {
+    return view('components/articlecard');
+});
+
 Route::delete('/product', 'CommandController@deleteproduct');
 Route::post('/product', 'ProductController@getProduct');
 Route::put('/product', 'CommandController@updatequantity');

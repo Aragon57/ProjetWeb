@@ -18,7 +18,7 @@
     	<link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
     	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     	<link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
-    	<link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
+		<link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
 
     	<script src="{{ asset('js/jquery.min.js') }}"></script>
     	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
@@ -30,7 +30,7 @@
  <!-- Nav bar -->
 
  <!-- Premier container-->
-
+		@include('components/articlecard')
  		<div class="container-fluid text-center"> 
   			<div class="row">
 				<div class="col-lg-1 col-md-2 col-sm-3 bg-dark"></div>
@@ -140,7 +140,7 @@
            		<div class="row">
             		@foreach ($firsts as $first)
 						<div class="card-deck col-lg-4 col-md-6 mb-4">
-							<div class="card">
+							{{-- <div class="card">
 								<img class="card-img-top" src="http://127.0.0.1:8000/{{ $first->image }}" alt="Card image cap">
 								<div class="card-block">
 									<h4 class="card-title">{{ $first->name }}</h4>
@@ -148,7 +148,8 @@
 									<p class="card-text">{{ $first->description }}</p>
 									<button class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
 								</div>
-							</div>
+							</div> --}}
+							@php loadcard($first, false) @endphp
 						</div>
 					@endforeach
           		</div>
@@ -182,7 +183,6 @@
             			<div class="filteredproducts gauche">
               				<ul class="dropdownmenu">
                   				<li><button id="tri-prix" class="btn btn-light classer" value="Prix"> Prix </button></li>
-                  				<li><button id="tri-nom" class="btn btn-light classer" value="Nom"> Nom </button></li>
 
                 				@foreach($categories as $category)
                 					<li><button class="btn btn-light tri" value={{$category->id}} > {{$category->name}} </button></li>
@@ -214,21 +214,7 @@
           				@endphp
 				
 						<div class="card-deck col-lg-4 col-md-6 mb-4 article {{ $cate }}">
-							<div class="card">
-								<img class="card-img-top" src="http://127.0.0.1:8000/{{ $product->image }}" alt="Card image cap">
-								<div class="card-block">
-									<h4 class="card-title nom-article">Card title</h4>
-									<p class="card-text prix-article">Prix: {{ $product->price }}€</p>
-									<p class="card-text">{{ $product->description }}</p>
-									<button onclick="document.getElementById('product{{ $product->id }}').style.display='block'" class="addtocart-btn" type="submit"> Ajouter au panier <span> </span> <i class="fas fa-shopping-cart"> </i></button>
-							
-									<form action="/product/destroy" method="post">
-										@csrf
-							  			<input type="hidden" name="id_product" value ={{ $product->id }}>
-										<button type="submit" class="addtocart-btn"><i class="fas fa-trash-alt"></i></button>
-						  			</form>
-								</div>
-							</div>
+							@php loadcard($product, true); @endphp
 						</div>
 
                 		<div class="w3-container" style="padding: 0;">
@@ -295,7 +281,6 @@
 
       			<form class="w3-container" action="/article" method="post" enctype="multipart/form-data" >
                 	@csrf
-
         			<div class="w3-section">
           				<label><b>Nom de l'article</b></label>
           				<input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_product" value={{ $product->id }}>
