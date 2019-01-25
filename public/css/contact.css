@@ -1,3 +1,19 @@
+.containerr {
+  width: 40%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.containerpol {
+  width: 50%;
+  padding-right: 100px;
+  padding-left: 100px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 body {
     margin:0;
     padding:0;
@@ -67,5 +83,29 @@ body {
 .blanc{
 	color:white;
 }
+.truc-a-centrer {
+  position: relative;
+  top: 20px;
+  left:570px;
+
+  width:720px;
+ 
+}
 
 
+}
+div#centre {
+	
+	color:white;
+	width: 100 px;
+	margin-left: 200px;
+	margin-right: 50px;
+	
+}
+
+.mention {
+	overflow: hidden;
+	text-align: center;
+	
+
+}
