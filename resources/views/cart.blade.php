@@ -1,5 +1,6 @@
 @php
-	$_SESSION['id'] = 333;	
+	$_SESSION['id'] = 333;
+	unset($_SESSION['id_cart']);	
 @endphp
 <!DOCTYPE html>
 <html lang="fr">
@@ -156,7 +157,7 @@
 							  	<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
 							</div>
 					  
-							<form class="w3-container">
+							<form class="w3-container" action="/validationCommand" method="get">
 								<div id="payement-btn" class="w3-section">
 									<button id="payer-liquide" class="ok-btn" style="margin: 10px">Payer en liquide</button>
 									<div id="paypal-button"></div>
@@ -177,7 +178,7 @@
 	<script>
 		$(document).ready(()=>{
 			$('#payer-liquide').click(()=>{
-				$.get('', {
+				$.get('/validationCommand', {
 					success : (data) => {
 						$('#payement-btn').style.display='none';
 						$('#payement-success').style.display='block';

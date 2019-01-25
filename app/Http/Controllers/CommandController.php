@@ -35,7 +35,7 @@
         }
 
         public function findcommand(Request $request) {
-            $command = Commands::where('id_user', '=', $request->id_user)->first();
+            $command = Commands::where('id_user', '=', $request->id_user)->where('paye', '=', '0')->first();
             if($command == null)
             {
                 return false;
@@ -92,10 +92,17 @@
         public function show(Request $request) {
             if(!isset($_SESSION['id_cart']))
             {
-                return view('cart', compact($articles));
+                return 0;
             }
 
-            $articles = CartProduct::where('id_command', '=', $_SESSION['id_cart'])->get();
+            $articles = null;
+            $command = self::findcommand($request);
+            if(!$command)
+            {
+                return view('cart', compact("articles"));
+            }
+
+            $articles = CartProduct::where('id_command', '=', $command->id)->get();
             
             return view('cart', compact("articles"));
         }
@@ -114,5 +121,16 @@
             $article->save();
 
             return response('true', 200);
+        }
+
+
+        public function validateCommand(){
+
+            $command = Commands::where('id' , $_SESSION['id_cart'])->where('paye', 0)->first();
+            $command->paye = 1;
+            $command->save();
+
+            unset($_SESSION['id_cart']);
+            return;
         }
     }

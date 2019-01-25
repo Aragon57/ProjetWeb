@@ -29,7 +29,7 @@ Route::get('/connexion', function () {
 Route::get('/event' , 'EventController@display', function () {
     return view('event');
 
-
+});
 
 
 Route::get('/idee',  'IdeeController@display',  function () {
@@ -77,6 +77,7 @@ Route::get('/cart', 'CommandController@show', function() {
 
 Route::get('/footer', function () {
     return view('footer');
+    });
 
 Route::get('generate-pdf/{id}','EventIdController@generatePDF');
 Route::get('/event' , 'EventController@display', function () {
@@ -112,6 +113,9 @@ Route::get('/usernav', function () {
 Route::get('/administration', function () {
     return view('administration');
 });
+
+
+Route::get('/validationCommand', 'CommandController@validateCommand');
 
 Route::post('/image', 'ImageController@store');
 
