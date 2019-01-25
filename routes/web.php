@@ -117,7 +117,11 @@ Route::post('/image', 'ImageController@store');
 
 Route::post('/add/image/{id}', 'EventController@storeImage');
 
+
 Route::get('/dlfile', 'EventController@get_file');
+
+Route::post('/validatecommand', 'CommandController@validateCommand');
+
 
 Route::get('/voteidee/{id}', 'LikeController@storeVote');
 

@@ -67,7 +67,7 @@
     </div>
     </body>
 
-    <?php include('C:\Users\nicol\webLaravel\resources\views\footer.blade.php'); ?>
+    <?php //include('C:\Users\nicol\webLaravel\resources\views\footer.blade.php'); ?>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
