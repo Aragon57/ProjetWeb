@@ -8,9 +8,9 @@ use App\Like;
 use Illuminate\Http\Request;
 use PDF;
 class LikeController extends Controller
-{
-    
+{  
      public function store(int $id)
+
     {
 
         $liked =  Like::where('id_event', $id)
