@@ -10,23 +10,26 @@
   		<meta name="description" content="">
   		<meta name="author" content="">
 
-
   		<title>Boutique BDE Strasbourg</title>
 
 
-    	<link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-    	<link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
-    	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    	<link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
-		<link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
 
-    	<script src="{{ asset('js/jquery.min.js') }}"></script>
-    	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    	<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    	<script src="{{ asset('js/boutique.js') }}"></script>
-  	</head>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('/js/boutique.js') }}"></script>
+</head>
 
-	<body>
+<body>
+
+
+   <!-- Nav bar -->
+
  <!-- Barre de navigation -->
 
  <!-- Premier container-->
@@ -342,5 +345,3 @@
 		});
 	</script>
 </html>
-
-
