@@ -18,6 +18,10 @@ Route::get('/tableview', function () {
 });
 
 Route::get('/data', 'AdminController@getusers');
+Route::post('/data', 'AdminController@getusers');
+
+Route::get('/data/event', 'AdminController@getevent');
+Route::post('/data/event', 'AdminController@getevent');
 
 Route::get('/', function () {
     return view('welcome');

@@ -12,7 +12,7 @@
 	<title>Data - BDE Strasbourg</title>
 </head>
 
-<script>$(document).ready(()=>{getdata();});</script>
+<script>$(document).ready(()=>{getdata('/data');});</script>
 
 <body>
 	<nav class="navbar navbar-light bg-light">
@@ -21,8 +21,10 @@
 			<button id="eventbtn" class="btn btn-outline-success">Evenement</button>
 		</div>
 
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		<form id="search" class="form-inline my-2 my-lg-0">
+			@csrf
+			<input name="tableloaded" type="hidden" value="">
+			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="filter">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 		</form>
 	</nav>
@@ -33,23 +35,38 @@
 </body>
 
 <script>
-	function getdata()
+	function getdata(link)
 	{
-		$.get('/data', (data, status)=>{
+		$.get(link, (data, status)=>{
 			console.log(status);
 
 			$('#datatable').html(data);
+			$('input[name=tableloaded]').val(link);
 		});
 	}
 </script>
 <script>
 	$(document).ready(()=>{
 		$('#userbtn').click(()=>{
-			getdata();
+			getdata('/data');
 		});
 
 		$('#eventbtn').click(()=>{
+			getdata('/data/event');
+		});
 
+		$('#search').submit((event)=>{
+			event.preventDefault();
+
+			let send = $('#search');
+
+			let link = $('input[name=tableloaded]').val();
+
+			$.post(link, send.serialize(), (data, status)=>{
+				console.log(status);
+
+				$('#datatable').html(data);
+			});
 		});
 	});
 </script>

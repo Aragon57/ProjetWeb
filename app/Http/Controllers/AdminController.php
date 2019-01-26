@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\Console\Command;
 
@@ -25,13 +26,68 @@ class AdminController extends Controller {
 			$columns[] = $key;
 		}
 
+		if(isset($request->filter))
+		{
+			$data = self::filterresult($request->filter, $data);
+		}
+
+		$values = array();
+		if(empty($data))
+		{
+			return	view('admin/table', compact('columns', 'values'));
+		}
+
 		$values = $data;
 
-		$response[] = $columns;
-		$response[] = $data;
+		return view('admin/table', compact('columns', 'values'));
+	}
+
+	public function getevent(Request $request)
+	{
+		$data = Event::all();
+		
+		$columns = array("id", "name", "description", "date", "price", "validate", "punctuality", "past", "id_user");
+		$values = array();
+		foreach($data as $event)
+		{
+			$tmp = array(
+				$event->id,
+				$event->name,
+				$event->description,
+				$event->date,
+				$event->price,
+				$event->validate?"true":"false",
+				$event->punctuality?"true":"false",
+				$event->past?"true":"false",
+				$event->id_user
+			);
+			$values[] = $tmp;
+		}
+
+		if(isset($request->filter))
+		{
+			$values = self::filterresult($request->filter, $values);
+		}
 
 		return view('admin/table', compact('columns', 'values'));
-		//return response($response, 200);
+	}
+
+	private function filterresult($filter, $array)
+	{
+		$filtered = array();
+		foreach($array as $item)
+		{
+			foreach($item as $index => $string)
+			{
+				if (strpos($string, $filter) !== FALSE)
+				{
+					$filtered[] = $item;
+					break;
+				}
+			}
+		}
+		
+		return $filtered;
 	}
 
 	private function parseHeaders( $headers )
