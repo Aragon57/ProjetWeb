@@ -15,6 +15,7 @@
 
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
@@ -28,20 +29,21 @@
 <body>
 
 
-   <!-- Nav bar -->
+ 
 
  <!-- Barre de navigation -->
+
 
  <!-- Premier container-->
 		@include('components/articlecard')
  		<div class="container-fluid text-center"> 
   			<div class="row">
-				<div class="col-lg-1 col-md-2 col-sm-3 bg-dark"></div>
+				<div class="col-lg-1 col-md-2 col-sm-3 "></div>
 				
     			<div class="col-lg-10 col-md-20 col-sm-30">
-      				<hr>
+      				<hr class="hrshop">
       				<h2>Bienvenue sur notre boutique</h2>
-      				<hr>
+      				<hr class="hrshop">
       				<br>
 
 	      			<div>
@@ -132,26 +134,27 @@
              		</div>
            		</div>
 
-           		<br><hr>
+           		<br><hr class="hrshop">
 
            		<div class="col-lg-12 col-md-24 col-sm-36">        
              		<h4> Nos meilleures ventes</h4>
 				</div>
 				   
-           		<hr><br>
+           		<hr class="hrshop"><br>
 
     <!-- Trois articles les plus vendus -->
 
            		<div class="row">
             		@foreach ($firsts as $first)
-						<div class="card-deck col-lg-4 col-md-6 mb-4">
+						<div class="card-deck col-lg-4 col-md-6 mb-4 rezize-div">
 							@php loadcard($first, false) @endphp
 						</div>
 					@endforeach
           		</div>
         	</div>
 
-        	<div class="col-lg-1 col-md-2 col-sm-3 bg-dark"></div>
+        	<div class="col-lg-1 col-md-2 col-sm-3 ">  
+          </div>
 
       	</div>
 	</div>
@@ -161,14 +164,15 @@
 
     <div class="container-fluid text-center"> 
      	<div class="row">
-      		<div class="col-lg-1 col-md-2 col-sm-3 bg-dark"></div>
+      		<div class="col-lg-1 col-md-2 col-sm-3 "></div>
 
       		<div class="col-lg-10 col-md-20 col-sm-30 ">
+            <hr class="hrshop">
         		<div class="container-fluid text-left">
-          			<hr>
+          		
           			<h4> Tous nos produits </h4>
         		</div>
-        		<hr>
+        		<hr class="hrshop">
 
     <!-- Barre du Filtre par prix et categories -->
 
@@ -210,8 +214,8 @@
           					$cate = strtolower($cate);
           				@endphp
 				
-						<div class="card-deck col-lg-4 col-md-6 mb-4 article {{ $cate }}">
-							@php loadcard($product, true); @endphp
+						<div class="card-deck col-lg-4 col-md-6 mb-4 article {{ $cate }} rezize-div">
+  					@php loadcard($product, true); @endphp
 						</div>
 
                 		<div class="w3-container" style="padding: 0;">
@@ -264,40 +268,12 @@
       			</div>
     		</div>
 
-    		<div class="col-lg-1 col-md-2 col-sm-3 bg-dark"></div>
+    		<div class="col-lg-1 col-md-2 col-sm-3 "></div>
 
   		</div>
 	</div>
 
-	<div class="w3-container">
-  		<div id="addarcticle" class="w3-modal">
-    		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:3000px">
-      			<div class="w3-center"><br>
-        			<span onclick="document.getElementById('addarcticle').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-      			</div>
 
-      			<form class="w3-container" action="/article" method="post" enctype="multipart/form-data" >
-                	@csrf
-        			<div class="w3-section">
-          				<label><b>Nom de l'article</b></label>
-          				<input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_product" value={{ $product->id }}>
-
-          				<label><b>Description de l'article</b></label>
-          				<input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="description" required>
-									
-          				<label><b>Prix de l'article</b></label>
-          				<input class="w3-input w3-border w3-margin-bottom" type="number" placeholder="" name="price" required>
-									
-          				<label><b>Nombre d'articles en stock</b></label>
-          				<input class="w3-input w3-border w3-margin-bottom" type="number" placeholder="" name="stock" required>
-          				<input type="hidden" name="MAX_FILE_SIZE" value="100000">
-									
-          				<button class="ok-btn" type="submit">Confirmer</button>
-        			</div>
-      			</form>
-    		</div>
-  		</div>
-	</div>
 </body>
 
 <script>
