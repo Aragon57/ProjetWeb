@@ -13,6 +13,12 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+Route::get('/tableview', function () {
+    return view('admin/datatable');
+});
+
+Route::get('/data', 'AdminController@getusers');
+
 Route::get('/', function () {
     return view('welcome');
 });
