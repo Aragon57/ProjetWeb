@@ -160,14 +160,14 @@ Route::post('/like', 'LikeController@store');
 Route::post('/validate', 'IdeeController@update');
 
 
-Route::get('/likepic/{id}', 'LikeController@store');
+Route::post('/likepic/{id}', 'LikeController@store');
 Route::get('/register/{id}', 'LikeController@storeRegister');
 
 Route::post('/validate', 'IdeeController@update');
 
-Route::get('/image/report/{id}', 'EventController@reportImage');
+Route::post('/image/report/{id}', 'EventController@reportImage');
 
-Route::get('/comment/report/{id}', 'EventController@reportComment');
+Route::post('/comment/report/{id}', 'EventController@reportComment');
 
 
 Route::post('/inscription', 'UsersController@store');
@@ -177,9 +177,8 @@ Route::post('/idee', 'IdeeController@store');
 Route::put('/idee/{id}', 'IdeeController@update');
 Route::post('/event', 'EventController@store');
 
-Route::post('/image/delete', 'EventController@deleteImage');
 
-Route::get('/image/delete/{id}', 'EventController@deleteImage');
+Route::post('/image/delete/{id}', 'EventController@deleteImage');
 
 
 Route::post('/comment/delete', 'EventController@deleteComment');
