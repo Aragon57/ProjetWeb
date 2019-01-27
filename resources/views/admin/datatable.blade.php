@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
 	<meta charset="utf-8">
@@ -19,6 +19,8 @@
 		<div class="navbar-nav mr-auto">
 			<button id="userbtn" class="btn btn-outline-success">Utilisateur</button>
 			<button id="eventbtn" class="btn btn-outline-success">Evenement</button>
+			<button id="commandbtn" class="btn btn-outline-success">Commande</button>
+			<button id="articlebtn" class="btn btn-outline-success">Article</button>
 		</div>
 
 		<form id="search" class="form-inline my-2 my-lg-0">
@@ -53,6 +55,14 @@
 
 		$('#eventbtn').click(()=>{
 			getdata('/data/event');
+		});
+
+		$('#commandbtn').click(()=>{
+			getdata('/data/command');
+		})
+
+		$('#articlebtn').click(()=>{
+			getdata('/data/article');
 		});
 
 		$('#search').submit((event)=>{

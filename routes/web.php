@@ -23,6 +23,12 @@ Route::post('/data', 'AdminController@getusers');
 Route::get('/data/event', 'AdminController@getevent');
 Route::post('/data/event', 'AdminController@getevent');
 
+Route::get('/data/command', 'AdminController@getcommand');
+Route::post('/data/command', 'AdminController@getcommand');
+
+Route::get('/data/article', 'AdminController@getarticle');
+Route::post('/data/article', 'AdminController@getarticle');
+
 Route::get('/', function () {
     return view('welcome');
 });

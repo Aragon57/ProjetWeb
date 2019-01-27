@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Commands;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Console\Command;
 
@@ -72,6 +74,58 @@ class AdminController extends Controller {
 		return view('admin/table', compact('columns', 'values'));
 	}
 
+	public function getcommand(Request $request)
+	{
+		$data = Commands::all();
+
+		$columns = array("id", "id_user", "payed");
+		$values = array();
+		foreach($data as $command)
+		{
+			$tmp = array(
+				$command->id,
+				$command->id_user,
+				$command->payed?"true":"false"
+			);
+			$values[] = $tmp;
+		}
+
+		if(isset($request->filter))
+		{
+			$values = self::filterresult($request->filter, $values);
+		}
+
+		return view('admin/table', compact('columns', 'values'));
+	}
+
+	public function getarticle(Request $request)
+	{
+		$data = Product::all();
+
+		$columns = array("id", "name", "description", "price", "stock", "sold", "category");
+		$values = array();
+		foreach($data as $article)
+		{
+			$tmp = array(
+				$article->id,
+				$article->name,
+				$article->description,
+				$article->price.'€',
+				$article->stock,
+				$article->nbsell,
+				$article->id_category
+			);
+			$values[] = $tmp;
+		}
+
+		if(isset($request->filter))
+		{
+			$values = self::filterresult($request->filter, $values);
+		}
+
+		return view('admin/table', compact('columns', 'values'));
+	}
+
 	private function filterresult($filter, $array)
 	{
 		$filtered = array();
@@ -79,7 +133,7 @@ class AdminController extends Controller {
 		{
 			foreach($item as $index => $string)
 			{
-				if (strpos($string, $filter) !== FALSE)
+				if (strpos(strtoupper($string), strtoupper($filter)) !== FALSE)
 				{
 					$filtered[] = $item;
 					break;
