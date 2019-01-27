@@ -100,7 +100,7 @@
                       @endphp
                     </div>
                     <h6> Commentaires :</h6>
-                    <br><br>
+                    <br>
                     @foreach($comments as $comment)
                     @php
                     if($comment->id_image == $image->id){
