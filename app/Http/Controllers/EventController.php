@@ -110,7 +110,7 @@ public function storeImage(int $id)
     {
 
 
-$dossier = storage_path('app\public\img\event');
+$dossier = storage_path('app\public\img\event\\');
 $fichier = basename($_FILES['userfile']['name']);
 $taille_maxi = 100000;
 $taille = filesize($_FILES['userfile']['tmp_name']);

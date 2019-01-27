@@ -71,7 +71,7 @@ $class='btnsearch';
 
                                     
                                     }
-
+                                    if(isset($_SESSION['email'])){
 
                                     if($_SESSION['status']==4){
 
@@ -90,14 +90,17 @@ $class='btnsearch';
                                     </form>
                                     ';
                                 }
+                            }
 
     }
 
 
 
-
 }
 ?>
+
+<hr>
+
 <?php 
     echo    '<form action="/idee" method="post">'.
                             csrf_field() .

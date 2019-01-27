@@ -23,7 +23,7 @@ class LikeController extends Controller
 
 
            $liked->delete();
-           return redirect('/event/'.$id);
+           return redirect('/event');
 
         }
         else{
@@ -38,7 +38,7 @@ class LikeController extends Controller
         $like->id_user = $_SESSION['id'];
         $like->save();
         
-    return redirect('/event/'.$id);    }
+    return redirect('/event');    }
 
 
 }

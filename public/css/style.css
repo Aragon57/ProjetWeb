@@ -274,7 +274,14 @@ box-shadow: 0 0 0 0 !important;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-
+.comms
+{
+  width:100px;
+  padding:0px;
+  background-color: #808080;
+  border:0;
+  border-radius: 0px;
+}
 
 .btnregist{
 

@@ -18,6 +18,9 @@
         @include('layouts/nav');
 
 
+        @php
+            if(!isset($_SESSION['email'])){
+        @endphp
 
         <div class="container">
             <div class="d-flex justify-content-center h-100">
@@ -115,6 +118,15 @@
             </div>
         </div>
     </div>
+
+        @php
+}else{
+    @endphp
+
+    <h1><center> Vous êtes déjà connecté </center></h1>
+@php
+}
+@endphp
 
 </body>
 

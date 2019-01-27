@@ -30,7 +30,7 @@ Route::get('/event' , 'EventController@display', function () {
     return view('event');
 
 
-
+});
 
 Route::get('/idee',  'IdeeController@display',  function () {
     return view('idee');
@@ -77,6 +77,7 @@ Route::get('/cart', 'CommandController@show', function() {
 
 Route::get('/footer', function () {
     return view('footer');
+});
 
 Route::get('generate-pdf/{id}','EventIdController@generatePDF');
 Route::get('/event' , 'EventController@display', function () {
