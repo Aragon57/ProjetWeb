@@ -12,8 +12,7 @@
     Print_r ($_SESSION['email']); 
     echo '</a>
     <div class="dropdown-diviseur"></div>
-    <a class="dropdown-item nav-lin" href="Aventador.html">MES INFOS</a>
-    <a class="dropdown-item nav-lin" href="Huracan.html">MON COMPTE</a>
+    <a class="dropdown-item nav-lin" href="/cart">MON PANIER</a>
     <a class="dropdown-item nav-lin" href="/logout">SE DECONNECTER</a>
     </div>
     </li>';

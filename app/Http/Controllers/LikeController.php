@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use PDF;
 class LikeController extends Controller
 {  
-     public function store(int $id)
+     public function store(int $id, Request $request)
 
     {
 
@@ -23,7 +23,7 @@ class LikeController extends Controller
 
 
            $liked->delete();
-           return redirect('/event/'.$id);
+           return redirect('/event/' .$request->id_event);
 
         }
         else{
@@ -38,7 +38,7 @@ class LikeController extends Controller
         $like->id_user = $_SESSION['id'];
         $like->save();
         
-    return redirect('/event/'.$id);    }
+    return redirect('/event/' .$request->id_event);    }
 
 
 }
