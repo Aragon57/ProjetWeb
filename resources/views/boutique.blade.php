@@ -46,16 +46,6 @@
       				<hr class="hrshop">
       				<br>
 
-	      			<div>
-						<h4 id="searchtitle" class="gauche" >Recherchez un article </h4>
-						
-        				<div class="recherche_bar">
-          					<form class="searchbox" action="/search" method="get">
-            					<input type="text" placeholder="" name="q">
-            					<button type="submit"><i class="fa fa-search"></i></button>
-          					</form>
-        				</div>
-      				</div>
 
     <!-- Ajouter un article -->
               @php
@@ -197,16 +187,22 @@
                 					<li><button class="btn btn-light tri" value={{$category->id}} > {{$category->name}} </button></li>
                 				@endforeach
               				</ul >
-						</div>
-          				<div>
-							<form action="/search" method="POST" >
+					      	</div>
+          				</div>
+                    </div>
+       
+              <div>
+              <h4 id="dcal" >Recherchez un article </h4>
+							<form action="/search" method="POST">
 								@csrf
 								<input type="text" name="search">
-								<input type="submit" value="search"></button>
+								<input type="submit" value="search">
 							</form>	
 						</div>
-          			</div>
-        		</div>
+           
+            
+          	
+
 
         		<br> 
 
@@ -229,7 +225,7 @@
           					$cate = strtolower($cate);
           				@endphp
 				
-						<div class="card-deck col-lg-4 col-md-6 mb-4 article {{ $cate }} rezize-div">
+						<div id="card-spot" class="card-deck col-lg-4 col-md-6 mb-4 article {{ $cate }} rezize-div">
   					@php loadcard($product, true); @endphp
 						</div>
 
