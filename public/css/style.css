@@ -13,6 +13,10 @@
 
 }
 
+.black{
+  color : black;
+}
+
 .div1 {
   
   border: 5px solid #808080;
@@ -101,7 +105,7 @@ color : red;
 }
 
 
-body{
+.projet-body{
     background-image: linear-gradient(to right,  #737373 0%, white 9.5%  90.5%, #737373 );
 
 }

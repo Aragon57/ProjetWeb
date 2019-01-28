@@ -37,21 +37,21 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="name" name="name" placeholder="Nom" require="required" class="form-control" >
+                                <input type="text" name="name" placeholder="Nom"  class="form-control" required>
 
                             </div>
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="firstname" name="firstname" placeholder="Prénom" require="required" class="form-control" >
+                                <input type="text" name="firstname" placeholder="Prénom"  class="form-control" required>
 
                             </div>
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="email" name="email" placeholder="Email" require="required" class="form-control" >
+                                <input type="email" name="email" placeholder="Email"  class="form-control" required>
 
                             </div>
                             
@@ -95,14 +95,16 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="password" placeholder="Mot de passe" require="required" class="form-control" >
+                            <input type="password" name="password" placeholder="Mot de passe"  class="form-control" required>
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="password_confirmation" placeholder="Mot de passe (confirmation)" require="required" class="form-control" >
+                            <input type="password" name="password_confirmation" placeholder="Mot de passe (confirmation)"  class="form-control" required>
                         </div>
+
+                            <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" required><a href="/conditions">Acceptez vous les conditions générales</a>  
                         <div class="form-group">
                             <input type="submit" value="Login" class="btn float-right login_btn">
                         </div>
@@ -128,20 +130,12 @@
 }
 @endphp
 
-</body>
 
+@include("footer")
 
-
-
-
-
-
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script>
     $(document).ready(() => {
         $('form').submit((event)=>{
@@ -164,6 +158,19 @@
         });
     });
 </script>
+</body>
+
+
+
+
+
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+
 
 
 </html>

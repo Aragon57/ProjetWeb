@@ -23,12 +23,14 @@
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
+
+                        <li id="user_depend" class="nav-item">
+                
+            </li>
             <li class="nav-item">
                 <a class="nav-lin" href="#">CONTACT</a>
             </li>
-            <li id="user_depend" class="nav-item">
-                
-            </li>
+
         </ul>
 
        

@@ -8,7 +8,7 @@
     </a>
     <div class="dropdown-menu bg-dark" >
 
-    <a class="dropdown-item nav-lin" href="Aventador.html">';  
+    <a class="dropdown-item nav-lin" href="">';  
     Print_r ($_SESSION['email']); 
     echo '</a>
     <div class="dropdown-diviseur"></div>

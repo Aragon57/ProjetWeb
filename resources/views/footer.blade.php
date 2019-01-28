@@ -3,18 +3,12 @@
 	
     <!-- Bootstrap core CSS -->
 
-<link href="{{ asset('css/contact.css') }}" rel="stylesheet">
- <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
- 
-
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
 
 
 <!-- Footer -->
-<footer class="page-footer blanc ">
+<footer class="blanc bg-dark">
 
 
 
@@ -110,20 +104,20 @@
 
           <!-- Facebook -->
      
-         <a href=https://www.facebook.com/BdeExiaStrasbourg/><i class="fab fa-facebook-square fa-2x blanc"></i>
+         <a href=https://www.facebook.com/BdeExiaStrasbourg/><i class="fab fa-facebook-square fa-2x blanc Facebook"></i>
           </a>
           <!-- Twitter -->
          
-           <a href=https://twitter.com/BdeExiaStrg><i class="fab fa-twitter-square fa-2x blanc "></i>
+           <a href=https://twitter.com/BdeExiaStrg><i class="fab fa-twitter-square fa-2x blanc Twitter"></i>
           </a>
           <!-- youtbe-->
 		  <br>
          
-        <a href=https://www.youtube.com/user/BdeExiaStrasbourg><i class="fab fa-youtube-square fa-2x blanc"></i>
+        <a href=https://www.youtube.com/user/BdeExiaStrasbourg><i class="fab fa-youtube-square fa-2x blanc Youtube"></i>
           </a>
 		  
           <!-- Linkedin -->
-        <a href=https://www.linkedin.com/school/cesiecoledingenieurs/><i class="fab fa-linkedin fa-2x blanc"></i>
+        <a href=https://www.linkedin.com/school/cesiecoledingenieurs/><i class="fab fa-linkedin fa-2x blanc Linkedin"></i>
           
           </a>
 
