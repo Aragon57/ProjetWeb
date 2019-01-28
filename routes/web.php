@@ -13,6 +13,22 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+Route::get('/tableview', function () {
+    return view('admin/datatable');
+});
+
+Route::get('/data', 'AdminController@getusers');
+Route::post('/data', 'AdminController@getusers');
+
+Route::get('/data/event', 'AdminController@getevent');
+Route::post('/data/event', 'AdminController@getevent');
+
+Route::get('/data/command', 'AdminController@getcommand');
+Route::post('/data/command', 'AdminController@getcommand');
+
+Route::get('/data/article', 'AdminController@getarticle');
+Route::post('/data/article', 'AdminController@getarticle');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,8 +44,7 @@ Route::get('/connexion', function () {
 
 Route::get('/event' , 'EventController@display', function () {
     return view('event');
-
-
+});
 
 
 Route::get('/idee',  'IdeeController@display',  function () {
@@ -77,8 +92,10 @@ Route::get('/cart', 'CommandController@show', function() {
 
 Route::get('/footer', function () {
     return view('footer');
+});
 
 Route::get('generate-pdf/{id}','EventIdController@generatePDF');
+
 Route::get('/event' , 'EventController@display', function () {
     return view('event');
 });
@@ -112,6 +129,9 @@ Route::get('/usernav', function () {
 Route::get('/administration', function () {
     return view('administration');
 });
+
+
+Route::get('/validationCommand', 'CommandController@validateCommand');
 
 Route::post('/image', 'ImageController@store');
 
@@ -163,14 +183,14 @@ Route::post('/like', 'LikeController@store');
 Route::post('/validate', 'IdeeController@update');
 
 
-Route::get('/likepic/{id}', 'LikeController@store');
+Route::post('/likepic/{id}', 'LikeController@store');
 Route::get('/register/{id}', 'LikeController@storeRegister');
 
 Route::post('/validate', 'IdeeController@update');
 
-Route::get('/image/report/{id}', 'EventController@reportImage');
+Route::post('/image/report/{id}', 'EventController@reportImage');
 
-Route::get('/comment/report/{id}', 'EventController@reportComment');
+Route::post('/comment/report/{id}', 'EventController@reportComment');
 
 
 Route::post('/inscription', 'UsersController@store');
@@ -180,9 +200,8 @@ Route::post('/idee', 'IdeeController@store');
 Route::put('/idee/{id}', 'IdeeController@update');
 Route::post('/event', 'EventController@store');
 
-Route::post('/image/delete', 'EventController@deleteImage');
 
-Route::get('/image/delete/{id}', 'EventController@deleteImage');
+Route::post('/image/delete/{id}', 'EventController@deleteImage');
 
 
 Route::post('/comment/delete', 'EventController@deleteComment');
@@ -190,3 +209,4 @@ Route::post('/category', 'CategoryController@store');
 Route::post('/inscription', 'UsersController@store');
 Route::post('/image', 'ImageController@store');
 Route::post('/image', 'EventController@storeImage');
+Route::post ('/search', 'ProductController@searchby');

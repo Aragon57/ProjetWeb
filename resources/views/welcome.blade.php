@@ -35,6 +35,10 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img  src="https://images.radio-canada.ca/q_auto,w_1600/v1/ici-info/16x9/tomorrowland-festival-belgique.jpg" height = "600"width="100% /9" alt="First slide">
+                
+                  <div class="col-md-12 text-center">
+                           
+                        </div>
             </div>
             <div class="carousel-item">
                 <img class="img-responsive" src="https://www.kelcible.fr/wp-content/uploads/boutique-en-ligne.jpg"  height = "600" width="100% /9" alt="Second slide">

@@ -17,9 +17,16 @@
 
         @include('layouts/nav')
 
+
+
+        @php
+            if(!isset($_SESSION['email'])){
+        @endphp
+
         <div class="container">
             <div class="d-flex justify-content-center h-100">
-                <div class="card">
+                <br>
+                <div class="cardsignin">
                     <div class="card-header">
                         <h3>SE CONNECTER</h3>
                         <p id="error"></p>
@@ -56,6 +63,15 @@
                 </div>
             </div>
         </div>
+
+    @php
+}else{
+    @endphp
+
+    <h1><center> Vous êtes déjà connecté </center></h1>
+@php
+}
+@endphp
     </body>
 
     <script>

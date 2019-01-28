@@ -35,7 +35,7 @@
         }
 
         public function findcommand(Request $request) {
-            $command = Commands::where('id_user', '=', $request->id_user)->first();
+            $command = Commands::where('id_user', '=', $request->id_user)->where('paye', '=', '0')->first();
             if($command == null)
             {
                 return false;
@@ -92,10 +92,17 @@
         public function show(Request $request) {
             if(!isset($_SESSION['id_cart']))
             {
-                return view('cart', compact($articles));
+                return 0;
             }
 
-            $articles = CartProduct::where('id_command', '=', $_SESSION['id_cart'])->get();
+            $articles = null;
+            $command = self::findcommand($request);
+            if(!$command)
+            {
+                return view('cart', compact("articles"));
+            }
+
+            $articles = CartProduct::where('id_command', '=', $command->id)->get();
             
             return view('cart', compact("articles"));
         }
@@ -115,68 +122,15 @@
 
             return response('true', 200);
         }
-			
-		public function validateCommand(){
-		
-			date_default_timezone_set('Etc/UTC');
-			require '../vendor/autoload.php';
-			//Create a new PHPMailer instance
-			$mail = new PHPMailer;
-			//Tell PHPMailer to use SMTP
-			$mail->isSMTP();
-			//Enable SMTP debugging
-			// 0 = off (for production use)
-			// 1 = client messages
-			// 2 = client and server messages
-			$mail->SMTPDebug = 2;
-			//Ask for HTML-friendly debug output
-			$mail->Debugoutput = 'html';
-			//Set the hostname of the mail server
-			$mail->Host = 'smtp.gmail.com';
-			// use
-			// $mail->Host = gethostbyname('smtp.gmail.com');
-			// if your network does not support SMTP over IPv6
-			//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-			$mail->Port = 587;
-			//Set the encryption system to use - ssl (deprecated) or tls
-			$mail->SMTPSecure = 'tls';
-			//Whether to use SMTP authentication
-			$mail->SMTPAuth = true;
-			//Username to use for SMTP authentication - use full email address for gmail
-			$mail->Username = "noreply.bde@gmail.com";
-			//Password to use for SMTP authentication
-			$mail->Password = "Jesuiskillian";
-			//Set who the message is to be sent from
-			$mail->setFrom('noreply.bde@gmail.com', 'Finalisation commande');
-			//Set an alternative reply-to address
-			//Set who the message is to be sent to
-			$mail->addAddress($_SESSION['id']);
-			//Set the subject line
-			$mail->Subject = 'Finalisation commande';
-			//Read an HTML message body from an external file, convert referenced images to embedded,
-			//convert HTML into a basic plain-text alternative body
-			//Replace the plain text body with one created manually
-			$mail->Body = 'Nous avons bien recu votre commande, nous allons planifier un rendez-vous afin de proceder au payement et a l\'echange';
-			$mail->SMTPOptions = array(
-				'ssl' => array(
-					'verify_peer' => false,
-					'verify_peer_name' => false,
-					'allow_self_signed' => true
-				)
-			);
-			//Attach an image file
-			//send the message, check for errors
-			if (!$mail->send()) {
-			echo "Mailer Error: " . $mail->ErrorInfo;
-			} else {
-			echo "Message sent!";
-
-				return redirect('/idee');   
 
 
-			}
-		
-		
-		}
-	
+        public function validateCommand(){
+
+            $command = Commands::where('id' , $_SESSION['id_cart'])->where('paye', 0)->first();
+            $command->paye = 1;
+            $command->save();
+
+            unset($_SESSION['id_cart']);
+            return;
+        }
     }
