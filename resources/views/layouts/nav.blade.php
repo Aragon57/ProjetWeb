@@ -10,17 +10,8 @@
             <li class="nav-item">
                 <a class="nav-lin" href="/idee">BOITE A IDEE</a>
             </li>
-            <li class="nav-item dropdown bg-dark">
-               <a class="nav-lin dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    BOUTIQUE
-                </a>
-                <div class="dropdown-menu bg-dark" >
-                    <a class="dropdown-item nav-lin" href="/boutique">BOUTIQUE</a>
-                    <div class="dropdown-diviseur"></div>
-                    <a class="dropdown-item nav-lin" href="">VETEMENTS</a>
-                    <a class="dropdown-item nav-lin" href="">TASSES</a>
-                    <a class="dropdown-item nav-lin" href="">GOODIES</a>
-                </div>
+          <li class="nav-item">
+                <a class="nav-lin" href="/boutique">BOUTIQUE</a>
             </li>
         </ul>
     </div>
@@ -40,10 +31,7 @@
             </li>
         </ul>
 
-        <form class="form-inline">
-            <input class="form-search search mr-sm-2" type="search" placeholder="RECHERCHE" aria-label="Search">
-            <button class=" recherche btn btnsearch my-1 my-sm-0" type="submit">RECHERCHE</button>
-        </form>
+       
     </div>
 </nav>
 
