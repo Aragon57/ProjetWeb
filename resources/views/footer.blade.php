@@ -2,8 +2,8 @@
 
 	
     <!-- Bootstrap core CSS -->
- <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
+
+<link href="{{ asset('css/contact.css') }}" rel="stylesheet">
  <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
  
 

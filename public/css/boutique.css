@@ -1,4 +1,4 @@
-hr
+.hrshop
 {
   padding:2px;
   background-color:#318CE7;
@@ -28,7 +28,7 @@ hr
 	color:#000000;
 	border-radius:0px;
 
-	width:60%;
+	width:100%;
   min-width: 50px;  
   max-width: 300px;
   border:1px solid #ccc;
@@ -179,7 +179,7 @@ display: block;
 
 .addarticles-btn {
  
-  width: 13.3%;
+
   padding: 8px;
   background: #318CE7;
   color: white;
@@ -188,6 +188,8 @@ display: block;
   border-color: #dddddd;
   border-left: none; /* Prevent double borders */
   cursor: pointer;
+  margin-top:5px;
+  width:30%;
 }
 
 .tri {
@@ -202,8 +204,8 @@ display: block;
 
 .imgshop{
 
-  width: 100%;
-  height: auto;
+  max-width: 100%;
+ 
 
 }
 
@@ -218,6 +220,14 @@ display: block;
     width: 100%;
   }
 }
+
+.rezize-div{
+  
+  margin: auto;
+  
+}
+
+
 
 
 
