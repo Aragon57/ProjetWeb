@@ -100,28 +100,34 @@ class UsersController extends Controller
                 $_SESSION['email'] = $result['email'];
                 $_SESSION['status'] = $result['id_status'];
 
-                $rawdata = array(
-                    "token" => session_id(),
-                    "id" => $_SESSION['id']
-                );
-                $data = json_encode($rawdata);
-
-                $opts = array('http' => array(
-                    'method' => 'POST',
-                    'header' => 'Content-type: application/json',
-                    'content' => $data
-                ));
-
-                $context = stream_context_create($opts);
-                $result = file_get_contents('https://h3cate.herokuapp.com/request/token', false, $context);
-                $header = self::parseHeaders($http_response_header);
-
-                if($header['reponse_code'] != 200)
+                if(request()->stayconnect === 'true')
                 {
-                    return response('something went wrong', $header['reponse_code']);
+                    $rawdata = array(
+                        "token" => session_id(),
+                        "id" => $_SESSION['id']
+                    );
+
+                    $data = json_encode($rawdata);
+
+                    $opts = array('http' => array(
+                        'method' => 'POST',
+                        'header' => 'Content-type: application/json',
+                        'content' => $data
+                    ));
+
+                    $context = stream_context_create($opts);
+                    $result = file_get_contents('https://h3cate.herokuapp.com/request/token', false, $context);
+                    $header = self::parseHeaders($http_response_header);
+
+                    if($header['reponse_code'] != 200)
+                    {
+                        return response('something went wrong', $header['reponse_code']);
+                    }
+                
+                    $cookie = cookie('token', session_id(), 432000);
+                    return response('success', 200)->cookie($cookie);
                 }
                 
-                $_SESSION['token'] = session_id();
                 return response('success', 200);
             }
             else

@@ -47,6 +47,10 @@
                                 </div>
                                 <input type="password" name="password" placeholder="Mot de passe" class="form-control" >
                             </div>
+
+                            <div>
+                                <input type="checkbox" name="stayconnect" value="false">Rester connecté
+                            </div>
                   
                             <div class="form-group">
                                 <input type="submit" value="Login" class="btn float-right login_btn">
@@ -78,6 +82,15 @@
         $(document).ready(() => {
             $('form').submit((event) => {
                 event.preventDefault();
+
+                if($('input[name=stay-connect]').is(":checked"))
+                {
+                    $('input[name=stay-connect]').val('true');
+                }
+                else
+                {
+                    $('input[name=stay-connect]').val('false');
+                }
 
                 var form = $('form');
 
