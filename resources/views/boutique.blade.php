@@ -58,9 +58,7 @@
       				</div>
 
     <!-- Ajouter un article -->
-              @php
-              if($_SESSION['status']==4){
-              @endphp
+            
       				<div class="w3-container">
         				<div class="gauche">
           					<button onclick="document.getElementById('id01').style.display='block'" class="addarticles-btn">Ajouter un article</button>
@@ -137,9 +135,6 @@
              		</div>
            		</div>
 
-      @php
-                }
-              @endphp
 
            		<br><hr class="hrshop">
 

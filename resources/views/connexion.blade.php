@@ -72,9 +72,9 @@
 @php
 }
 @endphp
-    </body>
 
-    <script>
+
+ <script>
         $(document).ready(() => {
             $('form').submit((event) => {
                 event.preventDefault();
@@ -97,4 +97,8 @@
             });
         });
     </script>
+
+    </body>
+
+   
 </html>

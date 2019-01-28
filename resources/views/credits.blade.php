@@ -9,22 +9,24 @@
 
     <title> BDE STRASBOURG </title>
 	
-    <!-- Bootstrap core CSS -->
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
+
  <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
   <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
  <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
 </head>
 
-@include('nav')
 <body>
+@include('layouts/nav')
 
  	<br>
 	<br><h1 class="blanc mention"> Crédits :</h1><br><br> 
 	
-	<hr color="white">
+	<hr class="blanc">
 
-	<h6 class="blanc containerr"><center>
-	
+	<h6 class="blanc containerr text-center">	
 	<br>
 	<br>
 	
@@ -40,5 +42,7 @@
 <!-- Footer -->
 
 @include('footer');
+
+
    </body>
 </html>
