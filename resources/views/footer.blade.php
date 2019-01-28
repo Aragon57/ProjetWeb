@@ -47,7 +47,7 @@
             </li>
             <li>
               <p>
-                <a href="event">EVENEMENTS DU MOIS</a>
+                <a href="event">EVENEMENTS</a>
               </p>
             </li>
             <li>
