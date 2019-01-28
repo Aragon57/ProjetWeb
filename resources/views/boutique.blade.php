@@ -189,7 +189,14 @@
                 					<li><button class="btn btn-light tri" value={{$category->id}} > {{$category->name}} </button></li>
                 				@endforeach
               				</ul >
-            			</div>
+						</div>
+          				<div>
+							<form action="/search" method="POST" >
+								@csrf
+								<input type="text" name="search">
+								<input type="submit" value="search"></button>
+							</form>	
+						</div>
           			</div>
         		</div>
 

@@ -13,6 +13,22 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+Route::get('/tableview', function () {
+    return view('admin/datatable');
+});
+
+Route::get('/data', 'AdminController@getusers');
+Route::post('/data', 'AdminController@getusers');
+
+Route::get('/data/event', 'AdminController@getevent');
+Route::post('/data/event', 'AdminController@getevent');
+
+Route::get('/data/command', 'AdminController@getcommand');
+Route::post('/data/command', 'AdminController@getcommand');
+
+Route::get('/data/article', 'AdminController@getarticle');
+Route::post('/data/article', 'AdminController@getarticle');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,7 +44,6 @@ Route::get('/connexion', function () {
 
 Route::get('/event' , 'EventController@display', function () {
     return view('event');
-
 });
 
 
@@ -77,9 +92,10 @@ Route::get('/cart', 'CommandController@show', function() {
 
 Route::get('/footer', function () {
     return view('footer');
-    });
+});
 
 Route::get('generate-pdf/{id}','EventIdController@generatePDF');
+
 Route::get('/event' , 'EventController@display', function () {
     return view('event');
 });
@@ -194,3 +210,4 @@ Route::post('/category', 'CategoryController@store');
 Route::post('/inscription', 'UsersController@store');
 Route::post('/image', 'ImageController@store');
 Route::post('/image', 'EventController@storeImage');
+Route::post ('/search', 'ProductController@searchby');
