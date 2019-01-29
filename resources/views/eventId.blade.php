@@ -23,9 +23,13 @@
           </div>
           <div class="col-lg-10 col-md-20 col-sm-30 whitos heit ">
             <hr>
-
-            
-
+            @if($_SESSION['status']==3)
+            <form method="post" action="/report/{{$event->id}}" >
+              @csrf
+              <input type="hidden" name="type" value=3  >
+              <button type = "submit" class="commentdel like btn  " ><i class="fas fa-exclamation-triangle"></i></button>
+            </form>
+            @endif
             <?php
             
             if(empty($register)){
@@ -36,11 +40,9 @@
             if(isset($_SESSION['email'])){
             if($event->date >= date("Y-m-d") ){
             ?>
-
             <!-- Formulaire pour s'inscrire à un événement -->
-
             <form method="get" action="/register/{{$event->id}}" >
-              <button type = "submit" class="btnsearch commentdel " >{{$mess}}</i></button>
+              <button type = "submit" class="btnsearch commentdel " >{{$mess}}</button>
             </form>
             @php
             }
@@ -50,19 +52,17 @@
             <hr>
             <div class="row">
               <div class="col-lg-8 col-md-16 col-sm-24 ">
-                 
-
-                 <!-- Affichage des informations de l'événement -->
-
+                
+                <!-- Affichage des informations de l'événement -->
                 <h2>Date : {{ $event->date }}</h2>
-            
+                
                 @if(isset($event->price))
-              
+                
                 <h2>Prix : {{ $event->price }} €</h2>
-             
-               
+                
+                
                 @else
-                @endphp
+                
                 <h2>Gratuit</h2>
                 
                 @endif
@@ -80,11 +80,10 @@
                 class="" >
                 <div class="row">
                   <div class="col-lg-1 col-md-2 sm-3 text-right">
+                    
+                    <!-- Fonction pour liker une image -->
                     <form method="post" action="/likepic/{{ $image->id}}" >
                       <input type="hidden" name="id_event" value='{{$event->id}}'  >
-
-
-                       <!--  -->
                       @csrf
                       @php
                       if(isset($_SESSION['id'])){
@@ -92,7 +91,7 @@
                       $i = $image->nb-1 ;
                       if($i!=0){
                       echo'<button type = "submit" class=" like btn  " ><i class="fas fa-heart red"> Vous et ' . $i . ' aiment</i> </button>  ';
-                    }
+                      }
                       if($i==0){
                       echo'<button type = "submit" class=" like btn  " ><i class="fas fa-heart red"> </i> </button>  ';
                       }
@@ -103,6 +102,7 @@
                       @endphp
                     </form>
                   </div>
+                  <!-- Fonction pour supprimer une image en tant que membre du BDE -->
                   <div class="col-lg-1 col-md-2 sm-3 text-left">
                     @if(isset($_SESSION['email']))
                     @if($_SESSION['status']==4)
@@ -112,29 +112,33 @@
                       <button type = "submit" class="commentdel like btn  " ><i class="fas fa-ban"></i></button>
                     </form>
                     @endif
+                    <!-- Fonction pour report une image en tant que salarié du Cesi -->
                     @if($_SESSION['status']==3)
-                    <form method="post" action="/image/report/{{$image->id}}" >
+                    <form method="post" action="/report/{{$image->id}}" >
                       @csrf
                       <input type="hidden" name="id_event" value={{$event->id}}  >
+                      <input type="hidden" name="type" value=1  >
                       <button type = "submit" class="commentdel like btn  " ><i class="fas fa-exclamation-triangle"></i></button>
                     </form>
                     @endif
                     @endif
                   </div>
                   <br>
+                  <!-- Foreach pour afficher tous les commentaires d'une image -->
                   @foreach($comments as $comment)
-                  @php
-                  if($comment->id_image == $image->id){
-                  @endphp
+                  
+                  @if($comment->id_image == $image->id)
+                  
                 </div>
                 <div class="row">
                   <div class="col-lg-10 col-md-20 sm-30 text-left">
                     {{$comment->content}}
                   </div>
-                  @php
-                  if(isset($_SESSION['email'])){
-                  if($_SESSION['status']==4){
-                  @endphp
+                  
+                  <!-- Fonction pour supprimer un commentaire en tant que membre du BDE -->
+                  @if(isset($_SESSION['email']))
+                  @if($_SESSION['status']==4)
+                  
                   
                   <div class="col-lg-2 col-md-4 sm-6 text-left">
                     <form method="post" action="/comment/delete" >
@@ -146,53 +150,54 @@
                     </form>
                   </div>
                   
-                  @php
-                  }
-                  @endphp
-                  @php
-                  if($_SESSION['status']==3){
-                  @endphp
+                  
+                  @endif
+                  
+                  <!-- Fonction pour report un commentaire en tant que salarié du Cesi -->
+                  
+                  @if($_SESSION['status']==3)
+                  
                   <div class="col-lg-2 col-md-4 sm-6 text-left">
-                    <form method="post" action="/comment/report/{{$comment->id}}" >
+                    <form method="post" action="/report/{{$comment->id}}" >
                       @csrf
                       <input type="hidden" name="id_event" value={{$event->id}}  >
+                      <input type="hidden" name="type" value=2  >
                       <button type = "submit" class="commentdel like btn  " ><i class="fas fa-exclamation-triangle"></i></button>
                     </form>
                   </div>
                   
-                  @php
-                  }
-                  }
-                  @endphp
+                  @endif
+                  @endif
                   
-                  @php
-                  }
-                  @endphp
+                  
+                  
+                  @endif
+                  
                   @endforeach
                   
                 </div>
                 
+                <!-- Formulaire pour poster un commentaire sous une image -->
                 <form class="com" action="/commentImage" method="post">
                   @csrf
                   <input name="id_image" type="hidden" value={{$image->id}} >
-                  @php
-                  if(isset($_SESSION['id'])){
-                  @endphp
+                  
+                  @if(isset($_SESSION['id']))
+                  
                   <input type="text"  name="comment" placeholder="Commentaire" class="" required>
                   <input type="hidden" name="id_event" value='{{$event->id}}'  >
                   <input type="submit" value="Envoyer" class="btnsearch marge">
-                  @php
-                  }
-                  @endphp
+                  @endif
                 </form>
                 <hr>
               </div>
               @endforeach
-              @php
-              if(isset($_SESSION['email'])){
-              if((isset($register)) || $_SESSION['status']==4){
-              if($event->date  < date("Y-m-d") ){
-              @endphp
+              
+              <!-- Fonction pour ajouter une photo si l'événement est passé et si nous étions inscrits -->
+              @if(isset($_SESSION['email']))
+              @if((isset($register)) || $_SESSION['status']==4)
+              @if($event->date  < date("Y-m-d") )
+              
             </div>
             <hr>
             <h5> Vous pouvez ajouter des photos :  </h5>
@@ -202,23 +207,24 @@
               <input type="file" name="userfile" required><br>
               <input type="hidden" name="id_event" value={{$event->id}}  ><input type="submit" value="OK">
             </form>
-            @php
-            }
-            }
-            @endphp
+            
+            @endif
+            @endif
+            
             <hr>
-            @php
-            if(isset($_SESSION['email'])){
-            if($_SESSION['status']==4){
-            @endphp
+            
+            <!-- Fonction pour générer un pdf contenant les inscrits à l'événement -->
+            @if(isset($_SESSION['email']))
+            @if($_SESSION['status']==4)
+            
             <form method="get" action="/generate-pdf/{{$event->id}}" >
               <button type = "submit" class="btnregist " >Récupérer les élèves inscrits</button>
             </form>
-            @php
-            }
-            }
-            }
-            @endphp
+            
+            @endif
+            @endif
+            @endif
+            
           </div>
           <div class="col-lg-1 col-md-2 col-sm-3 ">
           </div>

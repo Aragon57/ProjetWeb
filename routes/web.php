@@ -17,7 +17,7 @@ Route::get('/nav', function (){
     return view('layouts/nav');
 });
 
-Route::get('/tableview', function () {
+Route::get('/admin', function () {
     return view('admin/datatable');
 });
 
@@ -192,9 +192,10 @@ Route::get('/register/{id}', 'LikeController@storeRegister');
 
 Route::post('/validate', 'IdeeController@update');
 
-Route::post('/image/report/{id}', 'EventController@reportImage');
 
-Route::post('/comment/report/{id}', 'EventController@reportComment');
+
+
+Route::post('/report/{id}', 'EventController@report');
 
 
 Route::post('/inscription', 'UsersController@store');

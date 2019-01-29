@@ -5,22 +5,26 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <!-- Fonts -->
+    <!-- Styles -->
+
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
 
     <title>Laravel</title>
-    <!-- Fonts -->
-    <!-- Styles -->
+   
 </head>
-    <body style ="background-color:#1d2124" class="co">
+    <body class= "co">
 
-        @include('layouts/nav');
+        @include('layouts/nav')
 
+        
 
-        @php
-            if(!isset($_SESSION['email'])){
-        @endphp
+        
+            @if(!isset($_SESSION['email']))
+       
 
         <div class="container">
             <div class="d-flex justify-content-center h-100">
@@ -30,8 +34,15 @@
                         <p id="error"></p>
                     </div>
                     <div class="card-body">
+
+
+                         <!-- Formulaire d'inscription -->
+
                         <form action="/inscription" method="post">
                             @csrf
+
+                            <!-- Ajouter le nom -->
+
 
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
@@ -40,6 +51,8 @@
                                 <input type="text" name="name" placeholder="Nom"  class="form-control" required>
 
                             </div>
+
+                            <!-- Ajouter le Prénom -->
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -47,6 +60,8 @@
                                 <input type="text" name="firstname" placeholder="Prénom"  class="form-control" required>
 
                             </div>
+
+                            <!-- Ajouter l'email -->
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -54,7 +69,7 @@
                                 <input type="email" name="email" placeholder="Email"  class="form-control" required>
 
                             </div>
-                            
+                            <!-- Ajouter le campus -->
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -90,7 +105,7 @@
 
 
 
-
+                        <!-- Ajouter un mot de passe -->
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
@@ -105,6 +120,8 @@
                         </div>                        <div class="form-group">
 
 
+                             <!-- Checkbox pour accepter les conditions générales et les cookies -->
+                                    
                             <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" required><a href="/politique"> Acceptez vous les conditions générales</a> 
                         </div>
                              
@@ -130,21 +147,24 @@
         </div>
     </div>
 
-        @php
-}else{
-    @endphp
+<!-- Si on est déjà connecté -->
+
+ @else
 
     <h1><center> Vous êtes déjà connecté </center></h1>
-@php
-}
-@endphp
+@endif
 
+
+<!-- footer -->
 
 @include("footer")
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+<!-- Script ajax pour envoyer le formulaire -->
+
 <script>
     $(document).ready(() => {
         $('form').submit((event)=>{

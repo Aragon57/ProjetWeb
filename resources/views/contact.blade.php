@@ -12,19 +12,31 @@
  <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
   <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
  <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
+<<<<<<< HEAD
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
  
+=======
+   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+>>>>>>> 9040ac1d964b275db3fee2189ad8723990ffa8aa
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
 </head>
+<<<<<<< HEAD
 <body>
 <!-- navbar -->
 @include('layouts/nav')
 
  
+=======
+<!-- navbar -->
+<body>
+ @include('layouts/nav')
+
+>>>>>>> 9040ac1d964b275db3fee2189ad8723990ffa8aa
   
 <br>
 <br>

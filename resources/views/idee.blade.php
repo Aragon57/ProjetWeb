@@ -16,6 +16,8 @@
         <body>
             @include('layouts/nav')
             
+            
+
             <div class="container-fluid  ">
                 <div class="container-fluid ">
                     <div class="row">
@@ -23,6 +25,9 @@
                             
                         </div>
                         <div class="col-lg-10 col-md-20 col-sm-30 whitos ">
+
+                            <!-- Foreach afin d'afficher l'ensemble des idées poster par les étudiants -->
+
                             <?php
                             foreach ($ideas as $idea) {
                             $i = 0;
@@ -38,6 +43,7 @@
                                 $i=$i+1;
                                 }
                                 if($like->id_user == $_SESSION['id'] && $like->id_event == $idea->id){
+                                    
                                 $class='btnsearchliked';
                                 break;
                                 }
@@ -46,7 +52,7 @@
                                 }
                                 }
                                 echo '   <form method="get" action="/voteidee/'.$idea->id.'" > '         .  csrf_field() .'
-                                    <button type = "submit" class="'. $class. '" type="submit">Vote : '. $i .'</i></i> </button>
+                                    <button  class="'. $class. '" type="submit">Vote : '. $i .' </button>
                                 </form>
                                 ';
                                 
@@ -63,7 +69,7 @@
                                     <input type="hidden" name="name" value="'.  $idea->name  .'"  >
                                     <input type="hidden" name="email" value="'.  $_SESSION['email']  .'"  >
                                     <input type="hidden" name="validate" value=1  >
-                                    <button type = "submit" class="btn" type="submit">Valider</i></i> </button>
+                                    <button class="btn" type="submit" >Valider</button>
                                 </form>
                                 ';
                                 }
@@ -78,11 +84,11 @@
                                     csrf_field() .
                                     '<div class="input-group form-group">
                                         
-                                        <input type="text" name="title" placeholder="Titre" require="required" class="form-control marge" >
+                                        <input type="text" name="title" placeholder="Titre" class="form-control marge" required>
                                     </div>
                                     <div class="input-group form-group">
                                         
-                                        <input type="text" name="desc" placeholder="Description" require="required" class="form-control topleft descr" >
+                                        <input type="text" name="desc" placeholder="Description"  class="form-control topleft descr" required>
                                         
                                         <div class="input-group form-group">
                                             <input type="submit" value="Envoyer" class="btnsearch marge">
@@ -102,13 +108,13 @@
             </div>
                     
             @include ("footer")
-
-                </body>
-                <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
                 <!-- Include all compiled plugins (below), or include individual files as needed -->
                 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
                 
                 <script src="{{ asset('js/script.js') }}"></script>
                 
+                </body>
+                <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+               
             </html>

@@ -3,6 +3,8 @@
 <html>
     <head>
         <meta charset="utf-8" />
+                <!-- Bootstrap core CSS -->
+
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
@@ -19,9 +21,9 @@
 
 
 
-        @php
-            if(!isset($_SESSION['email'])){
-        @endphp
+        
+            @if(!isset($_SESSION['email']))
+        
 
         <div class="container">
             <div class="d-flex justify-content-center h-100">
@@ -32,8 +34,15 @@
                         <p id="error"></p>
                     </div>
                     <div class="cardlog-body">
+
+                         <!-- Formulaire de connection -->
+
                         <form action="/connexion" method="post">
                         @csrf
+
+
+                                <!-- Ajouter l'email -->
+
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -41,12 +50,16 @@
                                 <input type="email" name="email" placeholder="Email" class="form-control" >
                             </div>
 
+                                <!-- Ajouter le mot de passe -->
+
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
                                 <input type="password" name="password" placeholder="Mot de passe" class="form-control" >
                             </div>
+
+                            <!-- Checkbox pour rester connecté -->
 
                             <div>
                                 <input type="checkbox" name="stayconnect" value="false">Rester connecté
@@ -58,6 +71,7 @@
                         </form>
                     </div>
 
+                    <!-- Lien pour s'inscrire -->
                     <div class="card-footer">
                         <div class="d-flex justify-content-center links">
                         Vous n'avez pas encore de compte?<a href="/inscription">Inscrivez-vous</a>
@@ -68,15 +82,13 @@
             </div>
         </div>
 
-    @php
-}else{
-    @endphp
+    @else
 
     <h1><center> Vous êtes déjà connecté </center></h1>
-@php
-}
-@endphp
+@endif
 
+
+<!-- Script ajax pour remplir le formulaire -->
 
  <script>
         $(document).ready(() => {

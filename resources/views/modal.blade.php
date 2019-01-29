@@ -1,10 +1,7 @@
-
 @php
-
 @endphp
-
-
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
   
   <!--rendre la fenetre invisible-->
@@ -15,6 +12,7 @@
 	}
 </script>
 
+@if((!isset($_SESSION['email']))|| $_SESSION['cookie'] != 'az')
 <!---Affichage de la fenetre--->
 <div id="accepted" class="cookie-accept d-block position-fixed mw-25 bg-primary text-white rounded-top pt-2 pr-3 pl-3 pb-2 text-center" >
     <h5>Notre site utilise les cookies !</h5>
@@ -28,3 +26,4 @@
 	
 </div>
 
+@endif

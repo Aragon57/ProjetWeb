@@ -59,7 +59,7 @@ form.searchbox button {
   font-size: 13px;
   border: 1px solid;
   border-color: #dddddd;
-  border-left: none; /* Prevent double borders */
+  border-left: none; 
   cursor: pointer;
 }
 
@@ -230,11 +230,37 @@ display: block;
   
 }
 
+#dcal2 {
+  padding-left: 5px; 
+}
 
+#searchbar {
+  width: 24%;
+}
 
+#searchbar div {
+  display: flex;
+  flex-direction: row;
+}
 
+#searchbar div div{
+  display: block;
+}
 
+#searchbar div button {
+  margin-left: 10px;
+  max-height: 35px;
+}
 
-
-
-
+#btnbar {
+ 
+  width: 100%;
+  padding: 0px;
+  background: #318CE7;
+  color: white;
+  font-size: 13px;
+  border: 1px solid;
+  border-color: #dddddd;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
