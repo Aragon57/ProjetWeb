@@ -161,17 +161,19 @@ session_start();
           </div>
 
           <!-- Barre de recherche -->
-          <div>
-            <h4 id="dcal" >Recherchez un article </h4>
-            
-            <form autocomplete="off" action="/search" method="POST">
+          <div id="dcal">
+            <h4>Recherchez une article </h4>
+            <form id="searchbar" autocomplete="off" action="/search" method="POST">
               @csrf
-              <div class="autocomplete" style="width:300px;">
-                <input id="myInput" type="text" name="search" placeholder="Recherche">
-              </div>
-              <button value="search" type="submit"> Rechercher </button>
+              <div>
+                <div class="autocomplete">
+                  <input id="myInput" type="text" name="search" placeholder="">
+                </div>
+                <button id="btnbar" value="search" type="submit"> Rechercher </button>
+            </div>
             </form>
           </div>
+
           <br>
 
           <!-- Code permettant de supprimer les accents sur les lettres pour éviter toute erreur dans les filtres -->
