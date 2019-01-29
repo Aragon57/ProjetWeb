@@ -25,7 +25,7 @@
 
               <!-- Foreach afin d'aficher l'ensemble des événements créé -->
               @foreach($events as $event)
-              <a class ="lien" href="/event/{{$event->id}}">
+              <a class ="lien" href="/event{{$event->id}}">
                 <div class="div1 lien" >
                   <div class="row">
                     <div class="col-lg-8 col-md-16 col-sm-24 ">
@@ -50,7 +50,7 @@
                       
                     </div>
                     <div class="col-lg-4 col-md-8 col-sm-12 ">
-                      <img src="/storage{{$event->logo}}" alt="">
+                      <img src="/storage/{{$event->logo}}" height ="200" width="300" alt="">
                     </div>
                   </div>
                 </div>
@@ -93,7 +93,7 @@
                     <div class="input-group form-group">
                       <input type="text" name="desc_manif" placeholder="Description"  class="form-control descr" required>
                     </div>
-                    <input type="file" name="userfile2" ><br>
+                    <input type="file" name="userfile" ><br>
                     
                     <div class="input-group form-group">
                       <input type="submit" value="Envoyer" class="btnsearch marge">
@@ -115,17 +115,17 @@
           <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         
  <script>
-         $(document).ready(()=>{
-            $('#addevent').submit((event)=>{
-              event.preventDefault();
+         // $(document).ready(()=>{
+         //   $('#addevent').submit((event)=>{
+         //      event.preventDefault();
 
-              let data = $('#addevent');
+         //     let data = $('#addevent');
 
-              $.post('/event', data.serialize(), (data, status)=>{
-                document.location.href="/event";
-              });
-            });
-          });
+         //      $.post('/event', data.serialize(), (data, status)=>{
+         //        document.location.href="/event";
+         //      });
+         //    });
+         //  });
         </script>
         </body>
        

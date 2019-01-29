@@ -12,7 +12,8 @@
  <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
   <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
  <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
- 
+   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -20,9 +21,9 @@
 
 </head>
 <!-- navbar -->
-@include('nav')
 <body>
- 
+ @include('layouts/nav')
+
   
 <br>
 <br>
