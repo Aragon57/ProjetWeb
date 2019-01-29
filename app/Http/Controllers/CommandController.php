@@ -39,7 +39,7 @@ class CommandController extends Controller
         $command = Commands::where('id_user', '=', $request->id_user)->where('paye', '=', '0')->first();
         if($command == null)
         {
-            return false;
+            return false;//si aucune commande trouver, retourner faux
         }
         
         return $command->id;
@@ -48,7 +48,7 @@ class CommandController extends Controller
     public function addarticle(Request $request) {
         
         $id_command = self::findcommand($request);
-        if(!$id_command)
+        if(!$id_command)//si faux creer une nouvelle commande
         {
             $id = self::createcommand($request);
             $request->id_command = $id;
@@ -61,7 +61,7 @@ class CommandController extends Controller
         $_SESSION['id_cart'] = $request->id_command;
 
         $product_id = self::findproduct($request);
-        if($product_id)
+        if($product_id)//si produit existe deja incrementer la quantité
         {
             $article = CartProduct::find($product_id);
             $article->quantity += $request->quantity; 
@@ -84,7 +84,7 @@ class CommandController extends Controller
         ->where('id_product', '=', $request->id_product)
         ->first();
         
-        if($product == null)
+        if($product == null)//retourne faux si le produit n'est pas trouver dans une commande
         {
             return false;
         }
@@ -123,61 +123,51 @@ class CommandController extends Controller
     public function validateCommand(){
 
         $command = Commands::where('id' , $_SESSION['id_cart'])->where('paye', 0)->first();
-        $command->paye = 1;
+        $command->paye = 1;//mettre commande comme payé
         $command->save();
 
-        $products = CartProduct::where('id_command', $_SESSION['id_cart'])->get();
+        $products = CartProduct::where('id_command', $_SESSION['id_cart'])->get();//recuperer les produit de la commande
 
 
+        //mettre a jour la quantité vendu pour chaque produit
         foreach($products as $product){
-
             $pro = Product::where('id', $product->id_product)->first();
             $addpro = Product::where('id', $product->id_product)               
             ->update(['nbsell' => $pro->nbsell + $product->quantity]);
-
         }
 
 
-
+        //Gestion et envoi des mails
         date_default_timezone_set('Etc/UTC');
         require '../vendor/autoload.php';
-            //Create a new PHPMailer instance
+            
         $mail = new PHPMailer;
-            //Tell PHPMailer to use SMTP
+            
         $mail->isSMTP();
-            //Enable SMTP debugging
-            // 0 = off (for production use)
-            // 1 = client messages
-            // 2 = client and server messages
+            
         $mail->SMTPDebug = 2;
-            //Ask for HTML-friendly debug output
+       
         $mail->Debugoutput = 'html';
-            //Set the hostname of the mail server
+          
         $mail->Host = 'smtp.gmail.com';
-            // use
-            // $mail->Host = gethostbyname('smtp.gmail.com');
-            // if your network does not support SMTP over IPv6
-            //Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+
         $mail->Port = 587;
-            //Set the encryption system to use - ssl (deprecated) or tls
+          
         $mail->SMTPSecure = 'tls';
-            //Whether to use SMTP authentication
+       
         $mail->SMTPAuth = true;
-            //Username to use for SMTP authentication - use full email address for gmail
+        
         $mail->Username = "noreply.bde@gmail.com";
-            //Password to use for SMTP authentication
+       
         $mail->Password = "Jesuiskillian";
-            //Set who the message is to be sent from
+           
         $mail->setFrom('noreply.bde@gmail.com', 'BDE');
-            //Set an alternative reply-to address
-            //Set who the message is to be sent to
+           
         $mail->addAddress($_SESSION['email'], 'BDE');
 
-            //Set the subject line
+            
         $mail->Subject = 'Validation de votre commande';
-            //Read an HTML message body from an external file, convert referenced images to embedded,
-            //convert HTML into a basic plain-text alternative body
-            //Replace the plain text body with one created manually
+           
         $mail->Body = 'Votre commande est valide, nous vous attendons pour proceder a l\'echange';
         $mail->SMTPOptions = array(
             'ssl' => array(
@@ -186,8 +176,7 @@ class CommandController extends Controller
               'allow_self_signed' => true
           )
         );
-            //Attach an image file
-            //send the message, check for errors
+    
         if (!$mail->send()) {
             echo "Mailer Error: " . $mail->ErrorInfo;
         } else {

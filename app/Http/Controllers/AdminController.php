@@ -12,10 +12,12 @@ class AdminController extends Controller {
 
 	public function getusers(Request $request)
 	{
-		$rawdata = file_get_contents('https://h3cate.herokuapp.com/allusers');//get request on api
+		// Récuperation de la requete sur l'API
+		$rawdata = file_get_contents('https://h3cate.herokuapp.com/allusers');
 		$header = self::parseHeaders($http_response_header);
 
-		if($header['reponse_code'] != 200)//GET returned error?
+        // Gestion des erreurs
+		if($header['reponse_code'] != 200)
 		{
 			return response('error', $header['response_code']);
 		}
@@ -23,12 +25,14 @@ class AdminController extends Controller {
 		$data = json_decode($rawdata, true);
 
 		$columns = array();
-		foreach($data[0] as $key=>$value)//parse columns in array
+		// On parse les colonnes dans un tableau
+		foreach($data[0] as $key=>$value)
 		{
 			$columns[] = $key;
 		}
 
-		if(isset($request->filter))//filter data if filter exist
+        //On filtre les données
+		if(isset($request->filter))
 		{
 			$data = self::filterresult($request->filter, $data);
 		}
@@ -52,13 +56,14 @@ class AdminController extends Controller {
 		$values = array();
 		foreach($data as $event)
 		{
-			$tmp = array(//get data in array
+			//On met les données dans un tableau
+			$tmp = array(
 				$event->id,
 				$event->name,
 				$event->description,
 				$event->date,
 				$event->price,
-				$event->validate?"true":"false",//boolean number to text
+				$event->validate?"true":"false", // On convertis les booleen en true ou false
 				$event->punctuality?"true":"false",
 				$event->past?"true":"false",
 				$event->id_user
@@ -145,18 +150,18 @@ class AdminController extends Controller {
 	}
 
 	private function parseHeaders( $headers )
-    {
-        $head = array();
-        foreach( $headers as $k=>$v )//get key and value
+	{
+		$head = array();
+        foreach( $headers as $k=>$v ) // Recuperation des clés et des valeurs
         {
-            $t = explode( ':', $v, 2 );
-            if( isset( $t[1] ) )//split value into key and value
-                $head[ trim($t[0]) ] = trim( $t[1] );
+        	$t = explode( ':', $v, 2 );
+            if( isset( $t[1] ) ) // On recupere $v et on la divise en clé et valeur
+            $head[ trim($t[0]) ] = trim( $t[1] );
             else
             {
-                $head[] = $v;
-                if( preg_match( "#HTTP/[0-9\.]+\s+([0-9]+)#",$v, $out ) )//return http code only
-                    $head['reponse_code'] = intval($out[1]);
+            	$head[] = $v;
+                if( preg_match( "#HTTP/[0-9\.]+\s+([0-9]+)#",$v, $out ) ) // On retourne uniquement l'HTTP
+                $head['reponse_code'] = intval($out[1]);
             }
         }
         return $head;
