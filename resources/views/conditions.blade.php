@@ -22,7 +22,7 @@
 
 <body>
 
-
+<!-- navbar -->
 	@include('/layouts/nav')
 
  	<br>
@@ -31,6 +31,7 @@
 	<hr class="blanc">
 
 	<h6 class="blanc containerr text-center">
+	<!--Creation de l'emplacement du texte -->
 	
 	<br>
 	Les présentes conditions de vente sont conclues d’une part par la société BDE CESI Strasbourg au capital social de 1000 euros dont le siège social est situé à Lingolsheim (2, Allée des foulons, Parc des Tanneries 67380) immatriculée au Registre du Commerce et des Sociétés de Strasbourg sous le numéro 77572257200820 ci-après dénommée BDE de Strasbourg et gérant le site 000webhost.net et, d’autre part, par toute personne physique ou morale souhaitant procéder à un achat via le site internet 000webhost.net dénommée ci-après "l’acheteur".

@@ -49,7 +49,9 @@
 
  <!-- Script afin de savoir si l'utilisateur est connecté ou non -->
 
-<script type="text/javascript">
+
+<script>
+
     $(document).ready(() => {
         $.get('/islogged', (data, status) => {
             console.log(data);

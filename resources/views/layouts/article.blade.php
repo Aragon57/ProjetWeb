@@ -1,8 +1,9 @@
 @php
-  session_start();
-  $all = App\Product::orderBy('price', 'DESC')->get();
+session_start();
+$all = App\Product::orderBy('price', 'DESC')->get();
 @endphp
 
+<!-- Chargement des articles lorsqu'ils sont triés -->
 @include('components/articlecard')
 
 @foreach ($all as $item)
@@ -17,16 +18,16 @@
       </div>
 
       @if(isset($_SESSION['id']))
-        <form id="addtocart{{ $item->id }}" class="w3-container" action="/tocart" method="post" enctype="multipart/form-data" >
-          @csrf
-          <div class="w3-section">
-            <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_product" value={{ $item->id }}>
-            <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_user" value={{ $_SESSION['id'] }}>
-            <input class="w3-input w3-border w3-margin-bottom" type="integer" name="quantity" value="1" required>
+      <form id="addtocart{{ $item->id }}" class="w3-container" action="/tocart" method="post" enctype="multipart/form-data" >
+        @csrf
+        <div class="w3-section">
+          <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_product" value={{ $item->id }}>
+          <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_user" value={{ $_SESSION['id'] }}>
+          <input class="w3-input w3-border w3-margin-bottom" type="integer" name="quantity" value="1" required>
 
-            <button id="ok-btn" type="submit">Confirmer</button>
-          </div>
-        </form>
+          <button id="ok-btn" type="submit">Confirmer</button>
+        </div>
+      </form>
       @endif
     </div>
   </div>

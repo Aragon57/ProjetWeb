@@ -19,7 +19,7 @@
 
 
 </head>
-
+<!-- navbar -->
 @include('nav')
 <body>
  
@@ -32,17 +32,22 @@
 	<hr class="blanc">
 	 
 <div class="container">
-	<div class="box">
+<!--Creation de l'emplacement des box -->
+
+	<div class="box">	
+	<!--adresse -->
 		<div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
 		<div class='details'><h3> 67380 Lingolsheim FRANCE</h3></div>
 	</div>
 	
 	<div class="box">
+	<!--Telephone-->
 		<div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
 		<div class='details'><h3>06 78 56 52 00</h3></div>
 	</div>
 	
 	<div class="box">
+	<!--Mail -->
 		<div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
 		<div class='details'><h3>bde.stras@viacesi.fr</h3></div>
 	</div>

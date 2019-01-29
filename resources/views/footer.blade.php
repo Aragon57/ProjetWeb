@@ -1,7 +1,7 @@
 
 
 	
-    <!-- Bootstrap core CSS -->
+
 
 
 
@@ -12,16 +12,16 @@
 
 
 
-    <!-- Footer Links -->
+    <!-- Liens du footer  -->
     <div class="container text-center text-md-left">
 
-      <!-- Grid row -->
+      <!-- Grid row / rangee -->
       <div class="row">
 
         <!-- Grid column -->
         <div class="col-md-4 col-lg-3 mr-aut my-md-4 my-0 mt-4 mb-1">
 
-          <!-- Content -->
+          <!-- Contenu -->
           <h5 class="font-weight-bold text-uppercase mb-4">PRESENTATION</h5>
         
           <p>Le Bureau Des Exars de Strasbourg (BDE) est une association de loi 1908 qui 
@@ -36,7 +36,7 @@
         <!-- Grid column -->
         <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
 
-          <!-- Links -->
+          <!-- Liens internes -->
           <h5 class="font-weight-bold text-uppercase mb-4">A PROPOS</h5>
 
           <ul class="list-unstyled">
@@ -99,7 +99,7 @@
         <!-- Grid column -->
         <div class="col-md-2 col-lg-2 text-center mx-auto my-4 blanc ">
 
-          <!-- Social buttons -->
+          <!-- Liens externes reseaux sociaux -->
           <h5 class="font-weight-bold text-center mb-4 blanc ">REJOINS NOUS  </h5>
 
           <!-- Facebook -->
@@ -128,8 +128,7 @@
       <!-- Grid row -->
 
     </div>
-    <!-- Footer Links -->
-
+    <!-- Liens du Footer  -->
 
     <!-- Copyright -->
      <div class="text-center py-3 blanc "> 
