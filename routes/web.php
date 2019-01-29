@@ -194,6 +194,9 @@ Route::post('/validate', 'IdeeController@update');
 
 Route::post('/image/report/{id}', 'EventController@reportImage');
 
+Route::get('/event/report/{id}', 'EventController@reportEvent');
+
+
 Route::post('/comment/report/{id}', 'EventController@reportComment');
 
 

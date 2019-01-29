@@ -1,10 +1,18 @@
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 
+ <!-- Code de la navbar de notre site -->
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+     <!-- Logo du site -->
+
     <img src="http://127.0.0.1:8000/img/logo.png" alt="logo"  class ="logo">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
+
+
+         <!-- Différents lien de notre navbar -->
+
             <li class="nav-item">
                 <a class="nav-lin" href="/event">NOS EVENEMENTS</a>
             </li>
@@ -37,6 +45,9 @@
        
     </div>
 </nav>
+
+
+ <!-- Script afin de savoir si l'utilisateur est connecté ou non -->
 
 <script type="text/javascript">
     $(document).ready(() => {
