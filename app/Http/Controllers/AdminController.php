@@ -12,10 +12,10 @@ class AdminController extends Controller {
 
 	public function getusers(Request $request)
 	{
-		$rawdata = file_get_contents('https://h3cate.herokuapp.com/allusers');
+		$rawdata = file_get_contents('https://h3cate.herokuapp.com/allusers');//get request on api
 		$header = self::parseHeaders($http_response_header);
 
-		if($header['reponse_code'] != 200)
+		if($header['reponse_code'] != 200)//GET returned error?
 		{
 			return response('error', $header['response_code']);
 		}
@@ -23,12 +23,12 @@ class AdminController extends Controller {
 		$data = json_decode($rawdata, true);
 
 		$columns = array();
-		foreach($data[0] as $key=>$value)
+		foreach($data[0] as $key=>$value)//parse columns in array
 		{
 			$columns[] = $key;
 		}
 
-		if(isset($request->filter))
+		if(isset($request->filter))//filter data if filter exist
 		{
 			$data = self::filterresult($request->filter, $data);
 		}
@@ -48,17 +48,17 @@ class AdminController extends Controller {
 	{
 		$data = Event::all();
 		
-		$columns = array("id", "name", "description", "date", "price", "validate", "punctuality", "past", "id_user");
+		$columns = array("id", "name", "description", "date", "price", "validate", "punctuality", "past", "id_user");//define columns
 		$values = array();
 		foreach($data as $event)
 		{
-			$tmp = array(
+			$tmp = array(//get data in array
 				$event->id,
 				$event->name,
 				$event->description,
 				$event->date,
 				$event->price,
-				$event->validate?"true":"false",
+				$event->validate?"true":"false",//boolean number to text
 				$event->punctuality?"true":"false",
 				$event->past?"true":"false",
 				$event->id_user
@@ -147,15 +147,15 @@ class AdminController extends Controller {
 	private function parseHeaders( $headers )
     {
         $head = array();
-        foreach( $headers as $k=>$v )
+        foreach( $headers as $k=>$v )//get key and value
         {
             $t = explode( ':', $v, 2 );
-            if( isset( $t[1] ) )
+            if( isset( $t[1] ) )//split value into key and value
                 $head[ trim($t[0]) ] = trim( $t[1] );
             else
             {
                 $head[] = $v;
-                if( preg_match( "#HTTP/[0-9\.]+\s+([0-9]+)#",$v, $out ) )
+                if( preg_match( "#HTTP/[0-9\.]+\s+([0-9]+)#",$v, $out ) )//return http code only
                     $head['reponse_code'] = intval($out[1]);
             }
         }

@@ -17,7 +17,7 @@ Route::get('/nav', function (){
     return view('layouts/nav');
 });
 
-Route::get('/tableview', function () {
+Route::get('/admin', function () {
     return view('admin/datatable');
 });
 
