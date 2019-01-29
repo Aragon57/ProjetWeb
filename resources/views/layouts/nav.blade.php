@@ -38,7 +38,7 @@
     </div>
 </nav>
 
-<script type="text/javascript">
+<script>
     $(document).ready(() => {
         $.get('/islogged', (data, status) => {
             console.log(data);
