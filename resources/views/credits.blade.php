@@ -31,7 +31,7 @@
 	<br>
 	<br>
 	
-	PHOTOS:
+	PHOTOS: Toutes les photos utilisées sur notre site web sont prises sur Google et son libres de droit.
 	
 	<br>
 	<br>

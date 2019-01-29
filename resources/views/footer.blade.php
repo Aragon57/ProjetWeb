@@ -24,7 +24,7 @@
           <!-- Contenu -->
           <h5 class="font-weight-bold text-uppercase mb-4">PRESENTATION</h5>
         
-          <p>Le Bureau Des Exars de Strasbourg (BDE) est une association de loi 1908 qui 
+          <p>Le Bureau Des Exars de Strasbourg (BDE) est une association de loi 2004 qui 
 		  regroupe l’ensemble des étudiants de l’Exia.Cesi Strasbourg et organise les
 		  différentes activités associatives de l’Ecole</p>
 
