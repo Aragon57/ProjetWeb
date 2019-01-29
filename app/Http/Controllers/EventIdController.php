@@ -7,18 +7,25 @@ use App\Image;
 use App\commentImage;
 use App\Like;
 use PDF;
+
+
 class EventIdController extends Controller
 {
+
+
+//Fonction pour envoyer les informations de l'événement à la vue 
+
+
 public function display(int $id){
 	$event = Event::where('id',$id)->first();
 	$images = Image::where('id_event',$id)->get();
 	
 	$comments = commentImage::all();
-if(isset($_SESSION['email'])){
-$nblikes = Like::where('type',4)->get();
-$likes = Like::where('type',4)->where('id_user', $_SESSION['id'])->get();
+	if(isset($_SESSION['email'])){
+	$nblikes = Like::where('type',4)->get();
+	$likes = Like::where('type',4)->where('id_user', $_SESSION['id'])->get();
 	$register = Like::where('type', 3)->where('id_user', $_SESSION['id'])->where('id_event',$id)->first();
-$images->nb = 0;
+	$images->nb = 0;
 	foreach ($images as  $key =>$image) {
 			foreach ($likes as $keys =>$like) {
 					
@@ -36,13 +43,19 @@ $images->nb = 0;
 			}
 	}
 	}
+
+//On return notre vue et on lui envoie les données souhaitées
+
 return view('eventId' , compact('event','images','likes','register','comments'));
 
 }
+
+//On Fonction pour générer le PDF incluant les inscrits poour chaque événement 
+
 public function generatePDF(int $id)
 {
 	$inscrit = Like::where('type',3)->where('id_event' , $id )->get();
-$pdf = PDF::loadView('myPDF',  compact('inscrit'));
-return $pdf->download('Inscrits.pdf');
+	$pdf = PDF::loadView('myPDF',  compact('inscrit'));
+	return $pdf->download('Inscrits.pdf');
 }
 }
