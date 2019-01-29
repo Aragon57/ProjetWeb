@@ -7,8 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href= "{{ asset('css/bootstrap.css') }}" rel="stylesheet">
         <link href= "{{ asset('css/style.css') }}" rel="stylesheet">
-                <link href= "{{ asset('css/footer.css') }}" rel="stylesheet">
-
+        <link href= "{{ asset('css/footer.css') }}" rel="stylesheet">
         <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.js') }}"></script>
@@ -88,15 +87,11 @@
                     </div>
                 </div>
             </div>
-
             @include('footer')
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <!-- Include all compiled plugins (below), or include individual files as needed -->
-              @include('modal')
+            @include('modal')
         </body>
-
-
-                  
-
+        
     </html>

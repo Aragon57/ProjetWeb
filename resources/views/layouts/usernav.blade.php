@@ -1,5 +1,10 @@
+<!-- Changement de la barre de navigation selon l'état (connecté ou non) -->
+
 <?php
-    session_start();
+    session_start();   
+
+
+    //Si on est connecté
     if(isset($_SESSION['email']))
     {
     echo  '<li class="nav-item dropdown">
@@ -17,6 +22,7 @@
     </div>
     </li>';
     }
+    //Si on est déconnecté
     else
     {
         echo '<a class="nav-lin" href="/connexion"> SE CONNECTER </a>';

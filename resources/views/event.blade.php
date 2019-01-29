@@ -3,14 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Styles -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
     <title>Laravel</title>
-    <!-- Fonts -->
-    <!-- Styles -->
+   
     <body >
       @include('layouts/nav')
       <div class="container-fluid  ">
@@ -20,28 +21,33 @@
             </div>
             <div class="col-lg-10 col-md-20 col-sm-30 whitos heit">
               <br>
+
+
+              <!-- Foreach afin d'aficher l'ensemble des événements créé -->
               @foreach($events as $event)
               <a class ="lien" href="/event/{{$event->id}}">
                 <div class="div1 lien" >
                   <div class="row">
                     <div class="col-lg-8 col-md-16 col-sm-24 ">
+
+                      <!-- Afficher les informations pour chaque événement -->
                       <h1 > <strong>{{ $event->name }} </strong></h1>
                       
                       <h2>Date : {{ $event->date }}</h2>
 
-                      @php
-                      if((!isset($event->price))|| $event->price == 0){
-                      @endphp
+                      <!-- Afficher le prix ou la gratuité -->
+                      @if((!isset($event->price))|| $event->price == 0)
+                      
                       <h2>Gratuit</h2>
-                        @php
-                      }                      
+                        
+                                         
         
-                        else{
-                      @endphp
+                        @else
+
                       <h2>Prix : {{ $event->price }} €</h2>
-                          @php
-                      }                      
-                      @endphp
+                          
+                      @endif                     
+                      
                     </div>
                     <div class="col-lg-4 col-md-8 col-sm-12 ">
                       <img src="/storage{{$event->logo}}" alt="">
@@ -51,19 +57,21 @@
               </a>
               <br>
               @endforeach
-              @php
-              if(isset($_SESSION['email'])){
-              @endphp
-              @php
-              if($_SESSION['status'] >= 3){
-              @endphp
+              
+              @if(isset($_SESSION['email']))
+             
+              @if($_SESSION['status'] >= 3)
+              
+              <!-- Bouton pour télécharger les photos des événements -->
+
               <form id="dlimages" method="get" action="/dlfile" >
                 <button type ="submit" class="btnregist " >Télécharger les photos des événements</i></button>
               </form>
-              @php
-              }
-              @endphp
+              @endif
+            
               
+              <!-- Formulaire poour créer un événement en tant que membre du BDE -->
+
               @if($_SESSION['status'] == 4)
               <form id="addevent" action="/event" method="post" enctype="multipart/form-data">
                 @csrf
@@ -92,9 +100,7 @@
                     </div>
                   </form>
                   @endif
-                  @php
-                  }
-                  @endphp
+                 @endif
                   <div class="col-lg-1 col-md-2 col-sm-3">
                   </div>
                 </div>

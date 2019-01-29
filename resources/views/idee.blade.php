@@ -16,6 +16,8 @@
         <body>
             @include('layouts/nav')
             
+            
+
             <div class="container-fluid  ">
                 <div class="container-fluid ">
                     <div class="row">
@@ -23,6 +25,9 @@
                             
                         </div>
                         <div class="col-lg-10 col-md-20 col-sm-30 whitos ">
+
+                            <!-- Foreach afin d'afficher l'ensemble des idées poster par les étudiants -->
+
                             <?php
                             foreach ($ideas as $idea) {
                             $i = 0;
@@ -38,6 +43,7 @@
                                 $i=$i+1;
                                 }
                                 if($like->id_user == $_SESSION['id'] && $like->id_event == $idea->id){
+                                    
                                 $class='btnsearchliked';
                                 break;
                                 }
