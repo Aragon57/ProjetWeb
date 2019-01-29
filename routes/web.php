@@ -192,12 +192,10 @@ Route::get('/register/{id}', 'LikeController@storeRegister');
 
 Route::post('/validate', 'IdeeController@update');
 
-Route::post('/image/report/{id}', 'EventController@reportImage');
-
-Route::get('/event/report/{id}', 'EventController@reportEvent');
 
 
-Route::post('/comment/report/{id}', 'EventController@reportComment');
+
+Route::post('/report/{id}', 'EventController@report');
 
 
 Route::post('/inscription', 'UsersController@store');

@@ -18,6 +18,10 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class EventController extends Controller
 {
+
+
+//Function store qui permet d'ajouter à la BDD un nouvel événement
+
  public function store(Request $request)
  {
 
@@ -94,20 +98,9 @@ return response('true', 200);
 
 }
 
-public function storeComment(Request $request)
-{
+//Function storeImage qui permet d'ajouter à la BDD et au site une nouvelle image pour un événement 
 
 
-  $comment = new Comment();
-  $comment->content = $request->comment;
-  $comment->id_user = $request->id_user;
-  $comment->id_event = $request->id_event;
-
-
-
-  $comment->save();
-
-  return redirect('/event'. $request->id_event);    }
 
   public function storeImage(int $id, Request $request)
   {
@@ -158,6 +151,11 @@ if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
  }
 
 }
+
+
+//Function storeCommentImage qui permet d'ajouter à la BDD  et au site un nouveau commentaire lié à une image
+
+
 public function storeCommentImage(Request $request)
 {
 
@@ -196,13 +194,21 @@ public function storeCommentImage(Request $request)
 
   }
 
+  //Function DeleteImage qui permet de supprimer une image
+
+
   public function deleteImage(int $id, Request $request)
   {
 
    $images =  Image::where('id', $id)
    ->first();
 
+   //On supprime l'image dans le dossier storage
+
    unlink(storage_path('app\public'.$images->image));
+
+
+  //On supprimer ensuite le lien de l'image ainsi que les commentaires et les réactions lié à l'image
 
    $image =  Image::where('id', $id)
    ->delete();
@@ -214,6 +220,11 @@ public function storeCommentImage(Request $request)
    return redirect('/event/'. $request->id_event); 
 
  }
+
+
+
+ //Function deleteComment qui permet de supprimer un commentaire lié à une image
+
  public function deleteComment(Request $request)
  {
 
@@ -224,19 +235,19 @@ public function storeCommentImage(Request $request)
 }
 
 
+//Function get_file qui permet de récupérer l'ensemble des photos posté par les élèves
 
 public function get_file()
 {
 
-           // Get real path for our folder
+           // On récupère le lien de nos image
   $rootPath = storage_path('app\public\img\event');
 
-// Initialize archive object
+// On zippe notre fichier
   $zip = new ZipArchive();
   $zip->open('photos.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
-// Create recursive directory iterator
-  /** @var SplFileInfo[] $files */
+// Création d'une iteration du dossier
   $files = new RecursiveIteratorIterator(
     new RecursiveDirectoryIterator($rootPath),
     RecursiveIteratorIterator::LEAVES_ONLY
@@ -244,70 +255,79 @@ public function get_file()
 
   foreach ($files as $name => $file)
   {
-    // Skip directories (they would be added automatically)
+    // On passe le fichier source ( il est ajouté automatiquement )
     if (!$file->isDir())
     {
-        // Get real and relative path for current file
+        // On récupère les chemins relative et reel
       $filePath = $file->getRealPath();
       $relativePath = substr($filePath, strlen($rootPath) + 1);
 
-        // Add current file to archive
+        // On ajoute notre photo à l'archive
       $zip->addFile($filePath, $relativePath);
     }
   }
 
-// Zip archive will be created only after closing object
+// Le dossier zip va etre créer à la fermeture
   $zip->close();
+
+//On envoie le lien de téléchargement 
 
   return response()->download(public_path('photos.zip'));
 
 }
 
 
-public function reportImage(int $id, Request $request){
+
+
+//Function report qui permet d'envoyer un mail aux membres du BDE avertissant le fait qu'une partie du contenu est inaproprié
+
+public function report(int $id, Request $request){
+
+
+//Selon le type renvoyé, on change l'objet et le message du mail
+
+
+if($request->type ==1){
+  $mess='L\'image avec l\'id' .$id.' vient d\'etre signale par un membre du CESI';
+  $objet= 'Report image';
+}elseif($request->type == 2){
+  $mess='Le commentaire avec l\'id' .$id.' vient d\'etre signale par un membre du CESI';
+  $objet= 'Report commentaire';
+}else{
+  $mess='L\'evenement avec l\'id' .$id.' vient d\'etre signale par un membre du CESI';
+  $objet= 'Report evenement';
+}
 
 
   date_default_timezone_set('Etc/UTC');
   require '../vendor/autoload.php';
-//Create a new PHPMailer instance
+//Création d'une instance de PHPMailer
   $mail = new PHPMailer;
-//Tell PHPMailer to use SMTP
+//utilisation de SMTP
   $mail->isSMTP();
-//Enable SMTP debugging
-// 0 = off (for production use)
-// 1 = client messages
-// 2 = client and server messages
+//Autorisation du debugage de SMTP
   $mail->SMTPDebug = 2;
-//Ask for HTML-friendly debug output
   $mail->Debugoutput = 'html';
-//Set the hostname of the mail server
+//On initialise le hostname
   $mail->Host = 'smtp.gmail.com';
-// use
-// $mail->Host = gethostbyname('smtp.gmail.com');
-// if your network does not support SMTP over IPv6
-//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+//On initialise le port à utiliser
   $mail->Port = 587;
-//Set the encryption system to use - ssl (deprecated) or tls
+
   $mail->SMTPSecure = 'tls';
-//Whether to use SMTP authentication
   $mail->SMTPAuth = true;
-//Username to use for SMTP authentication - use full email address for gmail
+//Utilisateur du compte mail
   $mail->Username = "noreply.bde@gmail.com";
-//Password to use for SMTP authentication
+//Mot de passe du compte
   $mail->Password = "Jesuiskillian";
-//Set who the message is to be sent from
+//Initialisation de l'expediteur
   $mail->setFrom('noreply.bde@gmail.com', 'BDE');
-//Set an alternative reply-to address
-//Set who the message is to be sent to
+//Initialisation des adresses de réception
   $mail->addAddress('bde.a2.projetweb.stg@cesi.fr', 'BDE');
   $mail->addAddress('killian.hirtzlin@viacesi.fr', 'BDE');
 
-//Set the subject line
-  $mail->Subject = 'Report image';
-//Read an HTML message body from an external file, convert referenced images to embedded,
-//convert HTML into a basic plain-text alternative body
-//Replace the plain text body with one created manually
-  $mail->Body = 'L\image avec l\'id' .$id.' vient d\'etre signale par un membre du CESI';
+  $mail->Subject = $objet;
+// on place le message au sein du mail
+  $mail->Body = $mess;
   $mail->SMTPOptions = array(
     'ssl' => array(
       'verify_peer' => false,
@@ -315,8 +335,7 @@ public function reportImage(int $id, Request $request){
       'allow_self_signed' => true
     )
   );
-//Attach an image file
-//send the message, check for errors
+
   if (!$mail->send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
   } else {
@@ -330,137 +349,6 @@ public function reportImage(int $id, Request $request){
 
 }
 
-public function reportComment(int $id, Request $request){
-
-
-  date_default_timezone_set('Etc/UTC');
-  require '../vendor/autoload.php';
-//Create a new PHPMailer instance
-  $mail = new PHPMailer;
-//Tell PHPMailer to use SMTP
-  $mail->isSMTP();
-//Enable SMTP debugging
-// 0 = off (for production use)
-// 1 = client messages
-// 2 = client and server messages
-  $mail->SMTPDebug = 2;
-//Ask for HTML-friendly debug output
-  $mail->Debugoutput = 'html';
-//Set the hostname of the mail server
-  $mail->Host = 'smtp.gmail.com';
-// use
-// $mail->Host = gethostbyname('smtp.gmail.com');
-// if your network does not support SMTP over IPv6
-//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-  $mail->Port = 587;
-//Set the encryption system to use - ssl (deprecated) or tls
-  $mail->SMTPSecure = 'tls';
-//Whether to use SMTP authentication
-  $mail->SMTPAuth = true;
-//Username to use for SMTP authentication - use full email address for gmail
-  $mail->Username = "noreply.bde@gmail.com";
-//Password to use for SMTP authentication
-  $mail->Password = "Jesuiskillian";
-//Set who the message is to be sent from
-  $mail->setFrom('noreply.bde@gmail.com', 'BDE');
-//Set an alternative reply-to address
-//Set who the message is to be sent to
-  $mail->addAddress('bde.a2.projetweb.stg@cesi.fr', 'BDE');
-  $mail->addAddress('killian.hirtzlin@viacesi.fr', 'BDE');
-
-//Set the subject line
-  $mail->Subject = 'Report commentaire';
-//Read an HTML message body from an external file, convert referenced images to embedded,
-//convert HTML into a basic plain-text alternative body
-//Replace the plain text body with one created manually
-  $mail->Body = 'Le commentaire avec l\'id' .$id.' vient d\'etre signale par un membre du CESI';
-  $mail->SMTPOptions = array(
-    'ssl' => array(
-      'verify_peer' => false,
-      'verify_peer_name' => false,
-      'allow_self_signed' => true
-    )
-  );
-//Attach an image file
-//send the message, check for errors
-  if (!$mail->send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
-  } else {
-    echo "Message sent!";
-
-    return redirect('/event/'. $request->id_event);   
-
-
-  }
-
-
-}
-
-public function reportEvent(int $id){
-
-
-  date_default_timezone_set('Etc/UTC');
-  require '../vendor/autoload.php';
-  //Create a new PHPMailer instance
-  $mail = new PHPMailer;
-  //Tell PHPMailer to use SMTP
-  $mail->isSMTP();
-  //Enable SMTP debugging
-  // 0 = off (for production use)
-  // 1 = client messages
-  // 2 = client and server messages
-  $mail->SMTPDebug = 2;
-//Ask for HTML-friendly debug output
-  $mail->Debugoutput = 'html';
-//Set the hostname of the mail server
-  $mail->Host = 'smtp.gmail.com';
-// use
-// $mail->Host = gethostbyname('smtp.gmail.com');
-// if your network does not support SMTP over IPv6
-//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-  $mail->Port = 587;
-//Set the encryption system to use - ssl (deprecated) or tls
-  $mail->SMTPSecure = 'tls';
-//Whether to use SMTP authentication
-  $mail->SMTPAuth = true;
-//Username to use for SMTP authentication - use full email address for gmail
-  $mail->Username = "noreply.bde@gmail.com";
-//Password to use for SMTP authentication
-  $mail->Password = "Jesuiskillian";
-//Set who the message is to be sent from
-  $mail->setFrom('noreply.bde@gmail.com', 'BDE');
-//Set an alternative reply-to address
-//Set who the message is to be sent to
-  $mail->addAddress('bde.a2.projetweb.stg@cesi.fr', 'BDE');
-  $mail->addAddress('killian.hirtzlin@viacesi.fr', 'BDE');
-
-//Set the subject line
-  $mail->Subject = 'Report Event';
-//Read an HTML message body from an external file, convert referenced images to embedded,
-//convert HTML into a basic plain-text alternative body
-//Replace the plain text body with one created manually
-  $mail->Body = 'L\'evenement avec l\'id' .$id.' vient d\'etre signale par un membre du CESI';
-  $mail->SMTPOptions = array(
-    'ssl' => array(
-      'verify_peer' => false,
-      'verify_peer_name' => false,
-      'allow_self_signed' => true
-    )
-  );
-//Attach an image file
-//send the message, check for errors
-  if (!$mail->send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
-  } else {
-    echo "Message sent!";
-
-    return redirect('/event/'.$id);   
-
-
-  }
-
-
-}
 
 
 
