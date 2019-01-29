@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 session_start();
 
 use App\Like;
@@ -9,6 +10,8 @@ use Illuminate\Http\Request;
 use PDF;
 class LikeController extends Controller
 {  
+
+//Liker une image
      public function store(int $id, Request $request)
 
     {
@@ -19,10 +22,10 @@ class LikeController extends Controller
 
                         ->first();
 
-        if(isset($liked)){
+        if(isset($liked)){ // Si il y a deja un like
 
 
-           $liked->delete();
+           $liked->delete(); // Le supprimer
            return redirect('/event/' .$request->id_event);
 
         }
@@ -42,7 +45,7 @@ class LikeController extends Controller
 
 
 }
-
+//Voter pour un evenement
      public function storeVote(int $id)
     {
 
@@ -52,7 +55,7 @@ class LikeController extends Controller
 
                         ->first();
 
-        if(isset($liked)){
+        if(isset($liked)){ // Si il y en a deja un 
 
 
            $liked->delete();
@@ -76,7 +79,8 @@ class LikeController extends Controller
 
 }
 
-    
+    //S'inscrire a un evenement
+	
     public function storeRegister(int $id)
     {
 
@@ -86,7 +90,7 @@ class LikeController extends Controller
 
                         ->first();
 
-        if(isset($registered)){
+        if(isset($registered)){ // Si deja inscrit 
 
 
            $registered->delete();

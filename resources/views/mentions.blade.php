@@ -17,7 +17,7 @@
 
 
 <body>
-
+<!-- navbar -->
 	@include('layouts/nav')
 
  	<br>
@@ -25,6 +25,7 @@
 	
 	<hr class="blanc">
 	<h6 class="blanc  containerr text-center">
+	<!--Creation de l'emplacement du texte -->
 	
 <b> Respect de la vie privée et collecte des données personnelles </b><br>
 <br>

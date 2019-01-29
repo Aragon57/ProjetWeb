@@ -23,6 +23,7 @@
 
 
 <body>
+<!-- navbar -->
 @include ('layouts/nav')
 
    
@@ -30,6 +31,8 @@
 	<br><h1 class="blanc text-center">   Politique de confidentialité :</h1><br><br>
 	
 	<hr class="blanc">
+	
+	<!--Creation de l'emplacement du texte -->
 	
 <h6 class= "blanc containerr">  Dans le cadre de son activité les membres du BDE CESI Strasbourg sont amenés à traiter des informations vous concernant.
  <br>
@@ -85,7 +88,7 @@ Vous avez le droit d’accéder à vos données personnelles et de demander qu�
 <br>En cas de réponse insatisfaisante, vous pouvez introduire une réclamation auprès de la Commission nationale de l’informatique et des libertés (CNIL) 
 </h6>
 
-
+<!--footer -->
 @include('footer');
    </body>
 </html>
