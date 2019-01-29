@@ -143,33 +143,35 @@ class UsersController extends Controller
 
     public function isLogged()
     {
-        if(!isset($_SESSION['token']))
+        if(\Cookie::get('token') !== null)
         {
-            return response('no token', 200);
-        }
+            $result = file_get_contents('https://h3cate.herokuapp.com/request/token/token/'.\Cookie::get('token'));
+            $header = self::parseHeaders($http_response_header);
 
-
-        //GET user id
-        $result = file_get_contents('https://h3cate.herokuapp.com/request/token/token/'.$_SESSION['token']);
-        $header = self::parseHeaders($http_response_header);
+            if($header['reponse_code'] != 200)
+            {
+                return response('false', $header['reponse_code']);
+            }
         
-        if($header['reponse_code'] != 200)
-        {
-            return response('false', $header['reponse_code']);
-        }
-        
-        if($result === '[]')
-        {
-            return response('false', 200);
+            if($result === '[]')
+            {
+                return response('false', 200);
+            }
+
+            $result = str_replace('[', '', $result);
+            $result = str_replace(']', '', $result);
+            $result = json_decode($result, true);
+
+            $_SESSION['id'] = $result['id'];
         }
 
-        $result = str_replace('[', '', $result);
-        $result = str_replace(']', '', $result);
-        $result = json_decode($result, true);
-
+        if(!isset($_SESSION['id']))
+        {
+            return response('no id', 200);
+        }
 
         //GET user info
-        $result = file_get_contents('https://h3cate.herokuapp.com/request/users/id/'.$result['id']);
+        $result = file_get_contents('https://h3cate.herokuapp.com/request/users/id/'.$_SESSION['id']);
         $header = self::parseHeaders($http_response_header);
 
         if($header['reponse_code'] != 200)

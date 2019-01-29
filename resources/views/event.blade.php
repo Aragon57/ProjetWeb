@@ -18,11 +18,11 @@
           <div class="row">
             <div class="col-lg-1 col-md-2 col-sm-3 ">
             </div>
-            <div class="col-lg-10 col-md-20 col-sm-30 whitos ">
+            <div class="col-lg-10 col-md-20 col-sm-30 whitos heit">
               <br>
               @foreach($events as $event)
               <a class ="lien" href="/event/{{$event->id}}">
-                <div class="div1" >
+                <div class="div1 lien" >
                   <div class="row">
                     <div class="col-lg-8 col-md-16 col-sm-24 ">
                       <h1 > <strong>{{ $event->name }} </strong></h1>
@@ -55,19 +55,17 @@
               if(isset($_SESSION['email'])){
               @endphp
               @php
-              if($_SESSION['status']==3){
+              if($_SESSION['status'] >= 3){
               @endphp
-              <form method="get" action="/dlfile" >
-                
-                <button type = "submit" class="btnregist " >Télécharger les photos des événements</i></button>
+              <form id="dlimages" method="get" action="/dlfile" >
+                <button type ="submit" class="btnregist " >Télécharger les photos des événements</i></button>
               </form>
               @php
               }
               @endphp
-              @php
-              if($_SESSION['status']==4){
-              @endphp
-              <form action="/event" method="post"enctype="multipart/form-data">
+              
+              @if($_SESSION['status'] == 4)
+              <form id="addevent" action="/event" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="input-group form-group">
                   <input type="text" name="title_manif" placeholder="Titre"  class="form-control marge" required>
@@ -93,8 +91,8 @@
                       <input type="submit" value="Envoyer" class="btnsearch marge">
                     </div>
                   </form>
+                  @endif
                   @php
-                  }
                   }
                   @endphp
                   <div class="col-lg-1 col-md-2 col-sm-3">
@@ -103,9 +101,24 @@
               </div>
             </div>
           </div>
+
+          @include('footer')
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
           <!-- Include all compiled plugins (below), or include individual files as needed -->
           <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         </body>
+        <script>
+         $(document).ready(()=>{
+            $('#addevent').submit((event)=>{
+              event.preventDefault();
+
+              let data = $('#addevent');
+
+              $.post('/event', data.serialize(), (data, status)=>{
+                document.location.href="/event";
+              });
+            });
+          });
+        </script>
       </html>

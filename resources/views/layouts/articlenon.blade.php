@@ -16,16 +16,18 @@ session_start();
         <span onclick="document.getElementById('product{{ $item->id }}').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
       </div>
 
-      <form id="addtocart{{ $item->id }}" class="w3-container" action="/tocart" method="post" enctype="multipart/form-data" >
-        @csrf
-        <div class="w3-section">
-          <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_product" value={{ $item->id }}>
-          <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_user" value={{ $_SESSION['id'] }}>
-          <input class="w3-input w3-border w3-margin-bottom" type="integer" name="quantity" value="1" required>
+      @if(isset($_SESSION['id']))
+        <form id="addtocart{{ $item->id }}" class="w3-container" action="/tocart" method="post" enctype="multipart/form-data" >
+          @csrf
+          <div class="w3-section">
+            <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_product" value={{ $item->id }}>
+            <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_user" value={{ $_SESSION['id'] }}>
+            <input class="w3-input w3-border w3-margin-bottom" type="integer" name="quantity" value="1" required>
 
-          <button id="ok-btn" type="submit">Confirmer</button>
-        </div>
-      </form>
+            <button id="ok-btn" type="submit">Confirmer</button>
+          </div>
+        </form>
+      @endif
     </div>
   </div>
 </div>

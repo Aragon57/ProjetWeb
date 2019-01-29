@@ -13,7 +13,7 @@
         <!-- Fonts -->
         
         <!-- Styles -->
-        <body style ="background-color:#1d2124">
+        <body>
             @include('layouts/nav')
             
             <div class="container-fluid  ">
@@ -59,7 +59,7 @@
                                     <input type="hidden" name="id" value='. $idea->id .'  >
                                     <input type="text" name="description" placeholder="description" >
                                     <input type="date" name="date">
-                                    <input type="number" name="price" placeholder="prix">
+                                    <input type="number" min="0" name="price" placeholder="prix">
                                     <input type="hidden" name="name" value="'.  $idea->name  .'"  >
                                     <input type="hidden" name="email" value="'.  $_SESSION['email']  .'"  >
                                     <input type="hidden" name="validate" value=1  >
@@ -98,8 +98,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
                     
-                    @include ("footer");
+            @include ("footer")
+
                 </body>
                 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

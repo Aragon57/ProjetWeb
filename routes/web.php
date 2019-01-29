@@ -13,6 +13,10 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+Route::get('/nav', function (){
+    return view('layouts/nav');
+});
+
 Route::get('/tableview', function () {
     return view('admin/datatable');
 });
@@ -42,7 +46,7 @@ Route::get('/connexion', function () {
 });
 
 
-Route::get('/event' , 'EventController@display', function () {
+Route::get('/event' , 'EventController@store', function () {
     return view('event');
 });
 

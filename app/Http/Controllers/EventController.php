@@ -80,12 +80,15 @@ $event->punctuality = $punct;
 $event->validate = true;
 $event->price = $request->price_manif;
 $event->id_user = $_SESSION["id"];
-$event->logo = "/img/eventHeader/".$_FILES['userfile2']['name'];
+
+if(isset($_FILES['userfile2']['name']))
+{
+  $event->logo = "/img/eventHeader/".$_FILES['userfile2']['name'];
+}
 
 $event->email =$_SESSION['email'];
 $event->save();
-return redirect('/'); 
-return redirect('/');   
+return response('true', 200); 
 
 
 
@@ -300,7 +303,7 @@ public function reportImage(int $id, Request $request){
   $mail->addAddress('killian.hirtzlin@viacesi.fr', 'BDE');
 
 //Set the subject line
-  $mail->Subject = 'Validation idee';
+  $mail->Subject = 'Report image';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 //Replace the plain text body with one created manually
@@ -366,7 +369,7 @@ public function reportComment(int $id, Request $request){
   $mail->addAddress('killian.hirtzlin@viacesi.fr', 'BDE');
 
 //Set the subject line
-  $mail->Subject = 'Validation idee';
+  $mail->Subject = 'Report commentaire';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 //Replace the plain text body with one created manually

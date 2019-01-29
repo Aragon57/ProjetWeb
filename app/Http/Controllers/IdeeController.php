@@ -25,7 +25,7 @@ class IdeeController extends Controller
 
         $idee->id_user = $_SESSION['id'];
         $idee->save();
-    return redirect('/');    }
+    return redirect('/idee');    }
 
 
     public function display(){

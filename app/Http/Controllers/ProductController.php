@@ -12,7 +12,7 @@ class ProductController extends Controller
 
 	public function addarticle(Request $request)
 	{
-		$dossier = storage_path('app\public\img\boutique');
+		$dossier = storage_path('app\public\img\boutique\\');
 		$fichier = basename($_FILES['userfile']['name']);
 		$taille_maxi = 100000;
 		$taille = filesize($_FILES['userfile']['tmp_name']);

@@ -26,12 +26,12 @@
         <div class="container">
             <div class="d-flex justify-content-center h-100">
                 <br>
-                <div class="cardsignin">
+                <div class="cardlogin">
                     <div class="card-header">
                         <h3>SE CONNECTER</h3>
                         <p id="error"></p>
                     </div>
-                    <div class="card-body">
+                    <div class="cardlog-body">
                         <form action="/connexion" method="post">
                         @csrf
                             <div class="input-group form-group">

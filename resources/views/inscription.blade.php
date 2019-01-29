@@ -102,9 +102,18 @@
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="password" name="password_confirmation" placeholder="Mot de passe (confirmation)"  class="form-control" required>
-                        </div>
+                        </div>                        <div class="form-group">
 
-                            <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" required><a href="/conditions">Acceptez vous les conditions générales</a>  
+
+                            <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" required><a href="/politique"> Acceptez vous les conditions générales</a> 
+                        </div>
+                             
+                        <div class="form-group">
+                           
+
+                           
+                             <input type="checkbox"  name="subscribe" value="newsletter" required><a href="/mentions"> Acceptez vous les mentions légales</a>
+                              </div>
                         <div class="form-group">
                             <input type="submit" value="Login" class="btn float-right login_btn">
                         </div>
@@ -159,18 +168,6 @@
     });
 </script>
 </body>
-
-
-
-
-
-
-
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-
-
-
-
 </html>

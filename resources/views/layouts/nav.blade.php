@@ -1,3 +1,4 @@
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -50,6 +51,7 @@
                 });
             }
 
+            console.log('hello');
             $('#user_depend').load('/usernav');
         });
     });

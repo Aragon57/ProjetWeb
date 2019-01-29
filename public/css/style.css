@@ -27,16 +27,13 @@
 }
 
 
- body{
-  background-color: #1d2124;
 
-}
 
 
 .lien{
 
   color: black;
-    text-decoration : none;
+  text-decoration : none;
 
 
 }
@@ -214,6 +211,11 @@ overflow:auto;
   background-image :url("http://www.inthemoodpress.com/wp-content/uploads/2015/08/slide-in-the-mood-fond-flou.jpg");
 }
 
+
+.heit{
+  min-height : 90vh;
+}
+
 .container{
 height: 100%;
 align-content: center;
@@ -225,12 +227,21 @@ align-content: center;
 }
 
 .cardsignin{
-height: 550px;
+height: 650px;
 margin-top: 20px;
 margin-bottom: 20px;
 width: 400px;
 background-color: rgba(0,0,0,0.5) !important;
 }
+
+.cardlogin{
+height: 400px;
+margin: 20px;
+margin-bottom: 20px;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
 
 
 .card-header h3{
@@ -238,7 +249,14 @@ color: white;
 }
 
 .card-body{
-  height:400px;
+
+  height:500px;
+}
+
+.cardlog-body{
+  margin: 20px;
+
+  height:200px;
 }
 
 .btnsearch{
@@ -307,6 +325,14 @@ hr
   border-radius: 0px;
 }
 
+.separation
+{
+  padding:1px;
+  background-color: #808080;
+  border:0;
+  border-radius: 0px;
+}
+
 .remember{
 color: white;
 }
@@ -322,6 +348,8 @@ margin-right: 5px;
 .card-footer{
   height:100px;
 }
+
+
 
 .jour{
   text-align : center;

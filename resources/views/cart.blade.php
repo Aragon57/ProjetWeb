@@ -1,7 +1,3 @@
-@php
-	$_SESSION['id'] = 333;
-	unset($_SESSION['id_cart']);	
-@endphp
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -10,14 +6,17 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
+	  <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+   
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/cart.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
 
-        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-		<link href="{{ asset('css/boutique.css') }}" rel="stylesheet">
-		<link href="{{ asset('css/cart.css') }}" rel="stylesheet">
-        <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
-		<link href="{{ asset('fontawesome/css/style.css') }}" rel="stylesheet">
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	
+       <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <title>Panier - BDE CESI Strasbourg</title>
@@ -28,7 +27,7 @@
 
         <div class="container-fluid text-center"> 
             <div class="row">
-                <div class="col-lg-1 col-md-2 col-sm-3 bg-dark"></div>
+                <div class="col-lg-1 col-md-2 col-sm-3 bg-white"></div>
 
                 <div class="col-lg-10 col-md-20 col-sm-30" style="height: 100vh;">
                     <div class="container">
@@ -48,6 +47,7 @@
 								$total = 0;
 							@endphp
 
+							@if(isset($_SESSION['id_cart']))
 							@foreach ($articles as $item)
 								@php
 									$article = App\product::find($item->id_product);
@@ -59,7 +59,7 @@
 									<tr>
 										<td data-th="Product">
 											<div class="row">
-											<div class="col-sm-2 hidden-xs"><img src="http://127.0.0.1:8000/{{ $article->image }}" alt="..." class="img-responsive img-product"/></div>
+											<div class="col-sm-2 hidden-xs"><img src="/storage/{{ $article->image }}" alt="..." class="img-responsive img-product"/></div>
 												<div class="col-sm-10">
 												<h4 class="nomargin">{{ $article->name }}</h4>
 												<p>{{ $article->description }}</p>
@@ -102,6 +102,7 @@
 													encode : true,
 													success : (data) => {
 														console.log(data);
+														document.location.href="/cart";
 													},
 													error : (data) => {
 														console.log(data);
@@ -123,6 +124,7 @@
 													encode : true,
 													success : (data) => {
 														console.log(data);
+														document.location.href="/cart";
 													},
 													error : (data) => {
 														console.log(data);
@@ -132,6 +134,7 @@
 										});
 									</script>
 							@endforeach
+							@endif
 
 					        <tfoot class="footer">
 						        <tr class="visible-xs">
