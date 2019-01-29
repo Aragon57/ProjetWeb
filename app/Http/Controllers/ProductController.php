@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
-
+    // Recuperation des articles depuis la bdd
 	public function addarticle(Request $request)
 	{
 		$dossier = storage_path('app\public\img\boutique\\');
@@ -18,24 +18,31 @@ class ProductController extends Controller
 		$taille = filesize($_FILES['userfile']['tmp_name']);
 		$extensions = array('.png', '.gif', '.jpg', '.jpeg');
 		$extension = strrchr($_FILES['userfile']['name'], '.'); 
-//Début des vérifications de sécurité...
-		if (!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
+
+        // Verification de sécurité
+        // Si l'extension n'est pas dans le tableau on fait :
+		if (!in_array($extension, $extensions))
 		{
 			$erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
 		}
 		if ($taille > $taille_maxi) {
 			$erreur = 'Le fichier est trop gros...';
 		}
-		if (!isset($erreur)) //S'il n'y a pas d'erreur, on upload
+
+		// Upload du fichier si aucune erreur
+		if (!isset($erreur))
 		{
-     //On formate le nom du fichier ici...
+
+            // On formate le nom du fichier 
 			$fichier = strtr(
 				$fichier,
 				'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
 				'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy'
 			);
+			
 			$fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
-			if (move_uploaded_file($_FILES['userfile']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+			// Si la fonction renvoie TRUE, c'est que ça a fonctionné
+			if (move_uploaded_file($_FILES['userfile']['tmp_name'], $dossier . $fichier))
 			{
 
 				$catt = 0;
@@ -49,7 +56,6 @@ class ProductController extends Controller
 				}
 
 				$article = new Product();
-
 				$article->name = $request->name;
 				$article->description = $request->description;
 				$article->price = $request->price;
@@ -60,7 +66,8 @@ class ProductController extends Controller
 				$article->save();
 
 				return redirect('/boutique');
-			} else //Sinon (la fonction renvoie FALSE).
+		    // Sinon (la fonction renvoie FALSE.
+			} else 
 			{
 				echo 'Echec de l\'upload !';
 			}
@@ -70,7 +77,7 @@ class ProductController extends Controller
 
 	}
 
-
+    // Afficher les articles selon des critères(meilleures ventes, ect...)
 	public function display()
 	{
 
@@ -86,22 +93,23 @@ class ProductController extends Controller
 		return view('boutique', compact('products', 'firsts', 'categories'));
 	}
 
-
+    // Supprimer un article
 	public function destroy(Request $request)
 	{
 		$product = Product::where('id', $request->id_product)
-			->delete();
+		->delete();
 		return redirect('/boutique');
 
 	}
 
-
+ 
 	public function getProduct($request)
 	{
 		$article = Product::where('id', '=', $request->id_product)->get();
 		return view('cart', compact("article"));
 	}
 
+    
 	public function searchby(Request $request)
 	{
 		$products = Product::where('name', 'like', '%'.request()->search.'%')->get();
