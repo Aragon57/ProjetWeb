@@ -213,9 +213,9 @@ session_start();
                     <div class="w3-section">
                       <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_product" value={{ $product->id }}>
                       <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="id_user" value={{ $_SESSION['id'] }}>
-                      <input class="w3-input w3-border w3-margin-bottom" type="integer" name="quantity" value="1" required>
+                      <input class="w3-input w3-border w3-margin-bottom" type="number" name="quantity" value="1" required>
                       
-                      <button id="ok-btn" type="submit">Confirmer</button>
+                      <button class="ok-btn" type="submit">Confirmer</button>
                     </div>
                   </form>
                   @endif

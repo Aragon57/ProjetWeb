@@ -33,9 +33,6 @@ Route::post('/data/command', 'AdminController@getcommand');
 Route::get('/data/article', 'AdminController@getarticle');
 Route::post('/data/article', 'AdminController@getarticle');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/inscription', function () {
     return view('inscription');
@@ -50,6 +47,10 @@ Route::get('/event' , 'EventController@store', function () {
     return view('event');
 });
 
+
+Route::get('/',  'WelcomeController@display',  function () {
+    return view('welcome');
+});
 
 Route::get('/idee',  'IdeeController@display',  function () {
     return view('idee');

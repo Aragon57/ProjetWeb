@@ -28,7 +28,7 @@
 	@include('layouts/nav')
 
 	<!-- Table contenant les articles -->
-	<div class="container-fluid text-center"> 
+	<div class="container-fluid text-center cart-div"> 
 		<div class="row">
 			<div class="col-lg-1 col-md-2 col-sm-3 bg-white"></div>
 
@@ -44,10 +44,10 @@
 								<th style="width:10%"></th>
 							</tr>
 						</thead>
-
+						<tbody>
 						<!-- Initialisation de la variable globale et recuperation des articles  -->
 						@php
-						//jquery bug
+						
 						$total = 0;
 						@endphp
 
@@ -60,7 +60,7 @@
 						@endphp
 
 						<!-- Affichage des articles -->
-						<tbody>
+						
 							<tr>
 								<td data-th="Product">
 									<div class="row">
@@ -81,8 +81,9 @@
 									<button onclick="$('#delete{{ $item->id }}').submit();" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>								
 								</td>
 							</tr>
-						</tbody>
-
+						
+						<tr class="hider">
+							<td>
 						<!-- Supprimer un article du panier -->
 						<form id="delete{{ $item->id }}">
 							@csrf
@@ -95,7 +96,8 @@
 							<input type="hidden" name="id" value="{{ $item->id }}">
 							<input type="hidden" name="quantity" value="">
 						</form>
-
+					</td>
+						</tr>
 						<!-- Script de supression et de quantité -->
 						<script>
 							$(document).ready(() => {
@@ -147,7 +149,7 @@
 						</script>
 						@endforeach
 						@endif
-
+						</tbody>
 
 						<!-- Footer du panier avec le prix total, ect... -->
 						<tfoot class="footer">

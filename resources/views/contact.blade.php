@@ -29,7 +29,7 @@
 <br>
 
 	
-	<h1 class="blanc text-center"> Contact : </h1>
+	<h1 class="blanc text-center"> CONTACT </h1>
 	<hr class="blanc">
 	 
 <div class="container">

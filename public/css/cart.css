@@ -15,7 +15,7 @@
 	margin: 10px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1400px) {
     table#cart tbody td .form-control{
 		width:20%;
 		display: inline !important;
@@ -44,5 +44,8 @@
 	
 	table#cart tfoot td{display:block; }
 	table#cart tfoot td .btn{display:block;}
-	
+
+	.cart-div {
+		margin-bottom: 100vh;
+	}
 }

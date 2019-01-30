@@ -23,13 +23,18 @@
           </div>
           <div class="col-lg-10 col-md-20 col-sm-30 whitos heit ">
             <hr>
+            @if(isset($_SESSION['email']))
             @if($_SESSION['status']==3)
             <form method="post" action="/report/{{$event->id}}" >
               @csrf
+                            <input type="hidden" name="id_event" value={{$event->id}}  >
+
               <input type="hidden" name="type" value=3  >
               <button type = "submit" class="commentdel like btn  " ><i class="fas fa-exclamation-triangle"></i></button>
             </form>
             @endif
+            @endif
+
             <?php
             
             if(empty($register)){
@@ -70,16 +75,16 @@
                 <h5>Description : {{ $event->description }}</h5>
               </div>
               <div class="col-lg-4 col-md-8 col-sm-12">
-                <img src="/storage{{$event->logo}}" alt="" class="" >
+                <img src="/storage{{$event->logo}}" alt="" class="photo" >
               </div>
             </div>
             <h4><U>Photo de l'événement : </U></h4>
             <div class="row">
               @foreach($images as $image)
-              <div class="col-lg-12 col-md-24 sm-36 text-left"><img src="/storage{{$image['image']}}" alt="Probleme chargement"
-                class="" >
+              <div class="col-lg-12 col-md-24 sm-36 text-left"><img src="/storage{{$image['image']}}"  alt="Probleme chargement"
+                class="photo" >
                 <div class="row">
-                  <div class="col-lg-1 col-md-2 sm-3 text-right">
+                  <div class="col-lg-1 col-md-2 sm-3 text-right bouton-like">
                     
                     <!-- Fonction pour liker une image -->
                     <form method="post" action="/likepic/{{ $image->id}}" >
@@ -103,7 +108,7 @@
                     </form>
                   </div>
                   <!-- Fonction pour supprimer une image en tant que membre du BDE -->
-                  <div class="col-lg-1 col-md-2 sm-3 text-left">
+                  <div class="col-lg-1 col-md-2 sm-3 bouton-like">
                     @if(isset($_SESSION['email']))
                     @if($_SESSION['status']==4)
                     <form method="post" action="/image/delete/{{$image->id}}" >
@@ -238,6 +243,7 @@
     }
     @endphp
   </div>
+</div>
   @include('footer')
 </body>
 </html>

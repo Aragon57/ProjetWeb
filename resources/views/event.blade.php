@@ -25,7 +25,7 @@
 
               <!-- Foreach afin d'aficher l'ensemble des événements créé -->
               @foreach($events as $event)
-              <a class ="lien" href="/event{{$event->id}}">
+              <a class ="lien" href="/event/{{$event->id}}">
                 <div class="div1 lien" >
                   <div class="row">
                     <div class="col-lg-8 col-md-16 col-sm-24 ">
@@ -50,7 +50,7 @@
                       
                     </div>
                     <div class="col-lg-4 col-md-8 col-sm-12 ">
-                      <img src="/storage/{{$event->logo}}" height ="200" width="300" alt="">
+                      <img class="imgevent" src="/storage/{{$event->logo}}" alt=" ">
                     </div>
                   </div>
                 </div>
@@ -113,20 +113,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
           <!-- Include all compiled plugins (below), or include individual files as needed -->
           <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        
- <script>
-         // $(document).ready(()=>{
-         //   $('#addevent').submit((event)=>{
-         //      event.preventDefault();
-
-         //     let data = $('#addevent');
-
-         //      $.post('/event', data.serialize(), (data, status)=>{
-         //        document.location.href="/event";
-         //      });
-         //    });
-         //  });
-        </script>
         </body>
        
       </html>

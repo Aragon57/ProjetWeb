@@ -37,7 +37,7 @@
                 
             </li>
             <li class="nav-item">
-                <a class="nav-lin" href="#">CONTACT</a>
+                <a class="nav-lin" href="/contact">CONTACT</a>
             </li>
 
         </ul>

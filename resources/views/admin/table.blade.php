@@ -1,4 +1,6 @@
-@if(isset($_SESSION['status']) && $_SESSION['status'] == 4)
+@php session_start() @endphp
+
+@if($_SESSION['status'] == 4)
 <thead class="thead-dark">
     <tr>
         @if(!empty($columns))

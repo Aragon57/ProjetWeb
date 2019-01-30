@@ -17,8 +17,11 @@
     Print_r ($_SESSION['email']); 
     echo '</a>
     <div class="dropdown-diviseur"></div>
-    <a class="dropdown-item nav-lin" href="/cart">MON PANIER</a>
-    <a class="dropdown-item nav-lin" href="/logout">SE DECONNECTER</a>
+    <a class="dropdown-item nav-lin" href="/cart">MON PANIER</a>';
+    if($_SESSION['status']==4){
+    echo '<a class="dropdown-item nav-lin" href="/admin">PANEL ADMIN</a>';
+}
+    echo '<a class="dropdown-item nav-lin" href="/logout">SE DECONNECTER</a>
     </div>
     </li>';
     }

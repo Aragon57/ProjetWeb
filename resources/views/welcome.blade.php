@@ -33,11 +33,11 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img  src="https://www.tours-evenements.com/sites/default/files/media/header_image/header-tours-evenements.jpg" height = "600"width="100% /9" alt="First slide">
+                                        <img  class="img-carousel-welcome" src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="First slide">
                                         <div class="carousel-caption text-right black">
                                             
-                                            <h1>Les meilleurs évènements d'Alsace.</h1>
-                                            <p>Le BDE propose chaque semaine de nombreux évènements, tous plus fous les uns que les autres !</p>
+                                            <h1><B>Les meilleurs évènements d'Alsace.</B></h1>
+                                            <p><B>Le BDE propose chaque semaine de nombreux évènements, tous plus fous les uns que les autres !</B></p>
                                             <br>
                                             <br>
                                             <p><a class="btn btn-lg btn-primary" href="/event" role="button">Accéder</a></p>
@@ -47,20 +47,20 @@
                                         </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="img-responsive" src="https://www.kelcible.fr/wp-content/uploads/boutique-en-ligne.jpg"  height = "600" width="100% /9" alt="Second slide">
+                                        <img class="img-carousel-welcome" src="https://www.kelcible.fr/wp-content/uploads/boutique-en-ligne.jpg" alt="Second slide">
                                         <div class="carousel-caption text-right black">
-                                            <h1>Boutique en ligne</h1>
-                                            <p>Le BDE propose une nouvelle boutique en ligne. Vous y trouverez de nombreux goodies, accessoires ou encore des vêtements !</p>
+                                            <h1><B>Boutique en ligne</B></h1>
+                                            <p><B>Le BDE propose une nouvelle boutique en ligne. Vous y trouverez de nombreux goodies, accessoires ou encore des vêtements !</B></p>
                                             <br>
                                             <br>
                                             <p><a class="btn btn-lg btn-primary" href="/boutique" role="button">Accéder</a></p>
                                         </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="img-responsive" src="http://chartreuse-liege.be/wp-content/uploads/2017/12/idee.jpg" height = "600" width="100% /9" alt="Third slide">
+                                        <img class="img-carousel-welcome" src="http://chartreuse-liege.be/wp-content/uploads/2017/12/idee.jpg" alt="Third slide">
                                         <div class="carousel-caption text-right black">
-                                            <h1>Proposez vos idées.</h1>
-                                            <p>Le BDE est à votre écoute, proposez vos idées d'évènements afin de peut-etre les voir se réaliser !</p>
+                                            <h1><B>Proposez vos idées.</B></h1>
+                                            <p><B>Le BDE est à votre écoute, proposez vos idées d'évènements afin de peut-etre les voir se réaliser !</B></p>
                                             <br>
                                             <br>
                                             <p><a class="btn btn-lg btn-primary" href="/idee" role="button">Accéder</a></p>
@@ -79,7 +79,53 @@
                             
                             
                             
-                        </div>
+                        
+
+                               <div class="col-lg-12 col-md-24 col-sm-36 whitos heit">
+              <br>
+
+            <h1> Evénements du jour </h1>
+            <hr>
+              <!-- Foreach afin d'aficher l'ensemble des événements créé -->
+              @foreach($events as $event)
+              <a class ="lien" href="/event/{{$event->id}}">
+                <div class="blackos" >
+                  <div class="row">
+                    <div class="col-lg-8 col-md-16 col-sm-24 text-left">
+
+                      <!-- Afficher les informations pour chaque événement -->
+                      <h1 > <strong>{{ $event->name }} </strong></h1>
+                      
+                      <h2>Date : {{ $event->date }}</h2>
+
+                      <!-- Afficher le prix ou la gratuité -->
+                      @if((!isset($event->price))|| $event->price == 0)
+                      
+                      <h2>Gratuit</h2>
+                        
+                                         
+        
+                        @else
+
+                      <h2>Prix : {{ $event->price }} €</h2>
+                          
+                      @endif                     
+                      
+                    </div>
+                    <div class="col-lg-4 col-md-8 col-sm-12 ">
+                      <img src="/storage/{{$event->logo}}" height ="200" width="300" alt="">
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <br>
+              @endforeach
+              
+        
+            
+           
+                </div>
+            </div>
                         <div class="col-lg-1 col-md-2 col-sm-3">
                             
                             

@@ -34,32 +34,32 @@ class EventController extends Controller
     $taille = filesize($_FILES['userfile']['tmp_name']);
     $extensions = array('.png', '.gif', '.jpg', '.jpeg','.PNG');
     $extension = strrchr($_FILES['userfile']['name'], '.'); 
-//Début des vérifications de sécurité...
-if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
-{
- $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
-}
-if($taille>$taille_maxi)
-{
- $erreur = 'Le fichier est trop gros...';
-}
-if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
-{
-     //On formate le nom du fichier ici...
- $fichier = strtr($fichier, 
-  'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
-  'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
- $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
-     if(move_uploaded_file($_FILES['userfile']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
-     {
+      //Début des vérifications de sécurité...
+      if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
+      {
+       $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
+      }
+      if($taille>$taille_maxi)
+      {
+       $erreur = 'Le fichier est trop gros...';
+      }
+      if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
+      {
+           //On formate le nom du fichier ici...
+       $fichier = strtr($fichier, 
+        'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
+        'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+       $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+           if(move_uploaded_file($_FILES['userfile']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+           {
 
 
 
-     }
-     else //Sinon (la fonction renvoie FALSE).
-     {
-      echo 'Echec de l\'upload !';
-    }
+           }
+           else //Sinon (la fonction renvoie FALSE).
+           {
+            echo 'Echec de l\'upload !';
+          }
   }
   else
   {
@@ -76,6 +76,8 @@ else{
   $punct =true;
 }
 
+//Envoie des évenements dans la BDD
+
 $event = new Event();
 $event->name = $request->title_manif;
 $event->description = $request->desc_manif;
@@ -86,7 +88,7 @@ $event->price = $request->price_manif;
 $event->id_user = $_SESSION["id"];
 
 
-  $event->logo = "/img/eventHeader/".$_FILES['userfile']['name'];
+$event->logo = "/img/eventHeader/".$_FILES['userfile']['name'];
 
 $event->email =$_SESSION['email'];
 $event->save();
@@ -100,16 +102,16 @@ return redirect('/event');
 
 
 
-  public function storeImage(int $id, Request $request)
-  {
+public function storeImage(int $id, Request $request)
+{
 
 
-    $dossier = storage_path('app\public\img\event\\');
-    $fichier = basename($_FILES['userfile']['name']);
-    $taille_maxi = 100000;
-    $taille = filesize($_FILES['userfile']['tmp_name']);
-    $extensions = array('.png', '.gif', '.jpg', '.jpeg','.PNG');
-    $extension = strrchr($_FILES['userfile']['name'], '.'); 
+  $dossier = storage_path('app\public\img\event\\');
+  $fichier = basename($_FILES['userfile']['name']);
+  $taille_maxi = 100000;
+  $taille = filesize($_FILES['userfile']['tmp_name']);
+  $extensions = array('.png', '.gif', '.jpg', '.jpeg','.PNG');
+  $extension = strrchr($_FILES['userfile']['name'], '.'); 
 //Début des vérifications de sécurité...
 if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
 {
@@ -285,16 +287,16 @@ public function report(int $id, Request $request){
 //Selon le type renvoyé, on change l'objet et le message du mail
 
 
-if($request->type ==1){
-  $mess='L\'image avec l\'id' .$id.' vient d\'etre signale par un membre du CESI';
-  $objet= 'Report image';
-}elseif($request->type == 2){
-  $mess='Le commentaire avec l\'id' .$id.' vient d\'etre signale par un membre du CESI';
-  $objet= 'Report commentaire';
-}else{
-  $mess='L\'evenement avec l\'id' .$id.' vient d\'etre signale par un membre du CESI';
-  $objet= 'Report evenement';
-}
+  if($request->type ==1){
+    $mess='L\'image avec l\'id' .$id.' vient d\'etre signale par un membre du CESI';
+    $objet= 'Report image';
+  }elseif($request->type == 2){
+    $mess='Le commentaire avec l\'id' .$id.' vient d\'etre signale par un membre du CESI';
+    $objet= 'Report commentaire';
+  }else{
+    $mess='L\'evenement avec l\'id' .$id.' vient d\'etre signale par un membre du CESI';
+    $objet= 'Report evenement';
+  }
 
 
   date_default_timezone_set('Etc/UTC');
